@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crafting &amp; Config - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Crafting &amp; Config</div>
+  <h1>Crafting &amp; Config</h1>
+  <p class="sub">How a master smith forges better loot, and how to switch any individual affix on or off.</p>
+
+  <h2>Skill-scaled crafting</h2>
+  <p>When a colonist crafts a weapon or apparel, its tier is rolled from the <strong>crafter's relevant skill</strong> instead of the world drop table. A higher skill shifts the odds toward Legendary and Ancestral, and a true master has a rare shot at a <strong>Relic</strong>.</p>
+  <div class="math"><div class="mh">Crafted tier odds (by skill)</div><div class="eq">relicChance  = skill &ge; 18 ? min(0.06, (skill-17) <span class="op">&middot;</span> 0.0025) : 0
+ancestral    = clamp( (skill-10)/14 <span class="op">&middot;</span> 0.55 + min(0.3,(skill-20)<span class="op">&middot;</span>0.015) )
+legendary    = min( (skill-4)/12 <span class="op">&middot;</span> 0.7 , 1 - ancestral )
+<span class="cmt"># remainder rolls White</span></div></div>
+  <ul>
+    <li>Crafted gear is <strong>always enchanted</strong> - the <a class="xref" href="drop-rate.html">drop-rate</a> knob only thins world drops, never your own work.</li>
+    <li><strong>Endless-growth friendly</strong>: skill levels above 20 (from leveling mods) keep nudging the odds upward, and the Relic chance climbs toward its 6% cap.</li>
+  </ul>
+  <div class="callout gold"><b>Worked example.</b> A Crafting-20 smith forges a longsword: roughly a coin-flip for Ancestral, a solid chance of Legendary, and about a 0.75% shot at a Relic. Push that smith to skill 25 with an endless-growth mod and Ancestral becomes the norm, with the Relic chance creeping toward 2%.</p>
+
+  <h2 id="config">The per-affix configuration window</h2>
+  <p>Open <b>Options &rarr; Mod settings &rarr; Itemization Overhaul - Core</b> and click <strong>"Configure individual affixes&hellip;"</strong> to open a searchable window where every affix can be toggled on or off. Disabled affixes never roll, on any item, anywhere.</p>
+  <table class="t">
+    <tr><th>Category</th><th>Examples</th></tr>
+    <tr><td>Stats</td><td>every stat affix in the pool</td></tr>
+    <tr><td>Skills / All-Skills</td><td>per-skill toggles plus the +All-Skills affix</td></tr>
+    <tr><td>Auras</td><td>each of the thirteen auras</td></tr>
+    <tr><td>Isekai</td><td>the Isekai-stat affixes (when installed)</td></tr>
+    <tr><td>Corruption Uniques</td><td>each named unique in the corruption pool</td></tr>
+    <tr><td>Special Modifiers</td><td>Ethereal, Indestructible</td></tr>
+    <tr><td>Addon-registered</td><td>e.g. Jewelry's uniques and Sanctification</td></tr>
+  </table>
+  <p>The window groups affixes into collapsible categories, supports search and per-row descriptions, and has All / None / Reset controls. Addons register their own entries through the same API, so the one window governs the whole suite.</p>
+
+  <div class="callout"><b>Use it to curate.</b> Hate a particular aura, or want a pure-melee game with no ranged affixes? Switch them off here and they vanish from every future roll without touching anything else.</div>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

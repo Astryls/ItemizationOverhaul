@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sockets &amp; Runes - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; <a href="runes.html">Runes</a> &rsaquo; Sockets &amp; Runes</div>
+  <h1>Sockets &amp; Runes</h1>
+  <p class="sub">How many sockets an item rolls, the rune ladder, and the slot-dependent effects.</p>
+
+  <h2>Socket roll</h2>
+  <p>Non-set gear has a <strong>40%</strong> chance (tunable) to roll any sockets at all; the count is then weighted by gear slot. The roll is final - nothing changes it afterward, not re-rolls, not crafting, not Isekai's forge.</p>
+  <table class="t">
+    <tr><th>Gear slot</th><th>Sockets</th><th>Count weights</th></tr>
+    <tr><td>Weapon</td><td class="num">1 - 4</td><td>40 / 30 / 20 / 10</td></tr>
+    <tr><td>Body armor</td><td class="num">1 - 4</td><td>45 / 30 / 17 / 8</td></tr>
+    <tr><td>Helmet</td><td class="num">1 - 3</td><td>50 / 35 / 15</td></tr>
+    <tr><td>Other gear</td><td class="num">1 - 2</td><td>70 / 30</td></tr>
+  </table>
+
+  <h2>The 30-rune ladder</h2>
+  <table class="t">
+    <tr><th>Rarity</th><th>Ladder</th><th>Runes</th></tr>
+    <tr><td><span class="tierpill tier-white">Normal</span></td><td>1 - 12</td><td>Vel &rarr; Ulm</td></tr>
+    <tr><td><span class="tierpill tier-leg">Legendary</span></td><td>13 - 20</td><td>Thren &rarr; Hark</td></tr>
+    <tr><td><span class="tierpill tier-anc">Ancestral</span></td><td>21 - 26</td><td>Vorn &rarr; Xan</td></tr>
+    <tr><td><span class="tierpill tier-relic">Relic</span></td><td>27 - 30</td><td>Karn &rarr; Zek</td></tr>
+  </table>
+
+  <h2>One rune, four effects</h2>
+  <p>Each rune grants exactly one static effect <em>per gear slot</em>. Stat effects ride the same equipped-gear pipeline as Core affixes, so they stack with everything. On-hit procs (ignite / stun / lifesteal) are melee-only and can be toggled in settings.</p>
+  <table class="t">
+    <tr><th>Rune</th><th>Weapon</th><th>Helmet</th><th>Body armor</th><th>Other</th></tr>
+    <tr><td><b>Vel</b> (1)</td><td>+4% melee hit</td><td>+5% learning</td><td>+3% blunt armor</td><td>+0.03 move</td></tr>
+    <tr><td><b>Brim</b> (16)</td><td>10% ignite on hit</td><td>+15% pain threshold</td><td>+12% heat armor</td><td>+10% cooking</td></tr>
+    <tr><td><b>Hark</b> (20)</td><td>+10% melee damage</td><td>+18% pain threshold</td><td>-5% incoming damage</td><td>+12% mining</td></tr>
+    <tr><td><b>Zek</b> (30)</td><td>+15% melee damage</td><td>-20% aiming delay</td><td>+18% sharp armor</td><td>+12% work speed</td></tr>
+  </table>
+  <p>The four above show the span; see the <a class="xref" href="rune-list.html">Rune Compendium</a> for every one of the 30 runes and its effect in all four slots.</p>
+
+  <h2>Socketing</h2>
+  <p>Select an item with a free socket and press <strong>Socket rune&hellip;</strong>. The float menu lists every rune on the map, each already showing the exact effect it would grant <em>this</em> item. The nearest capable colonist fetches the rune and carves it in; the rune is consumed. Socketing is permanent - no removal, no swaps.</p>
+
+  <div class="callout gold"><b>Worked example.</b> You drop <b>Brim</b> into a 3-socket greatsword (10% ignite on hit), then a <b>Hark</b> (+10% melee damage), then an <b>Ix</b> (5% stun). The same three runes in a chestplate would instead give heat armor, damage reduction, and blunt armor - so plan your runes around the slot.</p>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

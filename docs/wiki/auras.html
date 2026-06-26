@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auras - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Auras</div>
+  <h1>Auras</h1>
+  <p class="sub">A rare affix that radiates a constant effect and a halo of floating motes. The showpiece of the affix system - at most one per item.</p>
+
+  <h2>The ten base auras</h2>
+  <p>An aura affix grants a passive field around the wearer. Defensive auras buff the bearer; the Holy auras pulse damage at nearby enemies. Each renders its own coloured mote field.</p>
+  <table class="t">
+    <tr><th>Aura</th><th>Effect</th></tr>
+    <tr><td>Vigor</td><td>+Move speed</td></tr>
+    <tr><td>Meditation</td><td>+Meditation focus gain</td></tr>
+    <tr><td>Might</td><td>+Melee damage</td></tr>
+    <tr><td>Defiance</td><td>+Armor (sharp / blunt / heat)</td></tr>
+    <tr><td>Prayer</td><td>+Healing / tend-related output</td></tr>
+    <tr><td>Fanaticism</td><td>-Attack cooldown (melee &amp; ranged)</td></tr>
+    <tr><td>Conviction</td><td>Reduces nearby enemies' effective armor</td></tr>
+    <tr><td>Holy Fire</td><td>Pulses fire damage at nearby foes</td></tr>
+    <tr><td>Holy Freeze</td><td>Chills nearby foes (slows them)</td></tr>
+    <tr><td>Holy Shock</td><td>Pulses lightning at nearby foes</td></tr>
+  </table>
+  <p>The Holy (damage) auras are the rarest of all auras in the roll.</p>
+
+  <h2>How auras apply</h2>
+  <p>Aura stat bonuses are injected at the central stat finalize step, so they show up <strong>everywhere</strong> - the bio stats page, the gear tab, and in live combat alike. A Defiance helmet's armor bonus appears on the pawn's armor stat; a Vigor item's speed appears on Move Speed.</p>
+  <div class="math"><div class="mh">Aura potency scaling</div><div class="eq">magnitude = roll[0.10 .. 0.25] <span class="op">&middot;</span> <span class="num">potencyMultiplier</span>
+Greater  &#9733;  -> &times;1.2
+Artifact &#10022;  -> &times;1.5</div></div>
+  <p>Damage auras pulse on a timer against enemies inside the aura radius; the wiki's <a class="xref" href="#uber">uber auras</a> hit harder and add a deeper crowd-control field.</p>
+
+  <h2 id="uber">The three corruption-only elemental auras</h2>
+  <p>Three overwhelming elemental auras exist <strong>only through <a href="corruption.html">corruption</a></strong> - they can never roll naturally:</p>
+  <table class="t">
+    <tr><th>Aura</th><th>Element</th><th>What it does</th></tr>
+    <tr><td>Radiance</td><td>Fire</td><td>A blazing damage field, far stronger than Holy Fire.</td></tr>
+    <tr><td>Entropy</td><td>Cold</td><td>Deep chill: a two-stage <code>Chilled</code> hediff that can crater enemy move speed.</td></tr>
+    <tr><td>Superconductor</td><td>Lightning</td><td>A storm field that arcs through nearby foes.</td></tr>
+  </table>
+  <p>These, along with the seven named single-aura uniques (Swiftness, Bulwark, Crusader's Might, and the rest), render a distinct stylized emblem instead of the base mote.</p>
+
+  <h2>Worked example</h2>
+  <div class="callout gold"><b>Entropy on a corrupted relic.</b> A relic-tier breastplate is corrupted and rolls the <b>Entropy</b> unique. Now every hostile that steps inside its field gains the <code>Chilled</code> hediff - at high intensity it deepens to "entropic," dropping their move speed by up to <b>2.4</b>. Pair it with <a class="xref" href="runes.html#facets">a cold facet jewel</a> in the Runes addon and the field's damage is amplified on top.</p>
+
+  <div class="callout"><b>Aura art is tinted in-game.</b> The mote emblems ship as white / greyscale textures and are coloured at runtime by the glow material, so each aura reads at a glance by its hue.</div>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

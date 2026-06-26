@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Requirement Model - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; <a href="stats-levels.html">Stats &amp; Levels</a> &rsaquo; Requirement Model</div>
+  <h1>Requirement Model</h1>
+  <p class="sub">The exact, deterministic scoring that turns an item's roll into a level and stat demand.</p>
+
+  <h2>Power Score</h2>
+  <div class="math"><div class="mh">Item power</div><div class="eq">base   = { White:0, Legendary:8, Ancestral:20, Relic:32 }
+power  = base
+       + <span class="num">1</span> per affix
+       + <span class="num">2</span> extra per Greater affix
+       + <span class="num">4</span> extra per Artifact affix
+       + (Corrupted ? 4 : 0) + (Cleansed ? 6 : 0)
+       + (FactionRelic ? 6 : 0)
+       + max(0, quality - Normal)
+power  = max(1, power)</div></div>
+  <p>The required <strong>level</strong> equals the Power Score. White / plain items score 0 and demand nothing.</p>
+
+  <h2>Stat demands</h2>
+  <p>High-power items also demand attributes. The primary stat is keyed to the item's role; a secondary stat kicks in once the item is Ancestral-class (power &ge; 20).</p>
+  <div class="math"><div class="mh">Stat requirements</div><div class="eq">primary    = 5 + ceil(power <span class="op">&middot;</span> 0.75)
+secondary  = 5 + ceil(power <span class="op">&middot;</span> 0.40)   <span class="cmt"># only when power &ge; 20</span></div></div>
+  <table class="t">
+    <tr><th>Item type</th><th>Primary &rarr; Secondary</th></tr>
+    <tr><td>Ranged weapon</td><td>Dexterity &rarr; Strength</td></tr>
+    <tr><td>Melee weapon</td><td>Strength &rarr; Dexterity</td></tr>
+    <tr><td>Apparel</td><td>Vitality &rarr; Strength</td></tr>
+    <tr><td>Jewelry</td><td>Wisdom &rarr; Charisma</td></tr>
+  </table>
+
+  <h2>Special cases</h2>
+  <ul>
+    <li><strong>Uniques</strong> are priced at a flat 48, <strong>Mythics</strong> at 60 (modifiers still stack), and Mythics add a tertiary <strong>Wisdom</strong> demand - "Mythic Attunement," because a god-forged artifact needs a mind strong enough to hold it.</li>
+    <li><strong>Runes</strong>: a rune's level floor is <code>ceil(ladderIndex &times; 1.2)</code>; a socketed item's level is <code>max(item, highest rune)</code> - Diablo 2 rules, never additive.</li>
+    <li><strong>Jewelry</strong>: worn pieces use tier base plus rung bonuses (Lesser +1 &hellip; Divine +7), Sanctified +6, Desecrated -6; charms are level-only and gate at attunement rather than equip.</li>
+  </ul>
+
+  <div class="callout gold"><b>Worked example.</b> A corrupted Ancestral greatsword with 5 affixes, two of them Greater, scores <code>20 + 5 + 2&times;2 + 4(corrupt) = 33</code>. It requires Level 33, Strength <code>5 + ceil(33&times;0.75) = 30</code>, and - being power &ge; 20 - Dexterity <code>5 + ceil(33&times;0.40) = 19</code>. A genuine endgame blade.</p>
+
+  <div class="callout"><b>Nothing is stored.</b> The score is recomputed on demand, so re-rolling or cleansing an item instantly updates its requirement.</div>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

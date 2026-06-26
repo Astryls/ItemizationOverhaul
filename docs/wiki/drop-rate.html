@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Affix Drop Rate - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Affix Drop Rate</div>
+  <h1>Affix Drop Rate</h1>
+  <p class="sub">One slider decides what share of dropped gear spawns enchanted versus plain - and the whole suite honours that single per-item decision.</p>
+
+  <div class="callout"><b>See it live.</b> The <a class="xref" href="../index.html#lab">loot roller</a> on the home page rolls 24 drops at whatever rate you set, so you can watch the enchanted-vs-plain split shift in real time.</div>
+
+  <h2>The setting</h2>
+  <p>At the top of <b>Options &rarr; Mod settings &rarr; Itemization Overhaul - Core</b> sits <strong>Enchanted item chance</strong> (default 100%). It is the probability that any dropped weapon or apparel spawns enchanted - rolling a tier and affixes as normal. The rest spawn <strong>plain</strong>: a true vanilla item with no tier, no affixes, no sockets, and no card.</p>
+  <div class="math"><div class="mh">Per-item roll</div><div class="eq">if random &lt; <span class="num">enchantChance</span>:
+    roll tier + affixes + specials   <span class="cmt"># enchanted</span>
+else:
+    plain White, 0 affixes, no specials  <span class="cmt"># mundane</span></div></div>
+
+  <h2>What "plain" means</h2>
+  <p>A plain item is mechanically identical to a vanilla item. Because every piece of the Core's UI is gated on "does this item actually have affixes," a plain item simply renders like ordinary gear - bare name, no tier brand, no inspect card, no glow. The label and quality strip still apply, so it reads as a clean, mundane item.</p>
+  <table class="t">
+    <tr><th>On a plain item</th><th>Result</th></tr>
+    <tr><td>Tier banner / coloured label</td><td>none - shows the plain item name</td></tr>
+    <tr><td>Affix card &amp; tooltip</td><td>hidden</td></tr>
+    <tr><td>Sockets, sets, uniques, jewelry affixes</td><td>none (addons skip plain items)</td></tr>
+    <tr><td>Level / stat requirements</td><td>none (power is zero)</td></tr>
+  </table>
+
+  <h2>Suite-wide, from a single flag</h2>
+  <p>When an item rolls plain, the Core records it and exposes <code>IsEnchanted = false</code>. Every addon reads that one flag, so the rate thins the entire suite uniformly:</p>
+  <table class="t">
+    <tr><th>Addon</th><th>How it honours the rate</th></tr>
+    <tr><td><a href="runes.html">Runes</a></td><td>Plain items roll <b>zero sockets</b>.</td></tr>
+    <tr><td><a href="jewelry.html">Jewelry</a></td><td>A plain ring / amulet carries no jewel affixes.</td></tr>
+    <tr><td><a href="sets.html">Sets</a></td><td>Auto-excluded - sets need Ancestral+, plain stays White.</td></tr>
+    <tr><td><a href="uniques.html">Uniques &amp; Mythics</a></td><td>Auto-excluded - uniques need Relic tier.</td></tr>
+    <tr><td><a href="stats-levels.html">Stats &amp; Levels</a></td><td>Plain = 0 power, so it demands nothing.</td></tr>
+  </table>
+  <div class="callout good"><b>Charms stay special.</b> Inventory charms (Jewelry addon) are dedicated rare drops and remain enchanted regardless of the rate. Crafted gear and dev/forced-rarity items are also always enchanted - the knob only thins <em>drops</em>.</div>
+
+  <h2>Worked example</h2>
+  <div class="callout"><b>A lean, vanilla-leaning game.</b> Set <b>Enchanted item chance</b> to 25%. Now roughly three of every four dropped weapons and apparel are plain vanilla items; the remaining quarter roll the full tier/affix/socket/set machinery. Magic loot becomes a genuine event instead of the default state - and crafting your own gear (always enchanted) becomes the reliable route to power.</p>
+
+  <h2>Tuning advice</h2>
+  <ul>
+    <li><strong>100%</strong> (default) - every drop is enchanted; the densest ARPG experience.</li>
+    <li><strong>40 - 60%</strong> - a healthy mix; plain items are common, special finds feel earned.</li>
+    <li><strong>15 - 25%</strong> - lean and gritty; pair with raised tier odds so the rare enchanted drop is worth grabbing.</li>
+  </ul>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

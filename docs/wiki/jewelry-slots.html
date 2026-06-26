@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slots &amp; Charms - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; <a href="jewelry.html">Jewelry</a> &rsaquo; Slots &amp; Charms</div>
+  <h1>Slots &amp; Charms</h1>
+  <p class="sub">How the neck and ring slots fit alongside armor, and how the inventory attunement budget works.</p>
+
+  <h2>Worn jewelry</h2>
+  <table class="t">
+    <tr><th>Slot</th><th>Rules</th></tr>
+    <tr><td>Amulet</td><td>One neck-layer slot, invisible when worn - never fights with clothing or armor.</td></tr>
+    <tr><td>Rings</td><td>Two slots, one per hand. Equipping a third is refused at equip time.</td></tr>
+  </table>
+  <p>Worn jewelry inherits the full Core machinery - tier, corruption, cleansing, faction relics, and Stats &amp; Levels requirements - while carrying only the exclusive jewelry affix pool.</p>
+
+  <h2>Charms - power from the pack</h2>
+  <p>Charms are carved talismans that work from a pawn's <strong>inventory</strong> - no slot needed. But attention is finite: each pawn has an <strong>attunement budget</strong> (default 6 points).</p>
+  <table class="t">
+    <tr><th>Charm</th><th>Attunement cost</th></tr>
+    <tr><td>Small charm</td><td class="num">1 point</td></tr>
+    <tr><td>Large charm</td><td class="num">2 points</td></tr>
+    <tr><td>Grand charm</td><td class="num">3 points</td></tr>
+  </table>
+  <p>The strongest charms are attuned first until the budget runs out; charms beyond the budget are carried but inert. Charms roll the same Core tiers but carry only the jewelry affix pool, and they remain enchanted regardless of the <a class="xref" href="drop-rate.html">drop rate</a> - they are dedicated rare drops.</p>
+
+  <h2>Single-carry legends</h2>
+  <p>The two mythic charms - <strong>The Archonexus Shard</strong> and <strong>Torch of the Burning Throne</strong> - are <strong>single-carry</strong>: a pawn may bear only one of each identity. A second copy is refused on the ground and in the float menu, the inspect line reads "Only one may be borne," and the attunement system never attunes a duplicate. Both carry bespoke art set at spawn.</p>
+
+  <div class="callout gold"><b>Worked example.</b> A pawn carries a Grand charm (3 pts) and a Large charm (2 pts) - 5 of 6 points used. A second Grand charm (3 pts) would overflow the budget, so it stays inert in the pack until you drop something. Swap the Large for a Small (1 pt) and now both Grands could attune. Budget management is the charm game.</p>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

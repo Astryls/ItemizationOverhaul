@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scrolls &amp; Potions (consumables) - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; <a href="scrolls-potions.html">Scrolls &amp; Potions</a> &rsaquo; Scrolls &amp; Potions</div>
+  <h1>Scrolls, Tomes &amp; Potions</h1>
+  <p class="sub">The consumables themselves - what each does, and the scroll-versus-tome economy.</p>
+
+  <h2>Scrolls &amp; tomes</h2>
+  <p>Each function comes as a stackable single-use <strong>scroll</strong> and a 20-charge <strong>tome</strong>. Where both exist, an action spends a tome charge first, then falls back to a loose scroll.</p>
+  <table class="t">
+    <tr><th>Item</th><th>Effect</th></tr>
+    <tr><td>Scroll / Tome of Identify</td><td>Reveals an <a href="unidentified.html">unidentified</a> item via its Identify gizmo.</td></tr>
+    <tr><td>Scroll / Tome of Town Portal</td><td>A colonist reads it; if not on a home map, the reader and adjacent colonists (with carried inventory) teleport to the nearest player home map's trade drop spot. Fizzles with a message if already home.</td></tr>
+  </table>
+  <div class="callout"><b>Town Portal range.</b> Everyone within about two tiles of the reader is pulled home, carried goods included - a genuine emergency-extraction or loot-haul tool, especially paired with the Catacombs.</p>
+
+  <h2 id="potions">The four potions</h2>
+  <p>Drinkable flasks, manual-use only (they never count as nutrition and pawns never auto-drink them).</p>
+  <table class="t">
+    <tr><th>Potion</th><th>Effect</th></tr>
+    <tr><td>Health</td><td>Heals injuries (~50 total), bleeding wounds first.</td></tr>
+    <tr><td>Mana</td><td>+0.5 psyfocus and clears entropy; no-ops with a message for non-psycasters.</td></tr>
+    <tr><td>Stamina</td><td>~12h buff: +25% global work speed, +0.5 move speed.</td></tr>
+    <tr><td>Antidote</td><td>~1 day: +30% immunity gain, +20% toxic resistance.</td></tr>
+  </table>
+
+  <h2>Crafting &amp; trade</h2>
+  <ul>
+    <li><strong>Potions</strong> - crafted at a Drug Lab after the <code>IOSP_Alchemy</code> research; trade under the Drugs tag.</li>
+    <li><strong>Scrolls &amp; tomes</strong> - crafted at a Drug Lab or the Luminary Cube after <code>IOSP_Scrollcraft</code>; trade as Exotic; tomes also appear in reward caches.</li>
+  </ul>
+
+  <div class="callout gold"><b>Worked example.</b> Your delving party is deep in the <a class="xref" href="catacombs.html">catacombs</a>, packs full of loot and one colonist bleeding out. They quaff a <b>Health potion</b> to stop the worst of it, then read a <b>Scroll of Town Portal</b> - the whole party and their haul snap back to base. A matching catacomb portal lets them return to that depth later.</p>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

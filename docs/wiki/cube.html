@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Luminary Cube - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; The Luminary Cube</div>
+  <h1>The Luminary Cube</h1>
+  <p class="sub">A crafting station that reshapes your loot - re-roll, upgrade, graft, corrupt, make indestructible, and recycle gear into reagents.</p>
+
+  <h2>The workbench</h2>
+  <p>Build the <strong>Luminary Cube</strong> and select it to open <em>Cube Gear</em> - a custom UI listing every affixed item on the map (and worn / carried by colonists). Pick an item and the Cube offers a row of operations, each consuming reagents recycled from unwanted gear.</p>
+
+  <h2>Operations</h2>
+  <table class="t">
+    <tr><th>Operation</th><th>What it does</th></tr>
+    <tr><td>Re-roll</td><td>Gambles one affix - may downgrade, with a small chance to land Greater. Capped at 10 re-rolls per item.</td></tr>
+    <tr><td>Upgrade</td><td>Promotes an affix to Greater &#9733;.</td></tr>
+    <tr><td>Add affix / aura</td><td>Adds a fresh affix up to the tier's hard cap.</td></tr>
+    <tr><td>Graft</td><td>Moves an affix from one item onto another.</td></tr>
+    <tr><td>Make Indestructible</td><td>The item never wears out again.</td></tr>
+    <tr><td>Corrupt</td><td>Seals in a <a href="corruption.html">unique effect</a> and locks the item.</td></tr>
+    <tr><td>Apply specific</td><td>Dev / tuning: apply a chosen affix or aura.</td></tr>
+  </table>
+  <div class="callout"><b>Gamble responsibly.</b> Re-roll is a true gamble - it can make an affix worse. The 10-use limit per item means you cannot infinitely fish for a perfect roll; choose your targets.</div>
+
+  <h2>Recycling - where reagents come from</h2>
+  <p>The Cube is also a recycler. Queue a <strong>recycle</strong> bill and a Crafting colonist breaks down Legendary or Ancestral gear into:</p>
+  <ul>
+    <li><strong>Tier scrap</strong> - Legendary and Ancestral scrap, the bulk reagent for Cube operations.</li>
+    <li><strong>Relic Dust</strong> - rare, from the richest items; the premium reagent (and used by Jewelry's Sanctification).</li>
+    <li><strong>Tempers</strong> - single-affix reagents grafted onto gear.</li>
+  </ul>
+  <div class="callout"><b>Bills need the Cube.</b> The Cube ships its own work-giver so colonists pick up recycle bills - select the Cube, add a "recycle legendary / ancestral gear" bill, and a Crafting colonist completes it.</div>
+
+  <h2>Right-click &amp; gambling</h2>
+  <p>Right-click an item in Cube Gear for quick actions, and the Cube hosts a <strong>gambling reroll</strong> for players who want to chase rolls. Every numeric affix in the Cube shows its full roll range so you always know how good a roll could get.</p>
+
+  <div class="callout gold"><b>Worked example.</b> You have an Ancestral rifle with four good affixes and one weak <code>+1 Crafting</code>. Recycle a stack of junk Legendaries into scrap, then <b>graft</b> a <code>+Shooting Accuracy</code> Temper over the weak affix - and <b>upgrade</b> your best damage affix to Greater. Two operations later it is a keeper. When you are ready to commit, <b>corrupt</b> it for a unique capstone - just know that locks it.</p>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

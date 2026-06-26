@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loot Tiers - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Loot Tiers</div>
+  <h1>Loot Tiers</h1>
+  <p class="sub">Four rarities, each with its own frame, affix budget, and spawn odds. The tier is the backbone every other system reads.</p>
+
+  <h2>The four tiers</h2>
+  <table class="t">
+    <tr><th>Tier</th><th>Affixes</th><th>Hard cap</th><th>Special ranks</th></tr>
+    <tr><td><span class="tierpill tier-white">White</span></td><td class="num">1 - 3</td><td class="num">3</td><td>none</td></tr>
+    <tr><td><span class="tierpill tier-leg">Legendary</span></td><td class="num">2 - 4</td><td class="num">4</td><td>none</td></tr>
+    <tr><td><span class="tierpill tier-anc">Ancestral</span></td><td class="num">3 - 5</td><td class="num">5</td><td>rolls <b>Greater &#9733;</b></td></tr>
+    <tr><td><span class="tierpill tier-relic">Relic</span></td><td class="num">always 7</td><td class="num">7</td><td><b>Artifact &#10022;</b> capable</td></tr>
+  </table>
+  <p>The affix count is rolled within the tier's range; the <strong>hard cap</strong> can never be exceeded, even by the Luminary Cube or corruption (Relic is the exception at a fixed 7). Higher tiers also bias their stat affixes toward a curated "premium" pool of impactful stats.</p>
+
+  <h2>Spawn odds</h2>
+  <p>Each item that rolls <em>enchanted</em> (see <a class="xref" href="drop-rate.html">Affix Drop Rate</a>) draws a tier. The base chances are mod settings; the remainder after Legendary and Ancestral falls through to White.</p>
+  <div class="math"><div class="mh">Tier roll (per enchanted item)</div><div class="eq">r = random[0,1)
+if r < <span class="num">chanceAncestral</span>            -> Ancestral
+elif r < chanceAncestral + <span class="num">chanceLegendary</span> -> Legendary
+else                              -> White
+
+relic? = (tier != White) <span class="op">and</span> random &lt; RelicChance</div></div>
+  <div class="vardef">
+    <div class="row"><span class="k">chanceLegendary</span><span class="d">default 0.12 (Scrolls &amp; Potions raises it to 0.22)</span></div>
+    <div class="row"><span class="k">chanceAncestral</span><span class="d">default 0.02 (raised to 0.06 with Scrolls &amp; Potions)</span></div>
+    <div class="row"><span class="k">RelicChance</span><span class="d">small chance that a non-White roll is promoted to Relic tier</span></div>
+  </div>
+  <p>Both chances are sliders in <b>Options &rarr; Mod settings &rarr; Itemization Overhaul - Core</b>. Raise them for a magic-item-rich game; lower them for a lean, vanilla-leaning feel.</p>
+
+  <h2>The Relic tier</h2>
+  <p>Relic is not a fifth slot in the roll - it is a <strong>flag</strong> set on top of an Ancestral base. A Relic item always carries 7 affixes, can roll <a class="xref" href="affixes.html#ranks">Artifact &#10022;</a> potency, and wears a distinctive rose frame with an animated sparkle. Relics are also the only items that can become <a class="xref" href="relics.html">faction relics</a> or carry corruption-only <a class="xref" href="corruption.html">unique powers</a> at full strength.</p>
+  <div class="callout gold"><b>Worked example.</b> An enchanted drop rolls <code>r = 0.015</code>, below <code>chanceAncestral</code> (0.02), so it is <b>Ancestral</b>: it gets 3-5 affixes and each has a chance to become Greater. A further RelicChance roll succeeds, promoting it to <b>Relic</b> - now it locks to 7 affixes, several may turn Artifact, and it could be a faction's coveted relic.</p>
+
+  <h2>How tiers show up</h2>
+  <ul>
+    <li><strong>Item card</strong> - a coloured tier banner (grey / gold / teal / rose), or "Relic" for relic-tier.</li>
+    <li><strong>On the ground</strong> - the tier word replaces the vanilla quality overlay; nothing shows for plain items.</li>
+    <li><strong>Glow &amp; stars</strong> - higher tiers get a subtle coloured glow and, with Greater affixes, gold &#9733; stars on the label.</li>
+  </ul>
+
+  <div class="callout"><b>Tier gates the whole suite.</b> Item sets only roll on Ancestral or Relic; uniques require Relic; level requirements scale from the tier. Lower the tier odds and the entire suite naturally produces fewer special items.</div>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

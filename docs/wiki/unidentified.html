@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unidentified Items - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; <a href="scrolls-potions.html">Scrolls &amp; Potions</a> &rsaquo; Unidentified Items</div>
+  <h1>Unidentified Items</h1>
+  <p class="sub">Magic loot arrives a mystery. Its tier, affixes, and powers stay hidden - and its bonuses inert - until you identify it.</p>
+
+  <h2>When an item starts unidentified</h2>
+  <p>An item is unidentified when it is enchanted and <strong>Legendary tier or above</strong> (or any Relic). White - now always plain - is never unidentified.</p>
+  <table class="t">
+    <tr><th>Source</th><th>Identified?</th></tr>
+    <tr><td>Trader stock, quest caches, ground drops, catacomb chests</td><td>Unidentified</td></tr>
+    <tr><td>Colony-crafted gear</td><td>Auto-identified</td></tr>
+    <tr><td>Anything a pawn is wearing / wielding (incl. raiders &amp; recruits)</td><td>Auto-identified on equip - so corpse loot is already identified</td></tr>
+  </table>
+  <div class="callout"><b>Why you never see an unidentified raider.</b> Equipping forces identification, and pawn generation adds gear directly - so no pawn is ever seen in unidentified gear, and the loot you strip from a corpse is already revealed. Unidentified items come only from freestanding sources you pick up yourself.</p>
+
+  <h2>While unidentified</h2>
+  <p>A single choke hides everything at once - the item reports it has no affixes, so:</p>
+  <ul>
+    <li>The affix card is hidden; auras are disabled; the item is excluded from the Luminary Cube.</li>
+    <li>Stat and skill bonuses contribute <strong>zero</strong> - the item is mechanically inert.</li>
+    <li>The info card shows a single "Unidentified" entry; the label reads <em>"unidentified &lt;stuff&gt; &lt;base&gt;"</em> with no stars or relic name leaking through.</li>
+    <li>The player cannot equip or wear it - the equip check blocks with "Unidentified (identify it first)."</li>
+  </ul>
+
+  <h2>Identifying</h2>
+  <p>Select an unidentified item on the ground and press the <strong>Identify</strong> gizmo. It consumes the nearest non-forbidden <strong>Scroll of Identify</strong> on the map, or one charge of a <strong>Tome of Identify</strong>; it is disabled with a reason when you have neither. Once identified, the item reveals its full roll and becomes equippable.</p>
+
+  <div class="callout gold"><b>Worked example.</b> A quest reward cache drops three unidentified items. You keep a stack of Identify scrolls at base; reading them reveals a junk Legendary you sell, a useful Ancestral helmet, and - jackpot - a Relic with a faction-relic flag. You would never have known which to keep without identifying them, which is exactly the tension the system creates.</p>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

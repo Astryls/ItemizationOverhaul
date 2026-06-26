@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relics &amp; Grudges - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Relics &amp; Grudges</div>
+  <h1>Relics &amp; Faction Grudges</h1>
+  <p class="sub">The rarest Relic-tier items are a faction's sacred relic - worth a fortune and +50% to all stats, but holding one turns its owners against you.</p>
+
+  <h2>What a faction relic is</h2>
+  <p>When an item rolls <a class="xref" href="tiers.html">Relic tier</a>, it has a chance to also be a <strong>faction relic</strong> - a named treasure "Desired by" a specific faction. A faction relic is:</p>
+  <ul>
+    <li>Worth roughly <strong>&times;6 market value</strong> - a fortune to sell or ransom.</li>
+    <li>Granted an extra <strong>+50% to all its base stats</strong>, on top of any Ethereal or affix bonuses.</li>
+    <li>Registered on the owning faction's ideoligion page (with Ideology), exactly like a vanilla precept relic.</li>
+  </ul>
+
+  <h2>The grudge</h2>
+  <p>Keeping a faction's relic is an insult its owners will not forgive. While you hold it, that faction's goodwill suffers and they send <strong>grudge raids</strong> to reclaim it. You have three ways out:</p>
+  <table class="t">
+    <tr><th>Choice</th><th>Result</th></tr>
+    <tr><td>Keep &amp; fight</td><td>Endure the grudge raids; the relic and its +50% are yours.</td></tr>
+    <tr><td>Return it</td><td>Hand it back for peace - and a grumbling colony that gave up a treasure.</td></tr>
+    <tr><td>Cleanse it</td><td>Corrupt then <a class="xref" href="cleansing.html">Cleanse</a> it into a relic of <em>your</em> ideology, severing the original claim.</td></tr>
+  </table>
+
+  <h2>Where relics come from</h2>
+  <ul>
+    <li><strong>World rolls</strong> - any Relic-tier drop may be a faction relic.</li>
+    <li><strong>Pawn gear</strong> - rare, and pawns only ever spawn carrying their <em>own</em> ideology's relic (never a random faction's).</li>
+    <li><strong>The Relic Heist quest</strong> - an Ideology-gated questline that sends you to steal a guarded relic from another faction's shrine; the reward is the relic, and the aftermath is the grudge system.</li>
+  </ul>
+
+  <h2>Relic &harr; precept</h2>
+  <p>Faction relics are wired into the same precept system vanilla uses for ideology relics. A faction relic claims an un-generated relic precept on its owner's ideoligion if one exists, or registers a new one (capped at five per NPC ideo to keep their pages sane). Cleansed relics move onto <em>your</em> ideoligion page as "Relic of [your ideology]".</p>
+
+  <div class="callout gold"><b>Worked example - the Relic Heist.</b> An Ideology game fires the Relic Heist quest. You raid a guarded ancient altar shrine and recover the <b>Sunspoken Diadem</b>, an Ancestral relic desired by the Cordis Green tribe. Equip it for +50% stats and a fortune in value - but Cordis Green is now hostile and will raid to take it back. Cleanse it, and it becomes a permanent relic of your own colony's faith.</p>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

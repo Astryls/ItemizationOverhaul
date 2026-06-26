@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Runes &amp; Socketables - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Runes &amp; Socketables</div>
+  <h1>Runes &amp; Socketables</h1>
+  <p class="sub">Diablo 2 sockets, a 30-rune ladder, 16 runewords, and four elemental facet jewels. The deepest tinkering layer in the suite.</p>
+  <div class="chips"><div class="chip"><div class="nm">Itemization Overhaul - Runes &amp; Socketables</div><div class="pid">astryl.ItemizationOverhaulRunes</div></div></div>
+
+  <h2>What it adds</h2>
+  <table class="t">
+    <tr><th>System</th><th>Summary</th><th>Page</th></tr>
+    <tr><td>Sockets &amp; runes</td><td>Gear rolls sockets; 30 runes give fixed, slot-dependent effects.</td><td><a href="sockets.html">Sockets &amp; Runes</a></td></tr>
+    <tr><td>Runewords</td><td>16 mythic recipes from exact ordered rune sequences.</td><td><a href="runewords.html">Runewords</a></td></tr>
+    <tr><td>Facet jewels</td><td>Four elemental gems that amplify a damage type and erupt on death.</td><td><a href="facets.html">Facet Jewels</a></td></tr>
+  </table>
+
+  <h2>Sockets in one minute</h2>
+  <p>Every weapon and apparel that the Core rolls can roll <strong>sockets</strong> (40% chance on non-set gear, weighted by slot). A socket holds one rune <em>or</em> one facet jewel, drawn from a shared budget. Sockets roll <strong>once</strong> at item creation and are locked forever - what an item rolled is what it keeps. Plain (un-enchanted) items roll zero sockets, honouring the Core <a class="xref" href="drop-rate.html">drop rate</a>.</p>
+
+  <h2>Runes have no tier of their own</h2>
+  <p>A rune's effect depends entirely on <em>where</em> you socket it. <b>Brim</b> in a weapon ignites enemies; in body armor it is +12% heat armor. The 30 runes climb a rarity ladder (Normal &rarr; Legendary &rarr; Ancestral &rarr; Relic) that only describes how rare they are to find, never their power.</p>
+
+  <h2>Getting runes</h2>
+  <ul>
+    <li><strong>Combat drops</strong> - 4% chance (tunable) per hostile kill; odds fall 20% per ladder step, so a top rune is roughly 1 in 660.</li>
+    <li><strong>Carving</strong> - the ten lowest runes can be carved at a smithy from steel + components.</li>
+    <li><strong>Ascension</strong> - any three identical runes fuse into one of the next ladder step, all the way to the top.</li>
+  </ul>
+
+  <h2>Suite integration</h2>
+  <ul>
+    <li><strong>Sets</strong> - set items get a standardized socket count per set and slot (no RNG).</li>
+    <li><strong>Isekai Leveling</strong> - shares one socket budget with the Runic Station; refinement never adds slots.</li>
+    <li><strong>Jewelry</strong> - rings, amulets and charms never take sockets (D2-faithful).</li>
+  </ul>
+
+  <div class="callout"><b>Permanent choices.</b> Socketing cannot be undone - choose like it is Diablo 2 and you just found your first high rune.</div>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

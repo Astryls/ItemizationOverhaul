@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corruption - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Corruption</div>
+  <h1>Corruption</h1>
+  <p class="sub">Gamble an item to seal in one unique, named effect that can never be rolled naturally - at the price of locking the item forever.</p>
+
+  <h2>The bargain</h2>
+  <p>Corrupting an item (at the <a class="xref" href="cube.html">Luminary Cube</a>) is a one-way transformation. It grants exactly one <strong>unique effect</strong> as a capstone, then permanently locks the item: it can never be re-rolled, upgraded, grafted, or corrupted again&hellip; unless you later <a class="xref" href="cleansing.html">Cleanse</a> it.</p>
+  <div class="callout warn"><b>Permanent.</b> Corruption removes any existing unique or relic power first, then adds the new one. There is no undo except the Cleansing ritual, which itself replaces the corruption with a blessing.</div>
+
+  <h2>What you can get</h2>
+  <p>Corruption draws from a pool of roughly sixty named uniques. They come in three flavours, all corruption-only:</p>
+  <table class="t">
+    <tr><th>Flavour</th><th>Examples</th></tr>
+    <tr><td>Oversized stat / skill uniques</td><td>Polymath (+All-Skills), Master Chef, Marauder, Architect, Diplomat&hellip;</td></tr>
+    <tr><td>The three elemental "uber" auras</td><td>Radiance (fire), Entropy (cold), Superconductor (lightning) - see <a href="auras.html#uber">Auras</a></td></tr>
+    <tr><td>Relic powers</td><td>Cleave (Reaver's Edge), life-steal, thorns, and nine more on-hit / defensive powers</td></tr>
+  </table>
+
+  <h2>Potency scales with the base tier</h2>
+  <p>A corruption unique is scaled by the item's tier, so corrupting a Relic yields a stronger version than corrupting a White.</p>
+  <div class="math"><div class="mh">Corruption potency</div><div class="eq">Relic       -> &times;<span class="num">1.5</span>
+Ancestral   -> &times;<span class="num">1.25</span>
+Legendary   -> &times;<span class="num">1.0</span>
+White       -> &times;<span class="num">0.85</span></div></div>
+  <p>So the ideal corruption target is a Relic-tier item that already has strong affixes - corruption adds the unique on top of everything it already carries.</p>
+
+  <h2>Reading a corrupted item</h2>
+  <p>Corrupted items wear an animated red pulse outline and list their unique effect last on the card (after affixes, before special modifiers). The status line reads <b>Corrupted</b>.</p>
+
+  <div class="callout gold"><b>Worked example.</b> You corrupt a Relic longsword that already has 7 strong affixes. It rolls <b>Reaver's Edge</b> (Cleave) at &times;1.5 potency. The sword now strikes multiple adjacent enemies, on top of its full affix loadout - but it is frozen: no more Cube work until you spend Holy Water to <a class="xref" href="cleansing.html">Cleanse</a> it.</p>
+
+  <div class="callout"><b>Per-item opt-outs.</b> Jewelry rings and amulets never receive aura uniques even through corruption, and the <a class="xref" href="crafting.html#config">configuration window</a> can disable any individual unique from the pool.</div>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sanctify &amp; Desecrate - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; <a href="jewelry.html">Jewelry</a> &rsaquo; Sanctify &amp; Desecrate</div>
+  <h1>Sanctify &amp; Desecrate</h1>
+  <p class="sub">A Diablo 4 nod: gamble a piece of jewelry for a Divine affix - or watch it bind to its bearer as a curse.</p>
+
+  <h2>The rite</h2>
+  <p>Bring Legendary-or-better jewelry to the <a class="xref" href="cube.html">Luminary Cube</a>, spend one <strong>Relic Dust</strong>, and ask the lattice to sing. It is a gamble:</p>
+  <table class="t">
+    <tr><th>Outcome</th><th>Chance</th><th>Result</th></tr>
+    <tr><td>Success</td><td class="num">65%</td><td>One affix is elevated to <b>Divine &#10022;</b>, a 35% chance the piece gains a third affix, and the piece becomes <b>immutable</b>.</td></tr>
+    <tr><td>Desecration</td><td class="num">35%</td><td>The piece is <b>DESECRATED</b>. There is no undoing this.</td></tr>
+  </table>
+  <p>A sanctified piece can never be rerolled, corrupted, cleansed, or sanctified again - the Divine affix is permanent, and so is the risk you took to get it.</p>
+
+  <h2>Desecration - the curse</h2>
+  <p>A desecrated piece <strong>binds to its bearer</strong>: it cannot be removed, cannot be cleansed, and will not come off until death. Its affixes flip to curse forms, and the rite always carves at least one <strong>fresh curse mark</strong> drawn from a pool inspired by Diablo 2's Necromancer curses and Elden Ring's rot, flame, and blood.</p>
+  <table class="t">
+    <tr><th>Curse</th><th>Effect</th></tr>
+    <tr><td>Iron Maiden</td><td>The bearer takes a share of the melee damage they deal.</td></tr>
+    <tr><td>Mark of Amplification</td><td>All damage taken is amplified.</td></tr>
+    <tr><td>Decrepitude</td><td>Move and work speed slowed.</td></tr>
+    <tr><td>Sundered Ward</td><td>All armor ratings reduced.</td></tr>
+    <tr><td>Scarlet Rot</td><td>An unhealing rot creeps through the bearer - lethal if it completes.</td></tr>
+    <tr><td>The Frenzied Flame</td><td>Chance to burst into flame when struck.</td></tr>
+  </table>
+
+  <h2>Curse UX</h2>
+  <p>A blood-red curse mark floats above any pawn bearing desecrated jewelry - one mark per cursed item. Forcing a pawn to wear or pick one up opens a <strong>confirmation dialog first</strong>, and pawns will <strong>never put cursed gear on by their own choice</strong> (apparel score -1000).</p>
+
+  <div class="callout gold"><b>Worked example.</b> You sanctify a Legendary amulet with a strong Resonance affix. The roll fails (35%): it Desecrates, binding to the wearer with <b>Scarlet Rot</b> carved fresh. Now that colonist has an unhealing rot creeping in and a ring that will not come off - a real crisis born of a real gamble. Sanctify only when you can afford to lose the piece.</p>
+
+  <div class="callout warn"><b>High stakes by design.</b> Two-in-three odds of a permanent Divine upgrade, one-in-three of a permanent curse. Choose your pieces - and your bearers - carefully.</div>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

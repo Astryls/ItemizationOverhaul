@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scrolls &amp; Potions - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Scrolls &amp; Potions</div>
+  <h1>Scrolls &amp; Potions</h1>
+  <p class="sub">The Diablo 2 consumable kit - unidentified loot, Identify and Town Portal scrolls and tomes, and four classic potions.</p>
+  <div class="chips"><div class="chip"><div class="nm">Itemization Overhaul - Scrolls &amp; Potions</div><div class="pid">astryl.ItemizationOverhaulScrollsAndPotions</div></div></div>
+
+  <h2>What it adds</h2>
+  <table class="t">
+    <tr><th>System</th><th>Summary</th><th>Page</th></tr>
+    <tr><td>Unidentified items</td><td>Magic loot drops unidentified - its powers hidden until you identify it.</td><td><a href="unidentified.html">Unidentified Items</a></td></tr>
+    <tr><td>Scrolls &amp; tomes</td><td>Identify and Town Portal, as single scrolls or 20-charge tomes.</td><td><a href="consumables.html">Scrolls &amp; Potions</a></td></tr>
+    <tr><td>Potions</td><td>Health, Mana, Stamina, Antidote - drinkable flasks.</td><td><a href="consumables.html#potions">Potions</a></td></tr>
+  </table>
+
+  <h2>The loot model shift</h2>
+  <p>This addon ships a Core tweak that sharpens the rarity curve to the D2 feel:</p>
+  <ul>
+    <li><strong>White is always plain</strong> - a White, non-relic roll short-circuits to a mundane item with zero affixes, so common loot is genuinely common.</li>
+    <li>Only <strong>Legendary, Ancestral, and Relic</strong> carry affixes - and those are exactly the tiers that drop <strong>unidentified</strong>.</li>
+    <li>Tier odds are raised to <strong>22% Legendary / 6% Ancestral</strong> so magic items actually appear among the plain whites.</li>
+  </ul>
+  <div class="callout"><b>Relationship to the drop rate.</b> This is a different lever from the Core <a class="xref" href="drop-rate.html">Affix Drop Rate</a>: the drop rate decides <em>enchanted vs plain</em> per item, while this addon decides that <em>White specifically</em> is always plain, concentrating all affixes into the higher tiers that arrive unidentified.</p>
+
+  <h2>Three sources for every consumable</h2>
+  <table class="t">
+    <tr><th>Source</th><th>Detail</th></tr>
+    <tr><td>Craft</td><td>Potions at a Drug Lab (research <code>IOSP_Alchemy</code>); scrolls &amp; tomes at a Drug Lab or the Luminary Cube (research <code>IOSP_Scrollcraft</code>).</td></tr>
+    <tr><td>Trade</td><td>Potions carry the Drugs trade tag; scrolls and tomes are Exotic.</td></tr>
+    <tr><td>Loot</td><td>All carry reward tags - tomes show up in mid-frequency reward caches.</td></tr>
+  </table>
+
+  <div class="callout gold"><b>Worked example.</b> A trader's stock includes an <b>unidentified plasteel longsword</b> - it could be anything from a weak Legendary to a god-rolled Relic. You buy it blind, walk it home, and read a <b>Scroll of Identify</b>: it reveals as an Ancestral blade with a Greater damage affix and a socket. The gamble of buying unidentified is the whole point.</p>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

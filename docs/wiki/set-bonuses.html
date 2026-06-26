@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Set Bonuses &amp; Auras - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; <a href="sets.html">Item Sets</a> &rsaquo; Bonuses &amp; Auras</div>
+  <h1>Set Bonuses &amp; Auras</h1>
+  <p class="sub">How the piece-count bonuses stack, how the capstone aura works, and what the relic boost changes.</p>
+
+  <h2>Piece-count bonuses</h2>
+  <p>Each set defines bonuses at the 2-, 3-, and 4-piece thresholds that <strong>stack cumulatively</strong> - wearing four pieces grants the 2-, 3-, and 4-piece bonuses together. The bonuses are themed to the set: armor sets give armor and pain resistance, ranged sets give accuracy and aim speed, crafter sets give work and research speed, and so on.</p>
+  <p>Internally a hidden hediff tracks how many pieces are equipped (its severity = piece count), so the bonuses update instantly as you put pieces on and take them off. The health tab shows <code>&lt;Set Name&gt; (X/4)</code>.</p>
+
+  <h2>The capstone aura</h2>
+  <p>Completing the full four-piece set adds a <strong>capstone aura</strong> - a glowing disc with counter-rotating rune emblems and motes (~1.3&times; scale). A map component pulses it every <strong>2.5 seconds</strong> within the aura radius:</p>
+  <table class="t">
+    <tr><th>Aura type</th><th>Pulse effect</th></tr>
+    <tr><td>Nova</td><td>Deals damage to hostiles in radius (the element matches the set's theme - flame, frost, cut, blunt, burn).</td></tr>
+    <tr><td>Ward</td><td>Heals allies in radius each pulse.</td></tr>
+  </table>
+  <p>A status gizmo on the wearer shows the aura icon, its effect, and its radius.</p>
+
+  <h2>The relic boost</h2>
+  <p>A set assembled from <strong>relic-rarity</strong> pieces gains <strong>+25%</strong> to every bonus. Mechanically, each 2/3/4-piece stage has a relic variant at higher severity (&times;1.25); when any equipped piece is relic-rarity the manager bumps the hediff into the relic stages, and the relic bump is stripped the moment the set is no longer complete. Relic stages label as <code>X/4 &#10022;</code>.</p>
+
+  <h2>Set tooltips</h2>
+  <p>Every set item's tooltip lays out the full bonus structure in a stylized block - a header, bullet bonus lines, the capstone aura, the full-set total, and a note when the relic +25% is active - so you always know exactly what completing the set will give you. Set bonuses are deliberately <em>unpriced</em> by Stats &amp; Levels: the power lives in the set, not the individual piece.</p>
+
+  <div class="callout gold"><b>Worked example - Permafrost Reaver.</b> Two pieces give cold tolerance and blunt armor; three add move and melee; the fourth completes <b>Frost Nova</b>, a blunt nova that batters everything around the wearer every 2.5s. Find the four pieces at relic rarity and each number is 25% larger - a genuine winter-warlord build.</p>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

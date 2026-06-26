@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stats &amp; Levels - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Stats &amp; Levels</div>
+  <h1>Stats &amp; Levels</h1>
+  <p class="sub">Powerful gear demands a powerful wielder. Each item is scored from its actual roll, and a pawn who does not measure up cannot equip it.</p>
+  <div class="chips"><div class="chip"><div class="nm">Itemization Overhaul - Stats and Levels</div><div class="pid">astryl.ItemizationOverhaulStatsAndLevels</div></div></div>
+
+  <h2>The idea</h2>
+  <p>This addon ties the loot to the <strong>Isekai RPG Leveling</strong> system: stronger gear requires a higher character level - and, for the strongest pieces, minimum stats. Loot you find too early becomes a goal to grow into rather than an instant power spike.</p>
+  <div class="callout"><b>Requires</b> Itemization Overhaul - Core, ISEKAI RPG LEVELING, and Harmony. The other suite addons (Runes, Uniques, Jewelry) are optional and switch on automatically when present.</div>
+
+  <h2>What gets a requirement</h2>
+  <table class="t">
+    <tr><th>Item</th><th>Requirement</th></tr>
+    <tr><td>White / plain gear</td><td>Free - no requirement.</td></tr>
+    <tr><td>Legendary &amp; up</td><td>Level requirement equal to the item's Power Score, plus stat demands on the strongest rolls.</td></tr>
+    <tr><td>Uniques / Mythics</td><td>Fixed, identity-based requirements (Mythics also demand Wisdom).</td></tr>
+    <tr><td>Runes</td><td>Each rune carries a level floor; socketed gear demands the highest one (never additive).</td></tr>
+  </table>
+
+  <h2>The Power Score</h2>
+  <p>The requirement is computed deterministically from the item - nothing is saved, so it always reflects the current roll. See the <a class="xref" href="requirements.html">Requirement Model</a> page for the full formula. In brief: a tier base, plus per-affix and potency bonuses, plus modifiers for corruption, cleansing, and faction-relic status.</p>
+
+  <h2>Hard-blocked, everywhere</h2>
+  <p>Requirements are enforced at every equip path - float menus, dress-other, outfit stands, the caravan tab, and AI pickup - so a pawn can never wear gear they do not qualify for, with the reason spelled out on the inspect pane. Calculations are fail-open: a bug can never break equipping or rendering.</p>
+
+  <div class="callout gold"><b>Worked example.</b> A freshly-looted Ancestral rifle with 5 affixes and a Greater roll scores, say, Level 24 and 14 Dexterity. Your level-12 shooter cannot lift it - the tooltip says so. Twelve levels of leveling later, it is exactly the upgrade you were saving it for.</p>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

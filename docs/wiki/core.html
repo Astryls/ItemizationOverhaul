@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Core Overview - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Core Overview</div>
+  <h1>Core Overview</h1>
+  <p class="sub">How the engine turns every weapon and apparel into an ARPG loot drop - without a single per-item patch.</p>
+
+  <h2>The premise</h2>
+  <p>RimWorld gives each item a <em>quality</em> - awful through legendary - and that is the end of its story. Itemization Overhaul <strong>hides vanilla quality from every gear UI</strong> and rolls a parallel layer on top: a rarity <strong>tier</strong>, a hand of per-instance <strong>affixes</strong>, occasional <strong>auras</strong>, and rare twists. The roll happens once, when the item is spawned, and is stored on the item itself.</p>
+  <div class="callout"><b>No patches required.</b> A startup pass injects an affix component (<code>CompAffixes</code>) onto every <code>ThingDef</code> that is a weapon or apparel - including everything from other mods and DLCs. Materials (stuff, ingestibles, anything that destroys on drop) are excluded, so only equippable gear is affixed.</p>
+
+  <h2>What rolls on each item</h2>
+  <table class="t">
+    <tr><th>Layer</th><th>Summary</th><th>Page</th></tr>
+    <tr><td>Tier</td><td>White, Legendary, Ancestral, or the ultra-rare Relic - sets the affix budget.</td><td><a href="tiers.html">Loot Tiers</a></td></tr>
+    <tr><td>Drop rate</td><td>A per-item decision: enchanted, or a plain vanilla item.</td><td><a href="drop-rate.html">Affix Drop Rate</a></td></tr>
+    <tr><td>Affixes</td><td>Stat / skill / aura bonuses, each at Normal, Greater &#9733;, or Artifact &#10022; potency.</td><td><a href="affixes.html">Affixes &amp; Ranks</a></td></tr>
+    <tr><td>Base variance</td><td>&plusmn;15% on the item's own armor or damage, so no two are identical.</td><td><a href="affixes.html#variance">Base-stat variance</a></td></tr>
+    <tr><td>Special modifiers</td><td>Ethereal (+50% base stats) or Indestructible (never wears out).</td><td><a href="special.html">Ethereal &amp; Indestructible</a></td></tr>
+  </table>
+
+  <h2>Reading an item</h2>
+  <p>Select any affixed item and the inspect pane is replaced by a Diablo-style <strong>item card</strong>: the tier banner, the white base stats with their rolled values, the affixes with potency tags and - if you toggle the corner range icon - the range each one could have rolled in. The large info card (<code>SpecialDisplayStats</code>) reorganizes the same data into Status &rarr; Tier &rarr; Affixes &rarr; Unique effects &rarr; Special modifiers.</p>
+  <p>On the ground, the tier shows as a coloured label instead of the vanilla quality rating; Greater affixes append gold &#9733; stars to the name.</p>
+
+  <h2>Where loot comes from</h2>
+  <ul>
+    <li><strong>World spawns</strong> - trader stock, raider gear, quest rewards, ancient-danger caches: rolled when generated.</li>
+    <li><strong>Crafting</strong> - the crafter's skill scales the tier; a master can rarely forge a Relic. See <a class="xref" href="crafting.html">Crafting &amp; Config</a>.</li>
+    <li><strong>The Luminary Cube</strong> - re-roll, upgrade, graft, corrupt, or recycle existing gear. See <a class="xref" href="cube.html">The Luminary Cube</a>.</li>
+  </ul>
+
+  <h2>The endgame layers</h2>
+  <p>Three deeper systems sit above the basic roll, each corruption-gated or relic-gated:</p>
+  <ul>
+    <li><a class="xref" href="corruption.html">Corruption</a> seals in one <strong>unique named effect</strong> that can never roll naturally - at the cost of locking the item forever.</li>
+    <li><a class="xref" href="relics.html">Faction relics</a> are the rarest Relic-tier items: worth a fortune and +50% to all stats, but their owners turn hostile.</li>
+    <li><a class="xref" href="cleansing.html">The Cleansing</a> reforges a corrupted item into a bonded relic of your own ideology, with one of twelve double-edged blessings.</li>
+  </ul>
+
+  <h2>Compatibility at a glance</h2>
+  <ul>
+    <li>Works automatically with modded weapons, apparel, and stats - the affix pool is drawn from everything loaded.</li>
+    <li>Vanilla persona / bladelink weapons spawn inert; the relic and cleansing systems own the bonding instead.</li>
+    <li>Optional <a class="xref" href="../index.html#addons">addons</a> read the same per-item roll and layer on sockets, sets, uniques, jewelry, requirements, consumables, and catacombs.</li>
+    <li>Character Editor round-trips the full affix state; combat and stat mods see the bonuses through the central stat pipeline.</li>
+  </ul>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

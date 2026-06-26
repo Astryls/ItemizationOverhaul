@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Item Sets - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Item Sets</div>
+  <h1>Item Sets</h1>
+  <p class="sub">Diablo 2 style matched sets - collect the pieces, unlock escalating bonuses, and complete the set for a capstone aura.</p>
+  <div class="chips"><div class="chip"><div class="nm">Itemization Overhaul - Sets</div><div class="pid">astryl.itemizationoverhaulsets</div></div></div>
+
+  <h2>How sets drop</h2>
+  <p>Any item that rolls affixes has a chance (default 12%) to belong to a named set - but <strong>only on Ancestral or Relic rarity</strong>, so set pieces are always top-tier. A set item drops branded with its set name in green. Because sets need Ancestral+, plain and White items are never set pieces, honouring the Core <a class="xref" href="drop-rate.html">drop rate</a>.</p>
+
+  <h2>The ten sets</h2>
+  <table class="t">
+    <tr><th>Set</th><th>Theme</th><th>Capstone</th></tr>
+    <tr><td>Yttakin Warlord</td><td>Cold brawler</td><td>Battle Roar (nova)</td></tr>
+    <tr><td>Stellic Valkyrie</td><td>Empire ranged</td><td>Valkyrie Volley (nova)</td></tr>
+    <tr><td>Cataphract's Vigil</td><td>Heavy guardian</td><td>Iron Sanctuary (ward)</td></tr>
+    <tr><td>Glitterforge Legacy</td><td>Tech crafter</td><td>Hallowed Forge (ward)</td></tr>
+    <tr><td>Anima Emberlord</td><td>Anima + fire</td><td>Conflagration (nova)</td></tr>
+    <tr><td>Sanguophage Covenant</td><td>Vampire</td><td>Blood Pact (ward)</td></tr>
+    <tr><td>Impid Nightblade</td><td>Fire assassin</td><td>Death Sentry (nova)</td></tr>
+    <tr><td>Psycaster's Arcanum</td><td>Psycaster</td><td>Arcane Torrent (nova)</td></tr>
+    <tr><td>Marauder of the Ancients</td><td>Ruin-delver</td><td>Ancients' Wrath (nova)</td></tr>
+    <tr><td>Permafrost Reaver</td><td>Cold raider</td><td>Frost Nova (nova)</td></tr>
+  </table>
+
+  <h2>Wearing a set</h2>
+  <p>Equip matching pieces and bonuses stack as you go - 2, 3, and 4-piece thresholds, then a <strong>capstone aura</strong> when the full set is worn. The aura pulses every few seconds within its radius: a <em>nova</em> deals damage to enemies, a <em>ward</em> heals allies. The health tab tracks your progress as <code>&lt;Set Name&gt; (X/4)</code>. See <a class="xref" href="set-bonuses.html">Bonuses &amp; Auras</a> for the full breakdown.</p>
+
+  <h2>Suite integration</h2>
+  <ul>
+    <li><strong>Runes</strong> - set items get a standardized socket count per set and slot.</li>
+    <li><strong>Stats &amp; Levels</strong> - Ancestral/Relic set pieces naturally demand high levels.</li>
+    <li><strong>Relic sets</strong> - a set made of relic-rarity pieces gains an extra <strong>+25%</strong> to all bonuses.</li>
+  </ul>
+
+  <div class="callout gold"><b>Worked example.</b> You assemble all four <b>Cataphract's Vigil</b> pieces. The 2- and 3-piece armor bonuses are already active; the fourth completes <b>Iron Sanctuary</b>, a healing ward that mends nearby colonists each pulse. If those four pieces were relic-rarity, every bonus is 25% stronger and the health tab reads <code>4/4 &#10022;</code>.</p>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

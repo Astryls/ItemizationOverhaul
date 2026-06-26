@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Cleansing - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; The Cleansing</div>
+  <h1>The Cleansing</h1>
+  <p class="sub">The endgame ritual: reforge a corrupted item into a relic bonded to a colonist, carrying one of twelve double-edged blessings.</p>
+
+  <h2>The ritual</h2>
+  <p>Only a <a class="xref" href="corruption.html">corrupted</a> item can be Cleansed. The act consumes ultra-rare <strong>Holy Water</strong>, bonds the item to a chosen colonist, and reforges it into a relic of <em>your own</em> ideology. In exchange for shedding the corruption it gains one of twelve <strong>blessings</strong> - each a powerful boon with a real cost.</p>
+  <div class="callout"><b>Bonding.</b> A cleansed item becomes a persona-style bonded relic - the cleansing is the only bonding path in the suite, since vanilla persona / bladelink weapons spawn inert. The item shows "Relic of [your ideology]" everywhere, with an animated gold pulse outline.</div>
+
+  <h2>The twelve blessings</h2>
+  <p>Every blessing is a numeric wearer effect - a strong upside paired with a matching downside. The blessing is rolled when the item is cleansed.</p>
+  <table class="t">
+    <tr><th>Blessing</th><th>Upside</th><th>Downside</th></tr>
+    <tr><td>Bloodforged</td><td>+60% melee damage</td><td>item weight &times;2</td></tr>
+    <tr><td>Spectral</td><td>Ethereal +50% &amp; an uncapped affix overcharge, self-repairing</td><td>-50% item HP</td></tr>
+    <tr><td>Idiot Savant</td><td>+4 passion skills</td><td>-4 non-passion skills</td></tr>
+    <tr><td>Juggernaut</td><td>+50% sharp/blunt armor</td><td>-60% move speed</td></tr>
+    <tr><td>Glass Cannon</td><td>+50% melee damage</td><td>+35% damage taken</td></tr>
+    <tr><td>Quicksilver</td><td>+80% move, +50% work</td><td>+60% hunger &amp; rest rate</td></tr>
+    <tr><td>Berserker</td><td>+40% melee damage, +30% hit</td><td>-60% shooting accuracy</td></tr>
+    <tr><td>Marksman</td><td>+30% shooting accuracy, faster aim</td><td>-40% melee damage</td></tr>
+    <tr><td>Stoneskin</td><td>-25% damage taken, +35% pain tolerance</td><td>-35% move speed</td></tr>
+    <tr><td>Featherweight</td><td>+60 carry, +30% work</td><td>-40% sharp/blunt armor</td></tr>
+    <tr><td>Sanctified</td><td>+50% immunity gain, +30% tend quality</td><td>+50% hunger rate</td></tr>
+    <tr><td>Daredevil</td><td>+35% move, +25% dodge</td><td>+40% damage taken</td></tr>
+  </table>
+
+  <h2>Spectral - the special case</h2>
+  <p><strong>Spectral</strong> does more than a stat swap: it sets the item <a class="xref" href="special.html">Ethereal</a> (+50% base stats) <em>and</em> overcharges every affix by 50% with <strong>no cap</strong> - integer affixes can exceed their normal hard ceilings. The price is a permanent -50% to the item's hit points, offset by the item becoming self-repairing.</p>
+
+  <div class="callout gold"><b>Worked example.</b> You corrupt a Relic axe (gaining a unique), then cleanse it. It rolls <b>Bloodforged</b>: +60% melee damage, but now weighs twice as much - so the colonist who bonds it should be a strong melee bruiser, not a runner. The axe is now a relic of your ideology, appears on your faith's page, and gave your colony a small mood lift for the act.</p>
+
+  <div class="callout warn"><b>Mood.</b> Giving up a relic to cleanse it reads as "We gave up a sacred relic&hellip;" - the ritual is a deliberate, weighty choice, not a free upgrade.</div>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>
