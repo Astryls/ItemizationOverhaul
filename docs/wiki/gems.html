@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gems - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; <a href="runes.html">Runes</a> &rsaquo; Gems</div>
+  <h1>Gems</h1>
+  <p class="sub">Seven common socketables that sit below the runes &mdash; simple, colour-coded, and slot-dependent.</p>
+
+  <p>Gems are the entry tier of the socket system. Where <a class="xref" href="rune-list.html">runes</a> climb a 30-step power ladder and combine into <a class="xref" href="runewords.html">runewords</a>, gems are flat: one quality each, no ordering, no words. They drop and trade cheaply, and they socket into the exact same slots as runes &mdash; so a fresh colony can start socketing long before the first Vorn drops.</p>
+
+  <div class="callout gold"><b>One gem, four effects.</b> Like runes, every gem grants a different effect depending on <em>where</em> it is socketed &mdash; weapon, helmet, body armor, or any other gear. Plan the gem around the slot.</div>
+
+  <h2>The seven gems</h2>
+  <table class="t">
+    <tr><th>Gem</th><th>Weapon</th><th>Helmet</th><th>Body armor</th><th>Other gear</th><th class="num">Value</th></tr>
+    <tr><td><span class="swatch" style="background:#d03430"></span><b>Ruby</b></td><td>12% ignite on hit</td><td>+12% pain threshold</td><td>+15% pain threshold</td><td>+10% heat armor</td><td class="num">140</td></tr>
+    <tr><td><span class="swatch" style="background:#3c68d0"></span><b>Sapphire</b></td><td>9% stun on hit</td><td>+15% rest rate</td><td>+12% rest rate</td><td>+10% immunity gain</td><td class="num">140</td></tr>
+    <tr><td><span class="swatch" style="background:#2fae52"></span><b>Emerald</b></td><td>+4% poison on hit</td><td>+15% toxic resist</td><td>+20% toxic resist</td><td>+12% toxic resist</td><td class="num">140</td></tr>
+    <tr><td><span class="swatch" style="background:#e0b52a"></span><b>Topaz</b></td><td>+7% shooting accuracy</td><td>&minus;10% aiming time</td><td>+4% move speed</td><td>+8% work speed</td><td class="num">140</td></tr>
+    <tr><td><span class="swatch" style="background:#9b4fd0"></span><b>Amethyst</b></td><td>+6% melee hit</td><td>+10% blunt armor</td><td>+14% blunt armor</td><td>+10% blunt armor</td><td class="num">140</td></tr>
+    <tr><td><span class="swatch" style="background:#cfe6f2"></span><b>Diamond</b></td><td>+10% melee damage</td><td>+10% sharp armor</td><td>+14% sharp armor</td><td>&minus;5% incoming damage</td><td class="num">200</td></tr>
+    <tr><td><span class="swatch" style="background:#ddd7c4"></span><b>Skull</b></td><td>15% lifesteal on hit</td><td>+12% immunity gain</td><td>+15% immunity gain</td><td>+10% pain threshold</td><td class="num">160</td></tr>
+  </table>
+  <p>Stat effects ride the same equipped-gear pipeline as <a class="xref" href="affixes.html">Core affixes</a>, so they stack with affixes, runes, set bonuses and jewelry alike. Diamond is the premium gem &mdash; a straight power/defence pick in every slot &mdash; while Skull is the utility pick for melee bruisers.</p>
+
+  <h2>Signature procs</h2>
+  <p>Four gems carry an on-hit proc instead of a stat when socketed into a <strong>weapon</strong>. Procs are <strong>melee-only</strong> and share the same on-hit system as the rune procs, so they can be toggled in settings.</p>
+  <div class="vardef">
+    <div class="row"><div class="k">Ruby &middot; Burn</div><div class="d">12% chance to set the target alight on a melee hit.</div></div>
+    <div class="row"><div class="k">Sapphire &middot; Stun</div><div class="d">9% chance to briefly stun the target on a melee hit.</div></div>
+    <div class="row"><div class="k">Emerald &middot; Poison</div><div class="d">Seeps toxic buildup into the target on every melee hit.</div></div>
+    <div class="row"><div class="k">Skull &middot; Lifesteal</div><div class="d">Heals the wielder for 15% of the melee damage dealt.</div></div>
+  </div>
+
+  <div class="callout"><b>Skulls of the dead.</b> A real skull carved from a corpse (a "skull of&hellip;") counts as a Skull gem and grants the same effect when socketed &mdash; a grim but free source of lifesteal for a melee colony.</div>
+
+  <h2>Where gems sit</h2>
+  <ul>
+    <li><strong>Below runes on the ladder.</strong> Gems occupy their own band beneath the 30 runes, so a runeword recipe never accidentally consumes one.</li>
+    <li><strong>Permanent once socketed.</strong> Same rule as runes &mdash; no removal, no swaps. Choose the slot deliberately.</li>
+    <li><strong>No runewords.</strong> Gems don't spell words; only runes do. Mix gems and runes freely in the same item's sockets.</li>
+  </ul>
+
+  <p>Socketing a gem works exactly like socketing a rune &mdash; the base float-menu method or, with True RPG Inventory, drag-and-drop. See <a class="xref" href="sockets.html">Sockets &amp; Runes</a> for both.</p>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

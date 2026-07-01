@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prefix &amp; Suffix Table - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; <a href="core.html">Core</a> &rsaquo; Prefix &amp; Suffix Table</div>
+  <h1>Prefix &amp; Suffix Table</h1>
+  <p class="sub">The full curated affix vocabulary &mdash; every authored word, the stat it grants, and the tier it starts at.</p>
+
+  <p>A magic-or-better item names itself from its affixes in the Diablo tongue: a <strong>prefix</strong> is the leading adjective, a <strong>suffix</strong> is the trailing <em>"of&hellip;"</em> clause. A Magic item reads <code>[Prefix] [Base] of [Suffix]</code> &mdash; e.g. <em>Cruel Longsword of the Muffalo</em>. Rare and Legendary items instead earn a generated <a class="xref" href="affixes.html">two-word title</a>, but they still roll from the same word pool below.</p>
+  <div class="callout gold"><b>Tier = earliest appearance.</b> The tier column is the <em>lowest</em> rarity a word can roll at; it remains available at every higher tier unless it is a <span class="tierpill tier-rare">Rare-only</span> word. Marquee combat/defence stats use escalating word ladders so the name signals the power.</div>
+
+  <h2>Marquee ladders</h2>
+  <p>Seven headline stats escalate their word across three tiers, with widening value bands as the tier climbs (Jagged &rarr; Cruel &rarr; Merciless).</p>
+  <table class="t">
+    <tr><th>Stat granted</th><th><span class="tierpill tier-magic">Magic</span></th><th><span class="tierpill tier-rare">Rare</span></th><th><span class="tierpill tier-legendary">Legendary</span></th></tr>
+    <tr><td>Melee damage</td><td>Jagged</td><td>Cruel</td><td>Merciless</td></tr>
+    <tr><td>Shooting accuracy</td><td>Sharp</td><td>Deadly</td><td>Unerring</td></tr>
+    <tr><td>Sharp armor</td><td>Plated</td><td>Warded</td><td>Impenetrable</td></tr>
+    <tr><td>Blunt armor</td><td>Padded</td><td>Reinforced</td><td>Adamant</td></tr>
+    <tr><td>Heat armor</td><td>Ablative</td><td>Insulating</td><td>Salamandrine</td></tr>
+    <tr><td>Move speed</td><td>Fleet</td><td>Swift</td><td>Blurred</td></tr>
+    <tr><td>Melee hit chance</td><td>Balanced</td><td>Honed</td><td>Flawless</td></tr>
+  </table>
+
+  <h2>Prefixes</h2>
+  <p>Offence, defence and labor stats, worn as a leading adjective.</p>
+  <table class="t">
+    <tr><th>Prefix</th><th>Grants</th><th>From tier</th></tr>
+    <tr><td>Vicious</td><td>Melee DPS</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>Warcry</td><td>Melee DPS</td><td><span class="tierpill tier-legendary">Legendary</span></td></tr>
+    <tr><td>Evasive</td><td>Melee dodge</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>Ghostly</td><td>Melee dodge</td><td><span class="tierpill tier-legendary">Legendary</span></td></tr>
+    <tr><td>Industrious</td><td>Global work speed</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>Tireless</td><td>Global work speed</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>Overclocked</td><td>Global work speed</td><td><span class="tierpill tier-legendary">Legendary</span></td></tr>
+    <tr><td>Unflagging</td><td>General labor speed</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>Delving</td><td>Deep-drilling speed</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>Cleaving</td><td>Mining speed</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>Rich</td><td>Mining yield</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>Verdant</td><td>Plant work speed</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>Bountiful</td><td>Plant harvest yield</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>Deft</td><td>Construction speed</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>Precise</td><td>Construct success</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>Forgeborn</td><td>Smithing speed</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>Nimble</td><td>Tailoring speed</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>Culinary</td><td>Cooking speed</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>Butcher's</td><td>Butchery speed</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>Analytical</td><td>Research speed</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>Triage</td><td>Medical tend speed</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>Steady</td><td>Surgery success</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>Glittertech</td><td>Move speed</td><td><span class="tierpill tier-legendary">Legendary</span></td></tr>
+    <tr><td>Marine</td><td>Blunt armor</td><td><span class="tierpill tier-legendary">Legendary</span></td></tr>
+  </table>
+
+  <h2>Suffixes</h2>
+  <p>Attribute and utility stats, worn as a trailing <em>"of&hellip;"</em> clause.</p>
+  <table class="t">
+    <tr><th>Suffix</th><th>Grants</th><th>From tier</th></tr>
+    <tr><td>of the Muffalo</td><td>Carrying capacity</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of the Pack-Beast</td><td>Carrying capacity</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>of the Titan</td><td>Carrying capacity</td><td><span class="tierpill tier-legendary">Legendary</span></td></tr>
+    <tr><td>of Endurance</td><td>Pain threshold</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of the Stoic</td><td>Pain threshold</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>of the Mind</td><td>Psychic sensitivity</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of the Attuned</td><td>Psychic sensitivity</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>of Presence</td><td>Social impact</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of the Diplomat</td><td>Negotiation</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>of the Merchant</td><td>Trade prices</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>of Insight</td><td>Global learning</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of the Savant</td><td>Global learning</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>of the Archotech</td><td>Global learning</td><td><span class="tierpill tier-legendary">Legendary</span></td></tr>
+    <tr><td>of the Predator</td><td>Hunting stealth</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of the Beastmaster</td><td>Tame animal chance</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>of the Handler</td><td>Train animal chance</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of the Herder</td><td>Animal gather yield</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of the Glutton</td><td>Eating speed</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of Slumber</td><td>Rest rate</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of Toil</td><td>Global work speed</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of the Mason</td><td>Construction speed</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of the Prospector</td><td>Mining yield</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>of the Scholar</td><td>Research speed</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of Precision</td><td>Shooting accuracy</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of the Hawk</td><td>Shooting accuracy</td><td><span class="tierpill tier-legendary">Legendary</span></td></tr>
+    <tr><td>of the Duelist</td><td>Melee hit chance</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of the Wraith</td><td>Melee dodge</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>of Vitality</td><td>Immunity gain</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of the Sanguine</td><td>Immunity gain</td><td><span class="tierpill tier-legendary">Legendary</span></td></tr>
+    <tr><td>of the Chirurgeon</td><td>Medical tend quality</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>of the Forgemaster</td><td>Smithing speed</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>of the Harvest</td><td>Plant harvest yield</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of the Gourmand</td><td>Cooking speed</td><td><span class="tierpill tier-magic">Magic</span></td></tr>
+    <tr><td>of the Toxin-Ward</td><td>Toxic resistance</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+    <tr><td>of the Ascetic</td><td>Meditation focus</td><td><span class="tierpill tier-rare">Rare</span></td></tr>
+  </table>
+
+  <h2>Rare-only pool <span class="tierpill tier-rare">Rare</span></h2>
+  <p>Twelve words in the Diablo "Fool's&hellip;" tradition roll <strong>only on Rare items</strong> &mdash; never Magic (too low) and never Legendary (they cap out). They carry stronger value bands to reward hunting Rares specifically.</p>
+  <table class="t">
+    <tr><th>Word</th><th>Slot</th><th>Grants</th></tr>
+    <tr><td>Fool's</td><td>Prefix</td><td>Melee damage</td></tr>
+    <tr><td>Berserker's</td><td>Prefix</td><td>Melee DPS</td></tr>
+    <tr><td>Sharpshooter's</td><td>Prefix</td><td>Shooting accuracy</td></tr>
+    <tr><td>Tempered</td><td>Prefix</td><td>Sharp armor</td></tr>
+    <tr><td>Ramparted</td><td>Prefix</td><td>Blunt armor</td></tr>
+    <tr><td>Quicksilver</td><td>Prefix</td><td>Move speed</td></tr>
+    <tr><td>of the Fool</td><td>Suffix</td><td>Melee hit chance</td></tr>
+    <tr><td>of the Ox</td><td>Suffix</td><td>Carrying capacity</td></tr>
+    <tr><td>of Diligence</td><td>Suffix</td><td>Global work speed</td></tr>
+    <tr><td>of the Stalwart</td><td>Suffix</td><td>Pain threshold</td></tr>
+    <tr><td>of the Adept</td><td>Suffix</td><td>Global learning</td></tr>
+    <tr><td>of the Warden</td><td>Suffix</td><td>Toxic resistance</td></tr>
+  </table>
+
+  <h2>Beyond the catalogue</h2>
+  <p>The words above are the <em>curated</em> vocabulary. Any eligible pawn stat the catalogue doesn't cover &mdash; including stats added by other mods &mdash; is <strong>auto-synthesized</strong> into the pool with a heuristic name, so modded content still rolls affixes. Stats where lower is better (aiming time, cooldowns, incoming damage&hellip;) automatically roll as a <em>reduction</em>. See <a class="xref" href="affixes.html">Affixes &amp; Ranks</a> for how values, Greater and Artifact upgrades scale.</p>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

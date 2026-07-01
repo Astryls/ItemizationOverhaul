@@ -17,7 +17,7 @@
 
   <h2>The premise</h2>
   <p>RimWorld gives each item a <em>quality</em> - awful through legendary - and that is the end of its story. Itemization Overhaul <strong>hides vanilla quality from every gear UI</strong> and rolls a parallel layer on top: a rarity <strong>tier</strong>, a hand of per-instance <strong>affixes</strong>, occasional <strong>auras</strong>, and rare twists. The roll happens once, when the item is spawned, and is stored on the item itself.</p>
-  <div class="callout"><b>No patches required.</b> A startup pass injects an affix component (<code>CompAffixes</code>) onto every <code>ThingDef</code> that is a weapon or apparel - including everything from other mods and DLCs. Materials (stuff, ingestibles, anything that destroys on drop) are excluded, so only equippable gear is affixed.</p>
+  <div class="callout"><b>No patches required.</b> A startup pass injects an affix component (<code>CompAffixes</code>) onto every <code>ThingDef</code> that is a weapon or apparel - including everything from other mods and DLCs. Materials (stuff, ingestibles, anything that destroys on drop) are excluded, so only equippable gear is affixed.</div>
 
   <h2>What rolls on each item</h2>
   <table class="t">
@@ -53,7 +53,7 @@
   <ul>
     <li>Works automatically with modded weapons, apparel, and stats - the affix pool is drawn from everything loaded.</li>
     <li>Vanilla persona / bladelink weapons spawn inert; the relic and cleansing systems own the bonding instead.</li>
-    <li>Optional <a class="xref" href="../index.html#addons">addons</a> read the same per-item roll and layer on sockets, sets, uniques, jewelry, requirements, consumables, and catacombs.</li>
+    <li>Optional <a class="xref" href="../index.html#addons">addons</a> read the same per-item roll and layer on sockets &amp; gems, sets, uniques &amp; mythics, jewelry, requirements, consumables, catacombs, and rarity loot beams.</li>
     <li>Character Editor round-trips the full affix state; combat and stat mods see the bonuses through the central stat pipeline.</li>
   </ul>
 

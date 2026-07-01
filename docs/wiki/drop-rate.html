@@ -18,7 +18,7 @@
   <div class="callout"><b>See it live.</b> The <a class="xref" href="../index.html#lab">loot roller</a> on the home page rolls 24 drops at whatever rate you set, so you can watch the enchanted-vs-plain split shift in real time.</div>
 
   <h2>The setting</h2>
-  <p>Under the <b>Drop rates &amp; tiers</b> tab of <b>Options &rarr; Mod settings &rarr; Itemization Overhaul - Core</b> sits <strong>Enchanted item chance</strong> (default 100%). It is the probability that any dropped weapon or apparel spawns enchanted - rolling a tier and affixes as normal. The rest spawn <strong>plain</strong>: a true vanilla item with no tier, no affixes, no sockets, and no card.</p>
+  <p>Under the <b>Drop rates &amp; tiers</b> tab of <b>Options &rarr; Mod settings &rarr; Itemization Overhaul - Core</b> sits <strong>Enchanted item chance</strong> (default 100%). It is the probability that any dropped weapon or apparel spawns enchanted - rolling a tier and affixes as normal. The rest spawn <strong>plain</strong>: a mundane item with no affixes and no sockets. Plain gear still uses the mod's inspect card (shown as plain White) - the card takes over for every affixable weapon and apparel, enchanted or not.</p>
   <p>That same tab holds the tier chance sliders (Legendary / Rare / Magic, with the leftover White % shown live), the <strong>Relic chance</strong>, the Greater-affix chance and the potency multiplier. The <b>Affixes</b> tab adds the <strong>Aura affix chance</strong> and the per-affix on/off config. See <a class="xref" href="tiers.html#names">Loot Tiers</a> and <a class="xref" href="crafting.html#config">Crafting &amp; Config</a>.</p>
   <div class="math"><div class="mh">Per-item roll</div><div class="eq">if random &lt; <span class="num">enchantChance</span>:
     roll tier + affixes + specials   <span class="cmt"># enchanted</span>
@@ -45,10 +45,10 @@ else:
     <tr><td><a href="uniques.html">Uniques &amp; Mythics</a></td><td>Auto-excluded - the Unique overlay needs Legendary tier.</td></tr>
     <tr><td><a href="stats-levels.html">Stats &amp; Levels</a></td><td>Plain = 0 power, so it demands nothing.</td></tr>
   </table>
-  <div class="callout good"><b>Charms stay special.</b> Inventory charms (Jewelry addon) are dedicated rare drops and remain enchanted regardless of the rate. Crafted gear and dev/forced-rarity items are also always enchanted - the knob only thins <em>drops</em>.</div>
+  <div class="callout good"><b>Charms stay special.</b> Inventory charms (Jewelry addon) are dedicated rare drops and remain enchanted regardless of the rate. Dev and forced-rarity items are always enchanted; crafted gear rolls its own skill-scaled enchant chance (see <a class="xref" href="crafting.html">Crafting</a>), so a low-skill smith can still turn out plain work - this knob only thins world <em>drops</em>.</div>
 
   <h2>Worked example</h2>
-  <div class="callout"><b>A lean, vanilla-leaning game.</b> Set <b>Enchanted item chance</b> to 25%. Now roughly three of every four dropped weapons and apparel are plain vanilla items; the remaining quarter roll the full tier/affix/socket/set machinery. Magic loot becomes a genuine event instead of the default state - and crafting your own gear (always enchanted) becomes the reliable route to power.</p>
+  <div class="callout"><b>A lean, vanilla-leaning game.</b> Set <b>Enchanted item chance</b> to 25%. Now roughly three of every four dropped weapons and apparel are plain vanilla items; the remaining quarter roll the full tier/affix/socket/set machinery. Magic loot becomes a genuine event instead of the default state - and a skilled smith crafting your own gear becomes a reliable route to power.</div>
 
   <h2>Tuning advice</h2>
   <ul>

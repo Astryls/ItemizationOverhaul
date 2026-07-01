@@ -46,7 +46,15 @@ secondary  = 5 + ceil(power <span class="op">&middot;</span> 0.40)   <span class
     <li><strong>Jewelry</strong>: worn pieces use tier base plus rung bonuses (Lesser +1 &hellip; Divine +7), Sanctified +6, Desecrated -6; charms are level-only and gate at attunement rather than equip.</li>
   </ul>
 
-  <div class="callout gold"><b>Worked example.</b> A corrupted Legendary greatsword with 5 affixes, two of them Greater, scores <code>20 + 5 + 2&times;2 + 4(corrupt) = 33</code>. It requires Level 33, Strength <code>5 + ceil(33&times;0.75) = 30</code>, and - being power &ge; 20 - Dexterity <code>5 + ceil(33&times;0.40) = 19</code>. A genuine endgame blade.</p>
+  <div class="callout gold"><b>Worked example.</b> A corrupted Legendary greatsword with 5 affixes, two of them Greater, scores <code>20 + 5 + 2&times;2 + 4(corrupt) = 33</code>. It requires Level 33, Strength <code>5 + ceil(33&times;0.75) = 30</code>, and - being power &ge; 20 - Dexterity <code>5 + ceil(33&times;0.40) = 19</code>. A genuine endgame blade.</div>
+
+  <h2>Enforcement</h2>
+  <p>A colonist who doesn't meet an item's level and stat demands simply <strong>cannot equip or wear it</strong> &mdash; the attempt is blocked with a reason. The gate sits on the equip path itself, so it holds no matter how the item is equipped:</p>
+  <ul>
+    <li><strong>Vanilla</strong> equip and wear orders.</li>
+    <li><strong>True RPG Inventory</strong> &mdash; the drag-to-slot and float-menu <em>Wear</em> / <em>Equip</em> actions are gated at the source, before any inventory state changes.</li>
+    <li><strong>Simple Sidearms</strong> &mdash; taking a sidearm into a weapon slot is checked the same way.</li>
+  </ul>
 
   <div class="callout"><b>Nothing is stored.</b> The score is recomputed on demand, so re-rolling or cleansing an item instantly updates its requirement.</div>
 

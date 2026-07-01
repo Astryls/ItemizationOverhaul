@@ -16,6 +16,7 @@
     ['Core','tiers.html','Loot Tiers',1],
     ['Core','drop-rate.html','Affix Drop Rate',1],
     ['Core','affixes.html','Affixes & Ranks',1],
+    ['Core','prefix-suffix.html','Prefix & Suffix Table',1],
     ['Core','artwork.html','Item Artwork',1],
     ['Core','auras.html','Auras',1],
     ['Core','special.html','Ethereal & Indestructible',1],
@@ -31,6 +32,7 @@
     ['Runes & Socketables','rune-list.html','Rune Compendium',1],
     ['Runes & Socketables','runewords.html','Runewords',1],
     ['Runes & Socketables','facets.html','Facet Jewels',1],
+    ['Runes & Socketables','gems.html','Gems',1],
     ['Item Sets','sets.html','Overview',0],
     ['Item Sets','set-bonuses.html','Bonuses & Auras',1],
     ['Item Sets','set-list.html','Set Compendium',1],
@@ -46,7 +48,8 @@
     ['Scrolls & Potions','unidentified.html','Unidentified Items',1],
     ['Scrolls & Potions','consumables.html','Scrolls & Potions',1],
     ['Catacombs','catacombs.html','Overview',0],
-    ['Catacombs','delving.html','Delving & Floors',1]
+    ['Catacombs','delving.html','Delving & Floors',1],
+    ['Loot Beams','loot-beams.html','Overview',0]
   ];
 
   function curTheme(){return document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}

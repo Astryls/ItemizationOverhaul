@@ -13,19 +13,45 @@
 <article class="doc">
   <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Crafting &amp; Config</div>
   <h1>Crafting &amp; Config</h1>
-  <p class="sub">How a master smith forges better loot, and how to switch any individual affix on or off.</p>
+  <p class="sub">How a master smith forges better loot, the settings that shape every roll, and how to switch any individual affix on or off.</p>
 
-  <h2>Skill-scaled crafting</h2>
-  <p>When a colonist crafts a weapon or apparel, its tier is rolled from the <strong>crafter's relevant skill</strong> instead of the world drop table. A higher skill shifts the odds toward Rare and Legendary, and a true master has a rare shot at a <strong>Relic</strong>.</p>
-  <div class="math"><div class="mh">Crafted tier odds (by skill)</div><div class="eq">relicChance  = skill &ge; 18 ? min(0.06, (skill-17) <span class="op">&middot;</span> 0.0025) : 0
-legendary    = clamp( (skill-10)/14 <span class="op">&middot;</span> 0.55 + min(0.3,(skill-20)<span class="op">&middot;</span>0.015) )
-rare         = min( (skill-4)/12 <span class="op">&middot;</span> 0.7 , 1 - legendary )
-<span class="cmt"># remainder rolls White</span></div></div>
-  <ul>
-    <li>Crafted gear is <strong>always enchanted</strong> - the <a class="xref" href="drop-rate.html">drop-rate</a> knob only thins world drops, never your own work.</li>
-    <li><strong>Endless-growth friendly</strong>: skill levels above 20 (from leveling mods) keep nudging the odds upward, and the Relic chance climbs toward its 6% cap.</li>
-  </ul>
-  <div class="callout gold"><b>Worked example.</b> A Crafting-20 smith forges a longsword: roughly a coin-flip for Legendary, a solid chance of Rare, and about a 0.75% shot at a Relic. Push that smith to skill 25 with an endless-growth mod and Legendary becomes the norm, with the Relic chance creeping toward 2%.</p>
+  <h2>Skill-scaled crafting &mdash; the two-stage roll</h2>
+  <p>When a colonist crafts a weapon or apparel, its rarity is rolled from the <strong>crafter's skill</strong> in the recipe's work skill, not the world drop table. Crafting resolves in <strong>two stages</strong>: first an <em>enchant gate</em> decides whether the item is special at all &mdash; a failed roll comes out <strong>plain</strong> (a mundane vanilla item) &mdash; and only if it passes is a tier rolled. So skill controls both <em>how often</em> a crafter produces enchanted gear and <em>how high</em> it can roll.</p>
+  <div class="math"><div class="mh">Crafted odds (by skill)</div><div class="eq"><span class="cmt"># stage 1 - is it enchanted at all? (fail = plain White)</span>
+enchant   = enchMax <span class="op">&middot;</span> clamp01( (skill - enchMin) / (20 - enchMin) )
+
+<span class="cmt"># stage 2 - tier of the enchanted item</span>
+relic     = (relicMax&gt;0 &amp;&amp; maxTier&ge;3 &amp;&amp; skill&ge;18) ? min(relicMax, (skill-17)<span class="op">&middot;</span>relicMax/8) : 0
+legendary = clamp01( clamp01((skill-8)/12)<span class="op">&middot;</span>legMax + growth<span class="op">&middot;</span>min(0.2,(skill-20)<span class="op">&middot;</span>0.01) )
+rare      = min( clamp01((skill-4)/16)<span class="op">&middot;</span>0.6 , 1 - legendary )
+magic     = 1 - legendary - rare        <span class="cmt"># then hard-capped to maxTier</span></div></div>
+
+  <h2>Shipped defaults</h2>
+  <p>Out of the box the suite ships a deliberately restrained crafting curve: crafts <strong>top out at Rare</strong>, and even a grandmaster leaves the workshop with a plain item half the time. Every value below is a slider in the Crafting tab.</p>
+  <div class="vardef">
+    <div class="row"><div class="k">enchMax = 50%</div><div class="d">Enchant chance at skill 20 (scales down with skill).</div></div>
+    <div class="row"><div class="k">enchMin = 8</div><div class="d">Below this skill, crafts never enchant.</div></div>
+    <div class="row"><div class="k">legMax = 0%</div><div class="d">Legendary ceiling &mdash; off by default.</div></div>
+    <div class="row"><div class="k">maxTier = Rare</div><div class="d">Hard cap on the crafted tier.</div></div>
+    <div class="row"><div class="k">relicMax = 20%</div><div class="d">Relic ceiling &mdash; dormant while the tier cap is below Legendary.</div></div>
+    <div class="row"><div class="k">endless growth = on</div><div class="d">Skill above 20 keeps nudging the Legendary share (once uncapped).</div></div>
+  </div>
+  <table class="t">
+    <tr><th>Crafter skill</th><th class="num">Plain</th><th class="num">Magic</th><th class="num">Rare</th><th class="num">Legendary</th></tr>
+    <tr><td>8 (novice)</td><td class="num">100%</td><td class="num">0%</td><td class="num">0%</td><td class="num">0%</td></tr>
+    <tr><td>14 (skilled)</td><td class="num">75%</td><td class="num">16%</td><td class="num">9%</td><td class="num">0%</td></tr>
+    <tr><td>20 (master)</td><td class="num">50%</td><td class="num">20%</td><td class="num">30%</td><td class="num">0%</td></tr>
+    <tr><td>30 (modded)</td><td class="num">50%</td><td class="num">15%</td><td class="num">35%</td><td class="num">0%</td></tr>
+  </table>
+  <div class="callout gold"><b>Want Legendary crafts back?</b> Raise <b>Highest craftable tier</b> to Legendary and lift <b>Max Legendary chance</b> above 0%. That also wakes the dormant 20% Relic ceiling, so a grandmaster could occasionally forge a pink Relic. The Crafting tab shows a <b>live outcome preview</b> at skill 8 / 14 / 20 that updates as you drag.</div>
+
+  <h2>Aura brightness (Visuals tab)</h2>
+  <p>The <a class="xref" href="auras.html">aura</a> glow around a pawn wearing aura gear is split into two independently-scalable layers, both <strong>0&ndash;200%</strong> (default 100%):</p>
+  <div class="vardef">
+    <div class="row"><div class="k">Aura glow brightness</div><div class="d">The ground glow disc and the spinning rune beneath the pawn.</div></div>
+    <div class="row"><div class="k">Aura particle brightness</div><div class="d">The floating orbs and elemental particles (embers, snow, sparks).</div></div>
+  </div>
+  <p>Set either to 0% to hide that layer entirely &mdash; the effect isn't drawn at all, so it costs nothing.</p>
 
   <h2 id="config">The per-affix configuration window</h2>
   <p>Open <b>Options &rarr; Mod settings &rarr; Itemization Overhaul - Core</b> and click <strong>"Configure individual affixes&hellip;"</strong> to open a searchable window where every affix can be toggled on or off. Disabled affixes never roll, on any item, anywhere.</p>
@@ -42,6 +68,8 @@ rare         = min( (skill-4)/12 <span class="op">&middot;</span> 0.7 , 1 - lege
   <p>The window groups affixes into collapsible categories, supports search and per-row descriptions, and has All / None / Reset controls. Addons register their own entries through the same API, so the one window governs the whole suite.</p>
 
   <div class="callout"><b>Use it to curate.</b> Hate a particular aura, or want a pure-melee game with no ranged affixes? Switch them off here and they vanish from every future roll without touching anything else.</div>
+
+  <div class="note">All settings live under <b>Options &rarr; Mod settings &rarr; Itemization Overhaul - Core</b>, split across tabs: <b>Drop rates &amp; tiers</b>, <b>Affixes</b>, <b>Artwork</b>, <b>Visuals</b>, <b>Crafting</b>, and <b>Reset</b>. Changes apply to newly-spawned gear; items already rolled keep their affixes.</div>
 
   <div class="pagenav" id="pagenav"></div>
 </article>

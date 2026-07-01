@@ -46,9 +46,18 @@
   <p>The four above show the span; see the <a class="xref" href="rune-list.html">Rune Compendium</a> for every one of the 30 runes and its effect in all four slots.</p>
 
   <h2>Socketing</h2>
-  <p>Select an item with a free socket and press <strong>Socket rune&hellip;</strong>. The float menu lists every rune on the map, each already showing the exact effect it would grant <em>this</em> item. The nearest capable colonist fetches the rune and carves it in; the rune is consumed. Socketing is permanent - no removal, no swaps.</p>
+  <p>Select an item with a free socket and press <strong>Socket rune&hellip;</strong>. The float menu lists every rune (and <a class="xref" href="gems.html">gem</a>) on the map, each already showing the exact effect it would grant <em>this</em> item. The nearest capable colonist fetches the socketable and carves it in; it is consumed. Socketing is permanent - no removal, no swaps.</p>
 
-  <div class="callout gold"><b>Worked example.</b> You drop <b>Brim</b> into a 3-socket greatsword (10% ignite on hit), then a <b>Hark</b> (+10% melee damage), then an <b>Ix</b> (5% stun). The same three runes in a chestplate would instead give heat armor, damage reduction, and blunt armor - so plan your runes around the slot.</p>
+  <h2>Drag-and-drop socketing <span class="tierpill tier-magic">True RPG Inventory</span></h2>
+  <p>With <strong>True RPG Inventory</strong> installed, socketing becomes tactile. Open a colonist's RPG inventory doll and simply <strong>drag a rune or gem onto a socketed item</strong> &mdash; every valid target lights up with a socket affordance as you drag, and dropping carves the socketable in on the spot.</p>
+  <ul>
+    <li><strong>Works everywhere in the panel.</strong> Drop onto an item sitting in the inventory grid, or straight onto an <em>equipped</em> piece &mdash; body armor, helmet, the main weapon, the off-hand, or a sidearm slot.</li>
+    <li><strong>Live target highlighting.</strong> Only items with a free, compatible socket highlight, so you can't waste a rune on the wrong piece.</li>
+    <li><strong>Same rules underneath.</strong> Drag-drop calls the exact same socketing logic as the float menu &mdash; permanent, one socketable per socket, effect determined by the item's slot.</li>
+  </ul>
+  <div class="callout gold"><b>No mod juggling.</b> The bridge is one-directional and reflection-based: it drives Runes &amp; Socketables' socket API from the inventory UI, and quietly does nothing if either mod is absent.</div>
+
+  <div class="callout gold"><b>Worked example.</b> You drop <b>Brim</b> into a 3-socket greatsword (10% ignite on hit), then a <b>Hark</b> (+10% melee damage), then an <b>Ix</b> (5% stun). The same three runes in a chestplate would instead give heat armor, damage reduction, and blunt armor - so plan your runes around the slot.</div>
 
   <div class="pagenav" id="pagenav"></div>
 </article>

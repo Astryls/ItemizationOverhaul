@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Itemization Overhaul - A Diablo-style loot suite for RimWorld</title>
-<meta name="description" content="Itemization Overhaul turns every weapon and apparel into ARPG loot: tiers, per-instance affixes, auras, corruption, relics, runes, sets, uniques, jewelry, consumables, and endless catacombs.">
+<meta name="description" content="Itemization Overhaul turns every weapon and apparel into ARPG loot: tiers, per-instance affixes, auras, corruption, relics, runes, gems, sets, uniques, jewelry, consumables, catacombs, and rarity loot beams.">
 <link rel="stylesheet" href="assets/styles.css">
 <script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 </head>
@@ -14,7 +14,7 @@
 <header class="hero" id="top">
   <div class="crownwrap"><svg viewBox="0 0 100 100" aria-hidden="true"><path fill="var(--text)" d="M50 4 L60 40 L96 50 L60 60 L50 96 L40 60 L4 50 L40 40 Z"/><circle cx="50" cy="50" r="7" fill="var(--panel2)"/></svg></div>
   <h1>Itemization <span class="amp">Overhaul</span></h1>
-  <p>Every weapon and piece of apparel becomes a loot drop with its own personality - a rarity tier, a hand of random affixes, the occasional aura, and rare twists like ethereal translucency, corruption, and consecrated relics. A full ARPG itemization layer woven over vanilla quality, plus seven addons.</p>
+  <p>Every weapon and piece of apparel becomes a loot drop with its own personality - a rarity tier, a hand of random affixes, the occasional aura, and rare twists like ethereal translucency, corruption, and consecrated relics. A full ARPG itemization layer woven over vanilla quality, plus eight addons.</p>
   <div class="btns">
     <a href="#lab" class="btn primary">Try the loot roller</a>
     <a href="wiki/index.html" class="btn">Read the wiki</a>
@@ -33,7 +33,7 @@
     <div class="pillars">
       <div class="pill reveal d1"><div class="ic">&#9876;</div><h3>Tiers &amp; affixes</h3><p>White, Magic, Rare, Legendary and the ultra-rare Relic - each with its own affix budget, D2/D4-style names, Greater &#9733; and Artifact &#10022; ranks, and per-instance stat variance.</p></div>
       <div class="pill reveal d2"><div class="ic">&#10024;</div><h3>Auras &amp; corruption</h3><p>Battlefield auras, ethereal and indestructible modifiers, and corruption that seals in unique named powers no roll can make.</p></div>
-      <div class="pill reveal d3"><div class="ic">&#9879;</div><h3>Seven addons</h3><p>Runes, sets, uniques &amp; mythics, jewelry, level requirements, scrolls &amp; potions, and endless catacombs - all built on the same engine.</p></div>
+      <div class="pill reveal d3"><div class="ic">&#9879;</div><h3>Eight addons</h3><p>Runes &amp; gems, sets, uniques &amp; mythics, jewelry, level requirements, scrolls &amp; potions, endless catacombs, and rarity loot beams - all built on the same engine.</p></div>
     </div>
   </div>
 </section>
@@ -62,7 +62,7 @@
         <div class="statline"><span><span class="swatch" style="background:var(--t-rare)"></span>Rare</span><span class="v">up to 2+2 &middot; rare-only affixes</span></div>
         <div class="statline"><span><span class="swatch" style="background:var(--t-legendary)"></span>Legendary</span><span class="v">up to 3+3 &middot; Greater &#9733;</span></div>
         <div class="statline"><span><span class="swatch" style="background:var(--t-relic)"></span>Relic</span><span class="v">always 7 &middot; Artifact &#10022;</span></div>
-        <div class="note" style="margin-top:16px">A plain drop is a true vanilla item - no tier, no affixes, no card. Every addon honours the same per-item decision, so lowering the rate thins sockets, sets, jewelry rolls and uniques too.</div>
+        <div class="note" style="margin-top:16px">A plain drop is a mundane item - no tier and no affixes - though it still uses the mod's inspect card, shown as plain White. Every addon honours the same per-item decision, so lowering the rate thins sockets, sets, jewelry rolls and uniques too.</div>
       </div>
     </div>
   </div>
@@ -71,18 +71,21 @@
 <section id="systems">
   <div class="inner">
     <div class="reveal"><div class="eyebrow">The Core</div>
-    <h2>Eleven articles, every mechanic.</h2>
+    <h2>Twelve articles, every mechanic.</h2>
     <p class="lead">Each Core system has its own wiki page with in-depth explanations, the underlying numbers, and worked examples.</p></div>
     <div class="fgrid reveal d1">
       <div class="fcard"><div class="ic">&#9879;</div><h4><a href="wiki/tiers.html">Loot Tiers</a></h4><p>White, Magic, Rare, Legendary, and the ultra-rare Relic - frames, affix budgets, and odds.</p></div>
       <div class="fcard"><div class="ic">&#9881;</div><h4><a href="wiki/drop-rate.html">Affix Drop Rate</a></h4><p>The enchanted-vs-plain knob and how every addon honours it.</p></div>
       <div class="fcard"><div class="ic">&#10022;</div><h4><a href="wiki/affixes.html">Affixes &amp; Ranks</a></h4><p>Stat / skill / aura affixes, Greater &amp; Artifact potency, roll ranges, base-stat variance.</p></div>
-      <div class="fcard"><div class="ic">&#10024;</div><h4><a href="wiki/auras.html">Auras</a></h4><p>Thirteen battlefield auras, defensive and elemental, with radiating motes.</p></div>
+      <div class="fcard"><div class="ic">&#9636;</div><h4><a href="wiki/prefix-suffix.html">Prefix &amp; Suffix Table</a></h4><p>The full curated affix vocabulary - every word, the stat it grants, and its tier.</p></div>
+      <div class="fcard"><div class="ic">&#10024;</div><h4><a href="wiki/auras.html">Auras</a></h4><p>Thirteen battlefield auras, defensive and elemental, with radiating motes and tunable brightness.</p></div>
+      <div class="fcard"><div class="ic">&#9997;</div><h4><a href="wiki/artwork.html">Item Artwork</a></h4><p>Relics, uniques and mythics carry real vanilla artwork - a title, tale-based lore, and an Art tab.</p></div>
       <div class="fcard"><div class="ic">&#9856;</div><h4><a href="wiki/special.html">Ethereal &amp; Indestructible</a></h4><p>The two special modifiers: +50% base stats, or never wears out.</p></div>
       <div class="fcard"><div class="ic">&#9763;</div><h4><a href="wiki/corruption.html">Corruption</a></h4><p>Seal in one unique named power that no roll can ever produce.</p></div>
       <div class="fcard"><div class="ic">&#9884;</div><h4><a href="wiki/relics.html">Relics &amp; Grudges</a></h4><p>Faction relics worth a fortune - and the raids that come to reclaim them.</p></div>
       <div class="fcard"><div class="ic">&#10070;</div><h4><a href="wiki/cleansing.html">The Cleansing</a></h4><p>Reforge a corrupted item into a bonded ideology relic with a double-edged blessing.</p></div>
       <div class="fcard"><div class="ic">&#9744;</div><h4><a href="wiki/cube.html">The Luminary Cube</a></h4><p>Re-roll, upgrade, graft, corrupt, and recycle gear at the crafting station.</p></div>
+      <div class="fcard"><div class="ic">&#9874;</div><h4><a href="wiki/crafting.html">Crafting &amp; Config</a></h4><p>Two-stage skill-scaled crafting, every settings tab, and per-affix toggles.</p></div>
     </div>
   </div>
 </section>
@@ -90,16 +93,17 @@
 <section id="addons" class="alt">
   <div class="inner">
     <div class="reveal"><div class="eyebrow">The Suite</div>
-    <h2>Seven addons, <span class="grad">one engine</span>.</h2>
+    <h2>Eight addons, <span class="grad">one engine</span>.</h2>
     <p class="lead">Every addon reads the Core's per-item roll and layers on top. Mix and match - each is optional and lights up automatically.</p></div>
     <div class="fgrid reveal d1">
       <div class="fcard"><div class="ic">&#9650;</div><h4><a href="wiki/stats-levels.html">Stats &amp; Levels</a></h4><p>Gear gains level and stat requirements scored from its actual roll.</p><div class="pid">astryl.ItemizationOverhaulStatsAndLevels</div></div>
       <div class="fcard"><div class="ic">&#9672;</div><h4><a href="wiki/runes.html">Runes &amp; Socketables</a></h4><p>Sockets, a 30-rune ladder, runewords, and elemental facet jewels.</p><div class="pid">astryl.ItemizationOverhaulRunes</div></div>
       <div class="fcard"><div class="ic">&#9733;</div><h4><a href="wiki/sets.html">Item Sets</a></h4><p>Ten matched sets with escalating bonuses and a capstone aura.</p><div class="pid">astryl.itemizationoverhaulsets</div></div>
-      <div class="fcard"><div class="ic">&#10038;</div><h4><a href="wiki/uniques.html">Uniques &amp; Mythics</a></h4><p>34 named uniques, 14 overcharged mythics, and expedition chains.</p><div class="pid">astryl.ItemizationOverhaulUniques</div></div>
+      <div class="fcard"><div class="ic">&#10038;</div><h4><a href="wiki/uniques.html">Uniques &amp; Mythics</a></h4><p>34 named uniques, 15 overcharged mythics, and expedition chains.</p><div class="pid">astryl.ItemizationOverhaulUniques</div></div>
       <div class="fcard"><div class="ic">&#9882;</div><h4><a href="wiki/jewelry.html">Jewelry &amp; Charms</a></h4><p>Amulets, twin rings, charms, sanctification, and the desecrated curse.</p><div class="pid">astryl.ItemizationOverhaulJewelry</div></div>
       <div class="fcard"><div class="ic">&#9851;</div><h4><a href="wiki/scrolls-potions.html">Scrolls &amp; Potions</a></h4><p>Unidentified loot, Identify / Town Portal scrolls, and four potions.</p><div class="pid">astryl.ItemizationOverhaulScrollsAndPotions</div></div>
       <div class="fcard"><div class="ic">&#9760;</div><h4><a href="wiki/catacombs.html">Catacombs</a></h4><p>Endlessly-descending procedural crypts, deadlier and richer each floor.</p><div class="pid">astryl.ItemizationOverhaulCatacombs</div></div>
+      <div class="fcard"><div class="ic">&#9788;</div><h4><a href="wiki/loot-beams.html">Loot Beams</a></h4><p>Rarity-coloured pillars of light over Legendary, Relic, Unique and Mythic drops.</p><div class="pid">Astryl.ItemizationOverhaulLootBeams</div></div>
     </div>
   </div>
 </section>
