@@ -16,16 +16,16 @@
   <p class="sub">How a master smith forges better loot, and how to switch any individual affix on or off.</p>
 
   <h2>Skill-scaled crafting</h2>
-  <p>When a colonist crafts a weapon or apparel, its tier is rolled from the <strong>crafter's relevant skill</strong> instead of the world drop table. A higher skill shifts the odds toward Legendary and Ancestral, and a true master has a rare shot at a <strong>Relic</strong>.</p>
+  <p>When a colonist crafts a weapon or apparel, its tier is rolled from the <strong>crafter's relevant skill</strong> instead of the world drop table. A higher skill shifts the odds toward Rare and Legendary, and a true master has a rare shot at a <strong>Relic</strong>.</p>
   <div class="math"><div class="mh">Crafted tier odds (by skill)</div><div class="eq">relicChance  = skill &ge; 18 ? min(0.06, (skill-17) <span class="op">&middot;</span> 0.0025) : 0
-ancestral    = clamp( (skill-10)/14 <span class="op">&middot;</span> 0.55 + min(0.3,(skill-20)<span class="op">&middot;</span>0.015) )
-legendary    = min( (skill-4)/12 <span class="op">&middot;</span> 0.7 , 1 - ancestral )
+legendary    = clamp( (skill-10)/14 <span class="op">&middot;</span> 0.55 + min(0.3,(skill-20)<span class="op">&middot;</span>0.015) )
+rare         = min( (skill-4)/12 <span class="op">&middot;</span> 0.7 , 1 - legendary )
 <span class="cmt"># remainder rolls White</span></div></div>
   <ul>
     <li>Crafted gear is <strong>always enchanted</strong> - the <a class="xref" href="drop-rate.html">drop-rate</a> knob only thins world drops, never your own work.</li>
     <li><strong>Endless-growth friendly</strong>: skill levels above 20 (from leveling mods) keep nudging the odds upward, and the Relic chance climbs toward its 6% cap.</li>
   </ul>
-  <div class="callout gold"><b>Worked example.</b> A Crafting-20 smith forges a longsword: roughly a coin-flip for Ancestral, a solid chance of Legendary, and about a 0.75% shot at a Relic. Push that smith to skill 25 with an endless-growth mod and Ancestral becomes the norm, with the Relic chance creeping toward 2%.</p>
+  <div class="callout gold"><b>Worked example.</b> A Crafting-20 smith forges a longsword: roughly a coin-flip for Legendary, a solid chance of Rare, and about a 0.75% shot at a Relic. Push that smith to skill 25 with an endless-growth mod and Legendary becomes the norm, with the Relic chance creeping toward 2%.</p>
 
   <h2 id="config">The per-affix configuration window</h2>
   <p>Open <b>Options &rarr; Mod settings &rarr; Itemization Overhaul - Core</b> and click <strong>"Configure individual affixes&hellip;"</strong> to open a searchable window where every affix can be toggled on or off. Disabled affixes never roll, on any item, anywhere.</p>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Item Artwork - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Item Artwork</div>
+  <h1>Item Artwork</h1>
+  <p class="sub">The rarest items become genuine RimWorld artworks - a title, a tale-based description, an "Author" line, and the vanilla <b>Art</b> tab - just like a masterwork sculpture.</p>
+
+  <h2>What it is</h2>
+  <p>Every affixed weapon and apparel quietly carries the vanilla art component. It stays dormant on ordinary gear and only wakes up on the three top identities - <strong>Relic</strong>, <strong>Unique</strong>, and <strong>Mythic</strong>. When it does, the item gains everything vanilla art has: a generated title, a "this depicts..." description, an author, and a dedicated <b>Art</b> tab in the inspect pane. The text is captured once and stored on the item, so it never drifts between saves.</p>
+
+  <h2>Three flavours of art</h2>
+  <table class="t">
+    <tr><th>Identity</th><th>Title</th><th>Description</th></tr>
+    <tr><td><span class="tierpill tier-relic">Relic</span></td><td>vanilla tale-based (funny)</td><td>vanilla tale text + a short affix motif line</td></tr>
+    <tr><td><span style="color:var(--gold);font-weight:700">Unique</span></td><td>the Unique's own name</td><td>its fixed, authored D2-inspired lore</td></tr>
+    <tr><td><span style="color:var(--t-relic);font-weight:700">Mythic</span></td><td>the Mythic's own name</td><td>its fixed, authored lore</td></tr>
+  </table>
+  <p><a class="xref" href="uniques.html">Uniques</a> and <a class="xref" href="mythics.html">Mythics</a> use <strong>fixed, always-identical</strong> art - every copy of a legend reads the same. <a class="xref" href="relics.html">Relics</a> are procedural, so their art is generated.</p>
+
+  <h2>How relic art is generated</h2>
+  <p>Relic art leans on RimWorld's own art grammar for the funny, evocative part, then adds one line of its own so the piece still nods to the item's rolls:</p>
+  <ul>
+    <li><strong>Title &amp; body</strong> - drawn from the vanilla art rule-packs, chosen to fit the item type: melee weapons, guns, and apparel each use their matching grammar. This is the same machinery that names and describes masterwork sculptures, so you get the familiar RimWorld humour.</li>
+    <li><strong>Affix motif line</strong> - a short sentence appended to the description, built from the item's strongest affix (a relic power, then an aura, then a marquee stat). A fiery aura reads as smouldering imagery; heavy armor as iron and bulwarks; and so on.</li>
+    <li><strong>Author</strong> - a faction relic credits the owning faction; every other relic credits "the Ancients". A relic you forged yourself keeps its crafter as the author.</li>
+  </ul>
+  <div class="callout"><b>Deterministic.</b> Each relic seeds its own art once and stores it, so the funny description and its motif line stay exactly the same every time you open the item - across reloads too.</div>
+
+  <h2>Where it shows</h2>
+  <ul>
+    <li><strong>Art tab</strong> - select the item; the vanilla <b>Art</b> tab appears in the inspect pane with the title and full description.</li>
+    <li><strong>Info card</strong> - the &#9432; info window includes the art block (title, description, author) alongside the affix stats.</li>
+  </ul>
+
+  <h2>Settings</h2>
+  <p>Under the <b>Artwork</b> tab of <b>Options &rarr; Mod settings &rarr; Itemization Overhaul - Core</b>:</p>
+  <div class="vardef">
+    <div class="row"><span class="k">Enable item artwork</span><span class="d">master toggle for relic, unique and mythic art (default on)</span></div>
+    <div class="row"><span class="k">Append affix motif line</span><span class="d">add the affix-derived sentence to relic descriptions (default on)</span></div>
+  </div>
+
+  <div class="callout good"><b>Why it exists.</b> A named legend deserves to read like one. Borrowing RimWorld's art system means relics feel native to the game - a found artifact with a story - while uniques and mythics get their authored lore presented in the same familiar frame.</div>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

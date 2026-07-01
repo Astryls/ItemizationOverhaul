@@ -16,6 +16,7 @@
     ['Core','tiers.html','Loot Tiers',1],
     ['Core','drop-rate.html','Affix Drop Rate',1],
     ['Core','affixes.html','Affixes & Ranks',1],
+    ['Core','artwork.html','Item Artwork',1],
     ['Core','auras.html','Auras',1],
     ['Core','special.html','Ethereal & Indestructible',1],
     ['Core','corruption.html','Corruption',1],
@@ -32,6 +33,7 @@
     ['Runes & Socketables','facets.html','Facet Jewels',1],
     ['Item Sets','sets.html','Overview',0],
     ['Item Sets','set-bonuses.html','Bonuses & Auras',1],
+    ['Item Sets','set-list.html','Set Compendium',1],
     ['Uniques & Mythics','uniques.html','Overview',0],
     ['Uniques & Mythics','unique-list.html','Unique Compendium',1],
     ['Uniques & Mythics','mythics.html','Mythics',1],
@@ -103,11 +105,12 @@
 
   /* ---- loot-roll demo: enchant chance -> enchanted vs plain split ---- */
   var TIERS=[
-    {key:'plain', nm:'Plain White', col:'var(--t-white)', w:0, aff:'0 affixes'},
-    {key:'white', nm:'White',       col:'var(--t-white)', w:52, aff:'1-3 affixes'},
-    {key:'leg',   nm:'Legendary',   col:'var(--t-leg)',   w:30, aff:'2-4 affixes'},
-    {key:'anc',   nm:'Ancestral',   col:'var(--t-anc)',   w:14, aff:'3-5 affixes, Greater'},
-    {key:'relic', nm:'Relic',       col:'var(--t-relic)', w:4,  aff:'always 7, Artifact'}
+    {key:'plain', nm:'Plain White', col:'var(--t-white)',     w:0,  aff:'0 affixes'},
+    {key:'white', nm:'White',       col:'var(--t-white)',     w:45, aff:'0 affixes, base variance'},
+    {key:'magic', nm:'Magic',       col:'var(--t-magic)',     w:35, aff:'1 prefix + 1 suffix'},
+    {key:'rare',  nm:'Rare',        col:'var(--t-rare)',      w:15, aff:'up to 2+2, rare-only affixes'},
+    {key:'leg',   nm:'Legendary',   col:'var(--t-legendary)', w:4,  aff:'up to 3+3, Greater'},
+    {key:'relic', nm:'Relic',       col:'var(--t-relic)',     w:1,  aff:'always 7, Artifact'}
   ];
   function rollEnchantedTier(){
     var pool=TIERS.slice(1), tot=0; pool.forEach(function(t){tot+=t.w;});

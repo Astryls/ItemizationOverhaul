@@ -31,7 +31,7 @@
   <table class="t">
     <tr><th>Rank</th><th>Multiplier</th><th>Where it appears</th></tr>
     <tr><td>Normal</td><td class="num">&times;1.0</td><td>any tier</td></tr>
-    <tr><td>Greater &#9733;</td><td class="num">&times;1.2</td><td>naturally on Ancestral &amp; Relic</td></tr>
+    <tr><td>Greater &#9733;</td><td class="num">&times;1.2</td><td>naturally on Legendary &amp; Relic</td></tr>
     <tr><td>Artifact &#10022;</td><td class="num">&times;1.5</td><td>Relic-tier only</td></tr>
   </table>
   <p>For integer affixes (skills and Isekai stats), Artifact does more than multiply - it pushes the value <strong>one step past the normal cap</strong>:</p>
@@ -51,12 +51,23 @@
     <div class="row"><span class="k">rankMult</span><span class="d">1.0 / 1.2 / 1.5 for Normal / Greater / Artifact</span></div>
   </div>
 
+  <h2 id="prefix-suffix">Prefixes, suffixes &amp; the catalogue</h2>
+  <p>Every stat affix belongs to a <strong>prefix</strong> or <strong>suffix</strong> slot and carries an authored Diablo-styled word ("Cruel", "of the Muffalo"). Words come from a curated catalogue of ~80 entries; any eligible stat the catalogue doesn't cover - including modded stats - is auto-synthesised so it still rolls, just with a heuristic name. Each catalogue entry is gated to a tier <strong>band</strong> (a minimum and a maximum tier), so marquee stats escalate through named ranks as the tier rises (e.g. melee damage: <em>Jagged &rarr; Cruel &rarr; Merciless</em>).</p>
+
+  <h2 id="rare-exclusive">Rare-exclusive affixes</h2>
+  <p>A dedicated pool of <strong>12 affixes rolls only on Rare items</strong> - never Magic (too low) and never Legendary (capped out), in the spirit of Diablo 2's "Fool's" mod. Rare items still roll their normal 1-2 prefix / 1-2 suffix budget; these simply become part of what those slots can draw, at strong value bands.</p>
+  <table class="t">
+    <tr><th>Prefixes</th><th>Suffixes</th></tr>
+    <tr><td>Fool's (melee damage), Sharpshooter's (accuracy), Tempered (sharp armor), Ramparted (blunt armor), Quicksilver (move speed), Berserker's (melee DPS)</td><td>of the Fool (melee hit), of the Ox (carry), of Diligence (work speed), of the Stalwart (pain threshold), of the Adept (learning), of the Warden (toxic resistance)</td></tr>
+  </table>
+  <div class="callout"><b>Why they matter.</b> A lucky Rare can rival a Legendary on a specific stat - the classic ARPG thrill of a yellow drop that out-rolls your orange.</div>
+
   <h2 id="variance">Base-stat variance</h2>
   <p>Beyond affixes, every item rolls a <strong>&plusmn;15%</strong> variance on its own base stats - armor (sharp / blunt / heat) for apparel, and melee or ranged damage for weapons. Two otherwise-identical plasteel longswords will have slightly different damage. The variance is stored per item and is shown in the white-stat block of the card.</p>
   <div class="callout"><b>Why it matters.</b> Combined with affixes, base variance means you genuinely hunt for the <em>best roll</em> of an item, not just the highest tier - exactly like grinding a perfect ARPG drop.</div>
 
   <h2>Worked example</h2>
-  <div class="callout gold"><b>An Ancestral marine helmet.</b> It rolls 4 affixes. One is <code>+ArmorRating_Sharp</code> which lands Greater (&times;1.2). The card shows it as <b>+0.18 Sharp Armor &#9733;</b> with a range of <code>0.10 - 0.21</code>, telling you this roll is near the top of its band. The helmet's own base sharp armor also rolled <b>+9%</b> variance. Add a <code>+3 Shooting</code> skill affix and a stat affix, and this is a meaningfully better helmet than the next Ancestral one you find.</p>
+  <div class="callout gold"><b>A Legendary marine helmet.</b> It rolls 5 affixes under a grand title. One is <code>+ArmorRating_Sharp</code> which lands Greater (&times;1.2). The card shows it as <b>+0.18 Sharp Armor &#9733;</b> with a range of <code>0.10 - 0.21</code>, telling you this roll is near the top of its band. The helmet's own base sharp armor also rolled <b>+9%</b> variance. Add a <code>+3 Shooting</code> skill affix and a couple of stat affixes, and this is a meaningfully better helmet than the next Legendary one you find.</div>
 
   <p>You can disable any individual affix - stat, skill, aura, unique, or modifier - from the <a class="xref" href="crafting.html#config">per-affix configuration window</a>.</p>
 

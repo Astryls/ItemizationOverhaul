@@ -18,7 +18,8 @@
   <div class="callout"><b>See it live.</b> The <a class="xref" href="../index.html#lab">loot roller</a> on the home page rolls 24 drops at whatever rate you set, so you can watch the enchanted-vs-plain split shift in real time.</div>
 
   <h2>The setting</h2>
-  <p>At the top of <b>Options &rarr; Mod settings &rarr; Itemization Overhaul - Core</b> sits <strong>Enchanted item chance</strong> (default 100%). It is the probability that any dropped weapon or apparel spawns enchanted - rolling a tier and affixes as normal. The rest spawn <strong>plain</strong>: a true vanilla item with no tier, no affixes, no sockets, and no card.</p>
+  <p>Under the <b>Drop rates &amp; tiers</b> tab of <b>Options &rarr; Mod settings &rarr; Itemization Overhaul - Core</b> sits <strong>Enchanted item chance</strong> (default 100%). It is the probability that any dropped weapon or apparel spawns enchanted - rolling a tier and affixes as normal. The rest spawn <strong>plain</strong>: a true vanilla item with no tier, no affixes, no sockets, and no card.</p>
+  <p>That same tab holds the tier chance sliders (Legendary / Rare / Magic, with the leftover White % shown live), the <strong>Relic chance</strong>, the Greater-affix chance and the potency multiplier. The <b>Affixes</b> tab adds the <strong>Aura affix chance</strong> and the per-affix on/off config. See <a class="xref" href="tiers.html#names">Loot Tiers</a> and <a class="xref" href="crafting.html#config">Crafting &amp; Config</a>.</p>
   <div class="math"><div class="mh">Per-item roll</div><div class="eq">if random &lt; <span class="num">enchantChance</span>:
     roll tier + affixes + specials   <span class="cmt"># enchanted</span>
 else:
@@ -40,8 +41,8 @@ else:
     <tr><th>Addon</th><th>How it honours the rate</th></tr>
     <tr><td><a href="runes.html">Runes</a></td><td>Plain items roll <b>zero sockets</b>.</td></tr>
     <tr><td><a href="jewelry.html">Jewelry</a></td><td>A plain ring / amulet carries no jewel affixes.</td></tr>
-    <tr><td><a href="sets.html">Sets</a></td><td>Auto-excluded - sets need Ancestral+, plain stays White.</td></tr>
-    <tr><td><a href="uniques.html">Uniques &amp; Mythics</a></td><td>Auto-excluded - uniques need Relic tier.</td></tr>
+    <tr><td><a href="sets.html">Sets</a></td><td>Auto-excluded - sets need Legendary+, plain stays White.</td></tr>
+    <tr><td><a href="uniques.html">Uniques &amp; Mythics</a></td><td>Auto-excluded - the Unique overlay needs Legendary tier.</td></tr>
     <tr><td><a href="stats-levels.html">Stats &amp; Levels</a></td><td>Plain = 0 power, so it demands nothing.</td></tr>
   </table>
   <div class="callout good"><b>Charms stay special.</b> Inventory charms (Jewelry addon) are dedicated rare drops and remain enchanted regardless of the rate. Crafted gear and dev/forced-rarity items are also always enchanted - the knob only thins <em>drops</em>.</div>
