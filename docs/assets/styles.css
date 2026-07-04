@@ -210,3 +210,26 @@ table.t td.num{font-variant-numeric:tabular-nums;font-weight:700;white-space:now
 .item .iflav{font-size:12.5px;color:var(--faint);font-style:italic;margin-top:9px;line-height:1.5}
 .rk{font-weight:700;font-size:12px;vertical-align:baseline}
 .rk.gr{color:var(--t-leg)}.rk.art{color:var(--t-relic)}.rk.div{color:var(--t-relic)}
+
+/* ---------- texture icons & imagery (2026-07 rebuild) ---------- */
+.ico{width:22px;height:22px;object-fit:contain;vertical-align:-5px;margin-right:7px}
+.ico.lg{width:34px;height:34px;vertical-align:-10px}
+.igrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:16px 0}
+.igrid .cell{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);padding:12px;text-align:center}
+.igrid .cell img{width:44px;height:44px;object-fit:contain;display:block;margin:0 auto 8px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.28))}
+.igrid .cell .nm{font-weight:600;font-size:13px}
+.igrid .cell .d{color:var(--faint);font-size:11.5px;margin-top:2px}
+.itemicon{float:right;width:52px;height:52px;object-fit:contain;margin:0 0 6px 12px}
+.heroimg{display:flex;align-items:center;gap:16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel2);padding:14px 16px;margin:16px 0}
+.heroimg img{width:64px;height:64px;object-fit:contain;flex:none}
+.heroimg .d{color:var(--dim);font-size:13.5px}
+table.t td img.ti,table.t th img.ti{width:20px;height:20px;object-fit:contain;vertical-align:-4px;margin-right:6px}
+.xmlblock{border:1px solid var(--line);border-radius:var(--radius);margin:16px 0;overflow:hidden;background:var(--panel)}
+.xmlblock .xh{padding:7px 14px;border-bottom:1px solid var(--line);background:var(--panel2);font-size:10.5px;text-transform:uppercase;letter-spacing:1px;color:var(--dim);font-weight:700}
+.xmlblock pre{padding:13px 16px;font:12.5px/1.75 Consolas,"Cascadia Code",monospace;color:var(--text);overflow-x:auto;margin:0}
+.xmlblock pre .tag{color:var(--accent)}.xmlblock pre .val{color:var(--good)}.xmlblock pre .cmt{color:var(--faint)}
+/* cube grid mock */
+.cubegrid{display:grid;grid-template-columns:repeat(4,64px);gap:5px;justify-content:center;margin:14px auto}
+.cubegrid .slot{width:64px;height:64px;border:1px solid var(--line2);border-radius:4px;background:var(--panel2);display:flex;align-items:center;justify-content:center}
+.cubegrid .slot img{max-width:52px;max-height:52px;object-fit:contain}
+.cubegrid .slot.hl{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}

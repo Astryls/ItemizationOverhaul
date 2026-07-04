@@ -24,6 +24,7 @@
     ['Core','relics.html','Relics & Grudges',1],
     ['Core','cleansing.html','The Cleansing',1],
     ['Core','cube.html','The Luminary Cube',1],
+    ['Core','reroll-lab.html','Cube Reroll Lab',1],
     ['Core','crafting.html','Crafting & Config',1],
     ['Stats & Levels','stats-levels.html','Overview',0],
     ['Stats & Levels','requirements.html','Requirement Model',1],
@@ -49,7 +50,8 @@
     ['Scrolls & Potions','consumables.html','Scrolls & Potions',1],
     ['Catacombs','catacombs.html','Overview',0],
     ['Catacombs','delving.html','Delving & Floors',1],
-    ['Loot Beams','loot-beams.html','Overview',0]
+    ['Loot Beams','loot-beams.html','Overview',0],
+    ['Modding','xml-authoring.html','Create Items via XML',0]
   ];
 
   function curTheme(){return document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}
@@ -111,9 +113,9 @@
     {key:'plain', nm:'Plain White', col:'var(--t-white)',     w:0,  aff:'0 affixes'},
     {key:'white', nm:'White',       col:'var(--t-white)',     w:45, aff:'0 affixes, base variance'},
     {key:'magic', nm:'Magic',       col:'var(--t-magic)',     w:35, aff:'1 prefix + 1 suffix'},
-    {key:'rare',  nm:'Rare',        col:'var(--t-rare)',      w:15, aff:'up to 2+2, rare-only affixes'},
-    {key:'leg',   nm:'Legendary',   col:'var(--t-legendary)', w:4,  aff:'up to 3+3, Greater'},
-    {key:'relic', nm:'Relic',       col:'var(--t-relic)',     w:1,  aff:'always 7, Artifact'}
+    {key:'rare',  nm:'Rare',        col:'var(--t-rare)',      w:15, aff:'up to 2+2, rare-only words'},
+    {key:'leg',   nm:'Legendary',   col:'var(--t-legendary)', w:4.85, aff:'up to 3+3, Greater'},
+    {key:'relic', nm:'Relic',       col:'var(--t-relic)',     w:0.15, aff:'always 4+3, Artifact'}
   ];
   function rollEnchantedTier(){
     var pool=TIERS.slice(1), tot=0; pool.forEach(function(t){tot+=t.w;});
