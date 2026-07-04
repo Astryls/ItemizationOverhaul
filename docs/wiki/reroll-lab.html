@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cube Reroll Lab - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Cube Reroll Lab</div>
+  <h1>Cube Reroll Lab</h1>
+  <p class="sub">The reroll gamble, simulated with the real numbers: 3 dust per pull, an 8% Greater chance, and a hard cap of 5 rerolls on Rare or 10 on Legendary and Relic.</p>
+
+  <p>Pick a tier, then reroll the highlighted affix. Every pull re-draws the value anywhere in the affix's band - it can get <em>worse</em>. This is exactly the in-game math, so use it to calibrate how much dust a "perfect" roll really costs.</p>
+
+  <div class="sim" style="margin-top:20px">
+    <div class="panel">
+      <div class="tgt"><span class="nm" id="itemName">Gore Ripper</span><span class="lv" id="tierTag">Rare</span></div>
+      <div style="display:flex;gap:8px;margin:12px 0">
+        <button class="reset" id="tRare">Rare item</button>
+        <button class="reset" id="tLeg">Legendary item</button>
+        <button class="reset" id="tRelic">Relic item</button>
+      </div>
+      <div id="affList"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;flex-wrap:wrap;gap:10px">
+        <div style="font-size:14px"><img src="../assets/img/core/Things/Item/LegendaryScrap.png" style="width:20px;height:20px;object-fit:contain;vertical-align:-4px"> dust: <b id="dust">30</b></div>
+        <div style="font-size:13px;color:var(--faint)">rerolls left: <b id="rrLeft">5</b></div>
+        <button class="btn primary" id="rrBtn">Reroll selected (3 dust)</button>
+      </div>
+      <div id="msg" style="margin-top:10px;font-size:13px;color:var(--dim)"></div>
+    </div>
+    <div class="panel feedwrap">
+      <div class="fh"><span class="lab">Pull history</span><button class="reset" id="labReset">Reset lab</button></div>
+      <ul class="feed" id="feed"><li class="empty">No pulls yet - select an affix and reroll it.</li></ul>
+    </div>
+  </div>
+
+  <h2>What the lab honours</h2>
+  <ul>
+    <li><strong>Cost:</strong> every pull consumes 3 legendary dust (recycling one Rare yields 2 dust, so a pull is 1.5 recycled Rares).</li>
+    <li><strong>Caps:</strong> 5 rerolls per Rare item, 10 per Legendary or Relic - then the item is done gambling forever.</li>
+    <li><strong>Greater:</strong> each pull has an 8% chance to land the affix at Greater &#9733; (&times;1.2).</li>
+    <li><strong>The band:</strong> the value is redrawn uniformly in the affix's roll range - the same range the in-game card shows.</li>
+  </ul>
+  <div class="callout"><b>The lesson the lab teaches.</b> Expected pulls to land in the top 10% of a band are ~10 - which is the whole Legendary budget and twice the Rare budget. Reroll to fix a <em>bad</em> roll, not to chase a perfect one; perfect rolls are what <a class="xref" href="cube.html">grafting Tempers</a> is for.</div>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var POOLS={
+    Rare:{name:'Gore Ripper',rr:5,affixes:[
+      ['Fool\u2019s (melee damage)',30,50,'%'],['Sharpshooter\u2019s (accuracy)',12,18,'%'],
+      ['of the Ox (carrying)',9,18,'kg'],['of Diligence (work speed)',8,15,'%']]},
+    Legendary:{name:'The Ashen Aegis',rr:10,affixes:[
+      ['Merciless (melee damage)',45,70,'%'],['Impenetrable (sharp armor)',28,45,'%'],
+      ['Blurred (move speed)',20,30,'%'],['of the Titan (carrying)',12,24,'kg'],
+      ['of Clarity (consciousness)',3,8,'%']]},
+    Relic:{name:'Sunspoken Diadem',rr:10,affixes:[
+      ['Unerring (accuracy)',16,24,'%'],['Adamant (blunt armor)',28,45,'%'],
+      ['of the Surgeon (manipulation)',4,10,'%'],['of the Hawk (sight)',4,10,'%'],
+      ['Swift (move speed)',12,20,'%'],['of the Savant (learning)',10,18,'%'],
+      ['of Precision (accuracy)',8,15,'%']]}
+  };
+  var tier,item,dust,rrUsed,sel;
+  function reset(t){
+    tier=t;item=POOLS[t];dust=30;rrUsed=0;sel=0;
+    item.rolls=item.affixes.map(function(a){return {v:rnd(a[1],a[2]),gr:false};});
+    $('feed').innerHTML='<li class="empty">No pulls yet - select an affix and reroll it.</li>';
+    $('msg').textContent='';
+    draw();
+  }
+  function rnd(lo,hi){return Math.round((lo+Math.random()*(hi-lo))*10)/10;}
+  function pct(a,r){return Math.round(100*(r.v-a[1])/(a[2]-a[1]));}
+  function draw(){
+    $('itemName').textContent=item.name;
+    var tt=$('tierTag');tt.textContent=tier;
+    tt.style.color=tier==='Rare'?'var(--t-rare)':tier==='Legendary'?'var(--t-legendary)':'var(--t-relic)';
+    $('dust').textContent=dust;
+    $('rrLeft').textContent=(item.rr-rrUsed);
+    var h='';
+    item.affixes.forEach(function(a,i){
+      var r=item.rolls[i];
+      h+='<div class="statline" data-i="'+i+'" style="cursor:pointer'+(i===sel?';background:var(--accent-soft);border-radius:3px;padding-left:6px;padding-right:6px':'')+'">'+
+        '<span>'+a[0]+(r.gr?' <span style="color:var(--t-leg)">\u2605</span>':'')+'</span>'+
+        '<span class="v">+'+(r.gr?Math.round(r.v*1.2*10)/10:r.v)+a[3]+
+        ' <span style="color:var(--faint);font-weight:400;font-size:11px">['+a[1]+' - '+a[2]+']</span></span></div>';
+    });
+    $('affList').innerHTML=h;
+    [].forEach.call($('affList').children,function(el){el.onclick=function(){sel=+el.getAttribute('data-i');draw();};});
+    $('rrBtn').disabled=(dust<3||rrUsed>=item.rr);
+    $('rrBtn').style.opacity=$('rrBtn').disabled?'.45':'1';
+  }
+  function pull(){
+    if(dust<3){$('msg').textContent='Out of dust - recycle more Rares (2 dust each).';return;}
+    if(rrUsed>=item.rr){$('msg').textContent='Reroll cap reached - this item is done gambling.';return;}
+    dust-=3;rrUsed++;
+    var a=item.affixes[sel],old=item.rolls[sel];
+    var nv={v:rnd(a[1],a[2]),gr:Math.random()<0.08};
+    item.rolls[sel]=nv;
+    var f=$('feed');
+    if(f.firstChild&&f.firstChild.className==='empty')f.innerHTML='';
+    var better=(nv.gr?nv.v*1.2:nv.v)>(old.gr?old.v*1.2:old.v);
+    var li=document.createElement('li');
+    if(nv.gr)li.className='aff';
+    li.innerHTML='<span>'+a[0]+': '+(old.gr?'\u2605':'')+old.v+a[3]+' \u2192 '+(nv.gr?'\u2605':'')+nv.v+a[3]+
+      (nv.gr?' <b style="color:var(--t-leg)">GREATER!</b>':'')+'</span>'+
+      '<span class="dd" style="color:'+(better?'var(--good)':'var(--bad)')+'">'+(better?'up':'down')+' \u00b7 '+pct(a,nv)+'%</span>';
+    f.insertBefore(li,f.firstChild);
+    while(f.children.length>9)f.removeChild(f.lastChild);
+    $('msg').textContent=nv.gr?'An 8% miracle - the affix came back Greater.':(better?'Better. Quit while ahead?':'Worse. The cube giveth and the cube taketh away.');
+    draw();
+  }
+  $('rrBtn').onclick=pull;
+  $('labReset').onclick=function(){reset(tier);};
+  $('tRare').onclick=function(){reset('Rare');};
+  $('tLeg').onclick=function(){reset('Legendary');};
+  $('tRelic').onclick=function(){reset('Relic');};
+  reset('Rare');
+})();
+</script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ethereal &amp; Indestructible - Itemization Overhaul Codex</title>
+<title>Ethereal, Indestructible &amp; Replenishing - Itemization Overhaul Codex</title>
 <link rel="stylesheet" href="../assets/styles.css">
 <script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 </head>
@@ -12,36 +12,46 @@
 <aside class="wikiside" id="wikiside"></aside>
 <article class="doc">
   <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Ethereal &amp; Indestructible</div>
-  <h1>Ethereal &amp; Indestructible</h1>
-  <p class="sub">Two special modifiers that roll independently of the affix budget. An item can have at most one.</p>
+  <h1>Ethereal, Indestructible &amp; Replenishing</h1>
+  <p class="sub">Two special modifiers that roll independently of the affix budget - plus the enchantment that stackable gear rolls instead of ordinary affixes.</p>
 
   <h2>Ethereal</h2>
-  <p>An <strong>Ethereal</strong> item is translucent and supercharged. It grants <strong>+50% to its real base stats</strong> - armor, insulation, and ranged damage multiplier - on top of whatever affixes it rolled. The trade-off in classic ARPG fashion: it cannot be repaired.</p>
+  <p>An <strong>Ethereal</strong> item is translucent and supercharged. It grants <strong>+50% to its real base stats</strong> - armor, insulation, and damage - on top of whatever affixes it rolled. The trade-off in classic ARPG fashion: it cannot be repaired.</p>
   <ul>
-    <li>The +50% applies through the same stat pipeline as base-stat variance, so it stacks multiplicatively with the item's own &plusmn;15% roll.</li>
-    <li>Ethereal also boosts <em>every affix value</em> by 50% when the item is rolled - including Greater affixes (Artifact values are left at their fixed over-cap numbers).</li>
-    <li>The item renders at reduced opacity (tunable in settings, 50 - 90%).</li>
+    <li>The +50% applies through the same stat pipeline as base-stat variance, so it stacks with the item's own &plusmn;15% roll.</li>
+    <li>Ethereal also boosts <em>every affix value</em> by 50% when the item is rolled, Greater affixes included (Artifact values keep their fixed over-cap numbers).</li>
+    <li>The item renders at reduced opacity (tunable in settings; default 50%).</li>
   </ul>
-  <div class="callout gold"><b>Worked example.</b> An Ethereal Legendary cataphract helmet with a base 1.08 sharp armor and a +9% variance roll shows roughly <code>1.08 &times; 1.09 &times; 1.5 &asymp; 1.77</code> sharp armor before affixes - and its <code>+Sharp Armor</code> affix is itself 50% larger. A monster of a helmet that you must protect, because it can never be mended.</div>
 
   <h2>Indestructible</h2>
-  <p>An <strong>Indestructible</strong> item never loses hit points and never deteriorates - it will outlast your colony. White items never roll it; the chance rises with tier.</p>
+  <p>An <strong>Indestructible</strong> item never loses hit points and never deteriorates - it will outlast your colony. White items never roll it. It is damage-immune, not disposal-immune: you can still smelt or destroy it on purpose, and the cube can grant it deliberately.</p>
 
   <h2>Roll odds</h2>
-  <p>Both modifiers roll on an independent chance, scaled by tier, separate from the affix count. They are mutually exclusive - a combined "ethereal &amp; indestructible" item is reserved for later systems.</p>
+  <p>Both modifiers roll on an independent chance, scaled by tier, separate from the affix count. They are mutually exclusive - if both land, one is dropped at random.</p>
   <table class="t">
     <tr><th>Tier</th><th>Special chance (each)</th></tr>
-    <tr><td><span class="tierpill tier-white">White</span></td><td class="num">2%</td></tr>
-    <tr><td><span class="tierpill tier-rare">Rare</span></td><td class="num">6%</td></tr>
-    <tr><td><span class="tierpill tier-legendary">Legendary</span></td><td class="num">15%</td></tr>
+    <tr><td><span class="tierpill tier-white">White</span></td><td class="num">1%</td></tr>
+    <tr><td><span class="tierpill tier-magic">Magic</span></td><td class="num">4%</td></tr>
+    <tr><td><span class="tierpill tier-rare">Rare</span></td><td class="num">8%</td></tr>
+    <tr><td><span class="tierpill tier-legendary">Legendary</span> / <span class="tierpill tier-relic">Relic</span></td><td class="num">15%</td></tr>
   </table>
   <div class="vardef">
-    <div class="row"><span class="k">Indestructible</span><span class="d">never on White; rolls on the tier chance above</span></div>
-    <div class="row"><span class="k">Ethereal</span><span class="d">rolls on the tier chance; if both land, one is dropped at random</span></div>
+    <div class="row"><span class="k">Indestructible</span><span class="d">never on White; also purchasable at the cube for 10 legendary scrap + 2 tempers (non-ethereal items)</span></div>
+    <div class="row"><span class="k">Ethereal</span><span class="d">rolls on any tier; also granted by the Spectral cleansing blessing</span></div>
   </div>
 
+  <h2 id="replenish">Stackable gear &amp; the Replenishing enchant</h2>
+  <p>Gear that stacks - throwing weapons and similar consumable equipment - plays by its own rule: it <strong>never rolls ordinary per-item affixes</strong>, because independent rolls could not survive stack merging. Instead, a stackable drop has a <strong>7% chance</strong> to spawn as a proper enchanted stack:</p>
+  <ul>
+    <li>It rolls a real tier (<span class="tierpill tier-magic">Magic</span>, <span class="tierpill tier-rare">Rare</span>, or <span class="tierpill tier-legendary">Legendary</span>) with that tier's normal affixes and a Diablo name.</li>
+    <li>A bonus <strong>Replenishing</strong> affix is added: the stack <em>slowly restores its own quantity</em> toward its stack limit while it sits in storage (not while equipped or carried).</li>
+    <li>Different rolls remain <strong>separate stacks</strong>, exactly like items of different quality, and splitting a stack keeps the enchantment on both halves.</li>
+  </ul>
+  <div class="callout good"><b>Cube-legal.</b> Rare and better Replenishing stacks are valid Luminary Cube gear: reroll or upgrade them under the usual tier rules. Rerolling can replace the Replenishing affix itself, so gamble deliberately.</div>
+  <div class="callout"><b>Migration.</b> On older saves, previously-affixed stackables without the Replenishing enchant are quietly returned to plain - the per-instance rolls they carried were the source of stack-merge bugs.</div>
+
   <h2>At the Luminary Cube</h2>
-  <p>You can make any item <strong>Indestructible</strong> at the <a class="xref" href="cube.html">Luminary Cube</a>. Ethereal arrives naturally on rolls and through one of the twelve <a class="xref" href="cleansing.html">cleansing blessings</a> (Spectral, which also overcharges affixes uncapped).</p>
+  <p>You can make any non-ethereal item <strong>Indestructible</strong> at the <a class="xref" href="cube.html">Luminary Cube</a>. Ethereal arrives naturally on rolls and through the <a class="xref" href="cleansing.html">Spectral blessing</a>, which also overcharges affixes uncapped.</p>
 
   <div class="pagenav" id="pagenav"></div>
 </article>

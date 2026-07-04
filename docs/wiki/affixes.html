@@ -16,13 +16,15 @@
   <p class="sub">The per-instance bonuses that make two copies of the same item different - their kinds, their potency ranks, and the ranges they roll within.</p>
 
   <h2>Affix kinds</h2>
-  <p>Every affix is one of a handful of kinds, drawn from a rarity-weighted pool. Stat affixes are the common fallback; skills, all-skills, and auras are progressively rarer.</p>
+  <p>Every affix is one of a handful of kinds, drawn from a rarity-weighted pool. Stat affixes are the common fallback; skills, capacities, all-skills, and auras are progressively rarer.</p>
   <table class="t">
     <tr><th>Kind</th><th>Effect</th><th>Notes</th></tr>
     <tr><td>Stat</td><td>A flat bonus to any stat loaded in your game (modded stats included).</td><td>Higher tiers bias toward a curated "good" pool.</td></tr>
+    <tr><td>Capacity</td><td>Enchants the wearer's body: manipulation, sight, moving, blood pumping and more.</td><td>Suffix-only ("of the Surgeon"); applied via a hidden wearer enchantment so it stacks cleanly across items. Consciousness is Legendary-or-better.</td></tr>
     <tr><td>Skill</td><td>+N to a single skill.</td><td>Rare; each extra skill affix on the item makes the next far rarer.</td></tr>
-    <tr><td>All-Skills</td><td>+N to <em>every</em> skill.</td><td>Ultra-rare; carries a small cross-penalty so it is not strictly dominant.</td></tr>
+    <tr><td>All-Skills</td><td>+N to <em>every</em> skill.</td><td>Ultra-rare; at most one per item.</td></tr>
     <tr><td>Aura</td><td>A radiating battlefield effect.</td><td>At most one per item. See <a href="auras.html">Auras</a>.</td></tr>
+    <tr><td>Replenishing</td><td>A stack slowly restores its own quantity in storage.</td><td>Stackable gear only - see <a href="special.html#replenish">Stackables</a>.</td></tr>
     <tr><td>Isekai stat</td><td>+N to an Isekai RPG Leveling attribute.</td><td>Only when Isekai Leveling is installed; favoured on the first roll.</td></tr>
   </table>
 
@@ -31,8 +33,8 @@
   <table class="t">
     <tr><th>Rank</th><th>Multiplier</th><th>Where it appears</th></tr>
     <tr><td>Normal</td><td class="num">&times;1.0</td><td>any tier</td></tr>
-    <tr><td>Greater &#9733;</td><td class="num">&times;1.2</td><td>naturally on Legendary &amp; Relic</td></tr>
-    <tr><td>Artifact &#10022;</td><td class="num">&times;1.5</td><td>Relic-tier only</td></tr>
+    <tr><td>Greater &#9733;</td><td class="num">&times;1.2</td><td>Legendary &amp; Relic: 15% per affix, and a Legendary item is guaranteed at least one</td></tr>
+    <tr><td>Artifact &#10022;</td><td class="num">&times;1.5</td><td>Relic-tier only: 30% per affix naturally, or via the cube</td></tr>
   </table>
   <p>For integer affixes (skills and Isekai stats), Artifact does more than multiply - it pushes the value <strong>one step past the normal cap</strong>:</p>
   <div class="vardef">
@@ -42,8 +44,8 @@
   </div>
 
   <h2>Roll ranges</h2>
-  <p>Every numeric affix is rolled within a range derived from the receiving item and the global potency multiplier. The item card can show that range beside each affix - toggle the range icon in the card's top-right corner. Auras are the exception: their effect text already states their strength, so a separate range would read as doubled information.</p>
-  <div class="math"><div class="mh">Stat affix value</div><div class="eq">value = baseRef <span class="op">&middot;</span> roll[StatRollFracMin .. StatRollFracMax]
+  <p>Every numeric affix is rolled within a range derived from the receiving item and the global potency multiplier. The item card can show that range beside each affix - toggle the range icon in the card's top-right corner. Auras are the exception: their effect text already states their strength.</p>
+  <div class="math"><div class="mh">Stat affix value</div><div class="eq">value = baseRef <span class="op">&middot;</span> roll[5% .. 15%]   <span class="cmt"># curated marquee words carry wider explicit bands</span>
                 <span class="op">&middot;</span> <span class="num">potencyMultiplier</span> <span class="op">&middot;</span> rankMult</div></div>
   <div class="vardef">
     <div class="row"><span class="k">baseRef</span><span class="d">a reference magnitude for that stat, so a +CarryingCapacity roll is sensible next to a +MoveSpeed roll</span></div>
@@ -51,26 +53,38 @@
     <div class="row"><span class="k">rankMult</span><span class="d">1.0 / 1.2 / 1.5 for Normal / Greater / Artifact</span></div>
   </div>
 
+  <h2 id="content-aware">Content-aware drops</h2>
+  <p>Rolls respect the item they land on, Diablo-style:</p>
+  <ul>
+    <li><strong>Weapons never roll armor bonuses</strong>, and ranged weapons never roll melee affixes (and vice versa). Neutral stats - labor, move speed, carrying - roll on both.</li>
+    <li><strong>Auras only appear on</strong> weapons, chest armor, helmets, and shields; weapons only roll offensive auras.</li>
+    <li><strong>Stackable gear</strong> never rolls ordinary affixes - it can roll the <a class="xref" href="special.html#replenish">Replenishing</a> package instead.</li>
+  </ul>
+
+  <h2 id="tech">Tech-aware affixes</h2>
+  <p>Affix flavor respects your playthrough's tech level, so a medieval colony never sees mechanoid modifiers on a longsword. The gate reads the <strong>higher of your colony's tech level and the item's own</strong>, live at every roll:</p>
+  <table class="t">
+    <tr><th>Gated content</th><th>Needs</th></tr>
+    <tr><td>Mechanitor stats (bandwidth, mech repair, subcore work&hellip;)</td><td>Industrial or later colony</td></tr>
+    <tr><td>Overclocked (work speed word)</td><td>Industrial or later</td></tr>
+    <tr><td>Glittertech, Marine, of the Archotech (flavor words)</td><td>Spacer or later</td></tr>
+  </table>
+  <div class="callout"><b>Item tech counts too.</b> A genuine charge rifle that finds its way into a medieval game can still roll its native spacer flavor, because the item's own tech level raises the gate. Standard Crashlanded colonies (Industrial) see no change, and tech-advancement mods are picked up automatically. Toggle on the <b>Affixes</b> settings tab (on by default).</div>
+
   <h2 id="prefix-suffix">Prefixes, suffixes &amp; the catalogue</h2>
-  <p>Every stat affix belongs to a <strong>prefix</strong> or <strong>suffix</strong> slot and carries an authored Diablo-styled word ("Cruel", "of the Muffalo"). Words come from a curated catalogue of ~90 entries - browse the full <a class="xref" href="prefix-suffix.html">Prefix &amp; Suffix Table</a> - and any eligible stat the catalogue doesn't cover, including modded stats, is auto-synthesised so it still rolls, just with a heuristic name. Each catalogue entry is gated to a tier <strong>band</strong> (a minimum and a maximum tier), so marquee stats escalate through named ranks as the tier rises (e.g. melee damage: <em>Jagged &rarr; Cruel &rarr; Merciless</em>).</p>
-  <p>Stats where <em>lower</em> is better - aiming time, weapon cooldowns, incoming damage, mech times, need fall-rates and the like - automatically roll as a <strong>negative</strong> offset, so an affix on one of them is always a benefit (e.g. <code>aiming time -12%</code>). Greater and Artifact ranks deepen the reduction rather than flipping it.</p>
+  <p>Every stat affix belongs to a <strong>prefix</strong> or <strong>suffix</strong> slot and carries an authored Diablo-styled word ("Cruel", "of the Muffalo"). Words come from a curated catalogue of ~90 entries - browse the full <a class="xref" href="prefix-suffix.html">Prefix &amp; Suffix Table</a> - and any eligible stat the catalogue doesn't cover, including modded stats, is auto-synthesised so it still rolls, just with a heuristic name. Each catalogue entry is gated to a tier <strong>band</strong>, so marquee stats escalate through named ranks as the tier rises (melee damage: <em>Jagged &rarr; Cruel &rarr; Merciless</em>).</p>
+  <p>Stats where <em>lower</em> is better - aiming time, weapon cooldowns, incoming damage, need fall-rates and the like - automatically roll as a <strong>negative</strong> offset, so an affix on one of them is always a benefit (e.g. <code>aiming time -12%</code>).</p>
 
   <h2 id="rare-exclusive">Rare-exclusive affixes</h2>
-  <p>A dedicated pool of <strong>12 affixes rolls only on Rare items</strong> - never Magic (too low) and never Legendary (capped out), in the spirit of Diablo 2's "Fool's" mod. Rare items still roll their normal 1-2 prefix / 1-2 suffix budget; these simply become part of what those slots can draw, at strong value bands.</p>
-  <table class="t">
-    <tr><th>Prefixes</th><th>Suffixes</th></tr>
-    <tr><td>Fool's (melee damage), Sharpshooter's (accuracy), Tempered (sharp armor), Ramparted (blunt armor), Quicksilver (move speed), Berserker's (melee DPS)</td><td>of the Fool (melee hit), of the Ox (carry), of Diligence (work speed), of the Stalwart (pain threshold), of the Adept (learning), of the Warden (toxic resistance)</td></tr>
-  </table>
-  <div class="callout"><b>Why they matter.</b> A lucky Rare can rival a Legendary on a specific stat - the classic ARPG thrill of a yellow drop that out-rolls your orange.</div>
+  <p>A dedicated pool of <strong>12 affixes rolls only on Rare items</strong> - never Magic (too low) and never Legendary (capped out), in the spirit of Diablo 2's "Fool's" mod. They carry stronger value bands, so a lucky Rare can out-roll a Legendary on a specific stat.</p>
 
   <h2 id="variance">Base-stat variance</h2>
   <p>Beyond affixes, every item rolls a <strong>&plusmn;15%</strong> variance on its own base stats - armor (sharp / blunt / heat) for apparel, and melee or ranged damage for weapons. Two otherwise-identical plasteel longswords will have slightly different damage. The variance is stored per item and is shown in the white-stat block of the card.</p>
-  <div class="callout"><b>Why it matters.</b> Combined with affixes, base variance means you genuinely hunt for the <em>best roll</em> of an item, not just the highest tier - exactly like grinding a perfect ARPG drop.</div>
 
   <h2>Worked example</h2>
-  <div class="callout gold"><b>A Legendary marine helmet.</b> It rolls 5 affixes under a grand title. One is <code>+ArmorRating_Sharp</code> which lands Greater (&times;1.2). The card shows it as <b>+0.18 Sharp Armor &#9733;</b> with a range of <code>0.10 - 0.21</code>, telling you this roll is near the top of its band. The helmet's own base sharp armor also rolled <b>+9%</b> variance. Add a <code>+3 Shooting</code> skill affix and a couple of stat affixes, and this is a meaningfully better helmet than the next Legendary one you find.</div>
+  <div class="callout gold"><b>A Legendary marine helmet.</b> It rolls 5 affixes under a grand title. One is <code>+Sharp Armor</code> which lands Greater (&times;1.2); the card shows it with a range of <code>0.10 - 0.21</code>, telling you this roll is near the top of its band. A suffix lands <b>of the Surgeon</b>, quietly granting the wearer +7% manipulation. The helmet's own base sharp armor also rolled <b>+9%</b> variance. This is a meaningfully better helmet than the next Legendary one you find.</div>
 
-  <p>You can disable any individual affix - stat, skill, aura, unique, or modifier - from the <a class="xref" href="crafting.html#config">per-affix configuration window</a>.</p>
+  <p>You can disable any individual affix - stat, capacity, skill, aura, unique, or modifier - from the <a class="xref" href="crafting.html#config">per-affix configuration window</a>.</p>
 
   <div class="pagenav" id="pagenav"></div>
 </article>

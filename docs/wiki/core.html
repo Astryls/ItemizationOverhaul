@@ -26,7 +26,8 @@
     <tr><td>Drop rate</td><td>A per-item decision: enchanted, or a plain vanilla item.</td><td><a href="drop-rate.html">Affix Drop Rate</a></td></tr>
     <tr><td>Affixes</td><td>Stat / skill / aura bonuses, each at Normal, Greater &#9733;, or Artifact &#10022; potency.</td><td><a href="affixes.html">Affixes &amp; Ranks</a></td></tr>
     <tr><td>Base variance</td><td>&plusmn;15% on the item's own armor or damage, so no two are identical.</td><td><a href="affixes.html#variance">Base-stat variance</a></td></tr>
-    <tr><td>Special modifiers</td><td>Ethereal (+50% base stats) or Indestructible (never wears out).</td><td><a href="special.html">Ethereal &amp; Indestructible</a></td></tr>
+    <tr><td>Special modifiers</td><td>Ethereal (+50% base stats) or Indestructible (never wears out); stackables can roll Replenishing.</td><td><a href="special.html">Ethereal <tr><td>Special modifiers</td><td>Ethereal (+50% base stats) or Indestructible (never wears out).</td><td><a href="special.html">Ethereal &amp; Indestructible</a></td></tr>amp; Indestructible</a></td></tr>
+    <tr><td>Tech gating</td><td>Mechanitor stats and glitterworld words only roll when the colony (or the item) reaches their tech level.</td><td><a href="affixes.html#tech">Tech-aware affixes</a></td></tr>
     <tr><td>Artwork</td><td>Relics, uniques and mythics carry a real vanilla artwork - title, description and an Art tab.</td><td><a href="artwork.html">Item Artwork</a></td></tr>
   </table>
 
@@ -38,7 +39,7 @@
   <ul>
     <li><strong>World spawns</strong> - trader stock, raider gear, quest rewards, ancient-danger caches: rolled when generated.</li>
     <li><strong>Crafting</strong> - the crafter's skill scales the tier; a master can rarely forge a Relic. See <a class="xref" href="crafting.html">Crafting &amp; Config</a>.</li>
-    <li><strong>The Luminary Cube</strong> - re-roll, upgrade, graft, corrupt, or recycle existing gear. See <a class="xref" href="cube.html">The Luminary Cube</a>.</li>
+    <li><strong>The Luminary Cube</strong> - a Horadric-style container workbench: reroll, upgrade, graft, corrupt, recycle, and transmute. See <a class="xref" href="cube.html">The Luminary Cube</a>.</li>
   </ul>
 
   <h2>The endgame layers</h2>
@@ -51,7 +52,7 @@
 
   <h2>Compatibility at a glance</h2>
   <ul>
-    <li>Works automatically with modded weapons, apparel, and stats - the affix pool is drawn from everything loaded.</li>
+    <li>Works automatically with modded weapons, apparel, and stats - the affix pool is drawn from everything loaded, and tech-flavored affixes respect your playthrough via <a class="xref" href="affixes.html#tech">tech gating</a>.</li>
     <li>Vanilla persona / bladelink weapons spawn inert; the relic and cleansing systems own the bonding instead.</li>
     <li>Optional <a class="xref" href="../index.html#addons">addons</a> read the same per-item roll and layer on sockets &amp; gems, sets, uniques &amp; mythics, jewelry, requirements, consumables, catacombs, and rarity loot beams.</li>
     <li>Character Editor round-trips the full affix state; combat and stat mods see the bonuses through the central stat pipeline.</li>

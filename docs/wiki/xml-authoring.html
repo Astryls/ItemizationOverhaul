@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create Items via XML - Itemization Overhaul Codex</title>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>try{var t=localStorage.getItem("io-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)t="dark";if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+<nav id="site-nav"></nav>
+<div class="wiki">
+<aside class="wikiside" id="wikiside"></aside>
+<article class="doc">
+  <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; Create Items via XML</div>
+  <h1>Create Items via XML</h1>
+  <p class="sub">Add your own Uniques, Mythics, Sets, Runes, Gems, and Runewords with nothing but a Defs folder - no C# required. This is the same format the suite's own content uses.</p>
+
+  <h2>The one-minute setup</h2>
+  <p>Make a tiny mod folder with an <code>About/About.xml</code> and a <code>Defs/</code> folder, and load it <strong>after</strong> the addon whose content you are extending:</p>
+  <div class="xmlblock"><div class="xh">About/About.xml (the relevant part)</div><pre>&lt;loadAfter&gt;
+  &lt;li&gt;astryl.ItemizationOverhaulCore&lt;/li&gt;
+  &lt;li&gt;astryl.ItemizationOverhaulUniques&lt;/li&gt;  <span class="cmt">&lt;!-- or Runes / Sets, whichever you extend --&gt;</span>
+&lt;/loadAfter&gt;</pre></div>
+  <p>Drop any of the defs below into a file under <code>Defs/</code> (the file name doesn't matter). The addon scans its <code>DefDatabase</code> at startup, so your content joins the same pools as the built-in legends - drop tables, expedition rewards, cube dev tools, everything.</p>
+  <div class="callout"><b>Players count as mod makers here.</b> A personal defs-only mod is save-safe to add, and mistakes are gentle: a broken entry logs a red config error at startup and is skipped, it will not break the game.</div>
+
+  <h2>A Unique (Uniques &amp; Mythics)</h2>
+  <p>A <code>UniqueDef</code> is a fixed identity: a name, lore, a <b>slot</b>, and an authored affix loadout. Any gear of that slot - vanilla or modded - that rolls Relic tier can manifest as your unique.</p>
+  <div class="xmlblock"><div class="xh">Defs/MyUniques.xml</div><pre>&lt;<span class="tag">IOUniquesMythics.UniqueDef</span>&gt;
+  &lt;defName&gt;<span class="val">MyMod_U_WardensOath</span>&lt;/defName&gt;
+  &lt;uniqueName&gt;<span class="val">The Warden's Oath</span>&lt;/uniqueName&gt;
+  &lt;flavor&gt;<span class="val">Sworn on a wall that never fell.</span>&lt;/flavor&gt;
+  &lt;slot&gt;<span class="val">TorsoShell</span>&lt;/slot&gt;
+  &lt;weight&gt;<span class="val">1.0</span>&lt;/weight&gt;              <span class="cmt">&lt;!-- optional: pick chance vs other uniques --&gt;</span>
+  &lt;indestructible&gt;<span class="val">false</span>&lt;/indestructible&gt; <span class="cmt">&lt;!-- optional --&gt;</span>
+  &lt;affixes&gt;
+    &lt;li&gt;&lt;kind&gt;Stat&lt;/kind&gt;&lt;stat&gt;ArmorRating_Sharp&lt;/stat&gt;&lt;value&gt;0.25&lt;/value&gt;&lt;greater&gt;true&lt;/greater&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;kind&gt;Capacity&lt;/kind&gt;&lt;capacity&gt;Moving&lt;/capacity&gt;&lt;value&gt;0.08&lt;/value&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;kind&gt;Skill&lt;/kind&gt;&lt;skill&gt;Melee&lt;/skill&gt;&lt;value&gt;3&lt;/value&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;kind&gt;Aura&lt;/kind&gt;&lt;aura&gt;Defiance&lt;/aura&gt;&lt;value&gt;0.30&lt;/value&gt;&lt;artifact&gt;true&lt;/artifact&gt;&lt;/li&gt;
+  &lt;/affixes&gt;
+&lt;/<span class="tag">IOUniquesMythics.UniqueDef</span>&gt;</pre></div>
+
+  <h3>Slots</h3>
+  <table class="t">
+    <tr><th>Slot value</th><th>Matches</th></tr>
+    <tr><td><code>Head</code></td><td>overhead and eye cover</td></tr>
+    <tr><td><code>TorsoShell</code></td><td>outer armor layer over the torso</td></tr>
+    <tr><td><code>TorsoSkin</code></td><td>shirts, on-skin or middle torso wear</td></tr>
+    <tr><td><code>Legs</code></td><td>pants and leg wear</td></tr>
+    <tr><td><code>Utility</code></td><td>the belt layer</td></tr>
+    <tr><td><code>MeleeWeapon</code> / <code>RangedWeapon</code></td><td>weapons by class</td></tr>
+  </table>
+
+  <h3>Affix entries (the shared loadout format)</h3>
+  <table class="t">
+    <tr><th>kind</th><th>Extra field</th><th>value means</th></tr>
+    <tr><td><code>Stat</code></td><td><code>&lt;stat&gt;</code> - any StatDef defName, modded included</td><td>flat offset (0.25 = +25% on percent stats)</td></tr>
+    <tr><td><code>Capacity</code></td><td><code>&lt;capacity&gt;</code> - a PawnCapacityDef (Moving, Sight, Manipulation&hellip;)</td><td>capacity offset (0.08 = +8%)</td></tr>
+    <tr><td><code>Skill</code></td><td><code>&lt;skill&gt;</code> - a SkillDef</td><td>+levels</td></tr>
+    <tr><td><code>AllSkills</code></td><td>none</td><td>+levels to every skill</td></tr>
+    <tr><td><code>Aura</code></td><td><code>&lt;aura&gt;</code> - Vigor, Might, Defiance, Prayer, Meditation, Fanaticism, Conviction, HolyFire, HolyFreeze, HolyShock</td><td>aura magnitude (0.30 = a strong roll)</td></tr>
+  </table>
+  <p>Add <code>&lt;greater&gt;true&lt;/greater&gt;</code> or <code>&lt;artifact&gt;true&lt;/artifact&gt;</code> to rank an entry (artifact implies greater). <code>Relic</code> and <code>IsekaiStat</code> kinds are not supported in fixed loadouts - the startup config check will tell you.</p>
+
+  <h2>A Mythic (Uniques &amp; Mythics)</h2>
+  <p>A <code>MythicDef</code> adds a <b>power</b> on top of the unique format: a wearer hediff plus the name and description shown on the card. Point it at any <code>HediffDef</code> - one of the addon's existing powers, or your own.</p>
+  <div class="xmlblock"><div class="xh">Defs/MyMythics.xml</div><pre>&lt;<span class="tag">IOUniquesMythics.MythicDef</span>&gt;
+  &lt;defName&gt;<span class="val">MyMod_M_Dawnbreaker</span>&lt;/defName&gt;
+  &lt;mythicName&gt;<span class="val">Dawnbreaker</span>&lt;/mythicName&gt;
+  &lt;flavor&gt;<span class="val">The night lost, once. It remembers.</span>&lt;/flavor&gt;
+  &lt;slot&gt;<span class="val">MeleeWeapon</span>&lt;/slot&gt;
+  &lt;power&gt;<span class="val">IOUM_Power_Sanctified</span>&lt;/power&gt;          <span class="cmt">&lt;!-- a HediffDef applied to the wielder --&gt;</span>
+  &lt;powerName&gt;<span class="val">Sanctified</span>&lt;/powerName&gt;
+  &lt;powerDescription&gt;<span class="val">Heals a permanent scar periodically; injuries heal much faster.</span>&lt;/powerDescription&gt;
+  &lt;affixes&gt;
+    &lt;li&gt;&lt;kind&gt;Stat&lt;/kind&gt;&lt;stat&gt;MeleeDamageFactor&lt;/stat&gt;&lt;value&gt;0.55&lt;/value&gt;&lt;artifact&gt;true&lt;/artifact&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;kind&gt;Aura&lt;/kind&gt;&lt;aura&gt;Might&lt;/aura&gt;&lt;value&gt;0.50&lt;/value&gt;&lt;artifact&gt;true&lt;/artifact&gt;&lt;/li&gt;
+  &lt;/affixes&gt;
+&lt;/<span class="tag">IOUniquesMythics.MythicDef</span>&gt;</pre></div>
+  <p>Mythics default to <code>&lt;indestructible&gt;true&lt;/indestructible&gt;</code>. An optional <code>&lt;artAuthor&gt;</code> field (uniques too) names the in-lore maker on the vanilla Art tab.</p>
+
+  <h2>A Set (Item Sets)</h2>
+  <p>A <code>SetDef</code> names the set, points at the <b>hediff that carries the actual bonuses</b>, and describes the capstone aura. The <code>bonuses</code> lines are display text; the mechanics live on your hediff's stages (one stage per worn-piece count - copy any <code>DSLS_Set_*</code> hediff from the addon's <code>SetHediffs.xml</code> as a template).</p>
+  <div class="xmlblock"><div class="xh">Defs/MySets.xml</div><pre>&lt;<span class="tag">DiabloStyleLootSets.SetDef</span>&gt;
+  &lt;defName&gt;<span class="val">MyMod_Set_Nightwatch</span>&lt;/defName&gt;
+  &lt;setName&gt;<span class="val">Nightwatch Regalia</span>&lt;/setName&gt;
+  &lt;hediff&gt;<span class="val">MyMod_SetHediff_Nightwatch</span>&lt;/hediff&gt;
+  &lt;totalPieces&gt;<span class="val">4</span>&lt;/totalPieces&gt;
+  &lt;weight&gt;<span class="val">1.0</span>&lt;/weight&gt;
+  &lt;color&gt;<span class="val">(0.45, 0.65, 0.90)</span>&lt;/color&gt;
+  &lt;auraKind&gt;<span class="val">Nova</span>&lt;/auraKind&gt;                <span class="cmt">&lt;!-- Nova = damage pulse, Ward = healing field --&gt;</span>
+  &lt;auraName&gt;<span class="val">Midnight Toll</span>&lt;/auraName&gt;
+  &lt;auraDamageDef&gt;<span class="val">Stun</span>&lt;/auraDamageDef&gt;
+  &lt;auraDamage&gt;<span class="val">6</span>&lt;/auraDamage&gt;
+  &lt;auraRadius&gt;<span class="val">5.5</span>&lt;/auraRadius&gt;
+  &lt;bonuses&gt;
+    &lt;li&gt;<span class="val">(2 pieces) +10% move speed at night</span>&lt;/li&gt;
+    &lt;li&gt;<span class="val">(4 pieces) the full watch: darkness is yours</span>&lt;/li&gt;
+  &lt;/bonuses&gt;
+&lt;/<span class="tag">DiabloStyleLootSets.SetDef</span>&gt;</pre></div>
+
+  <h2>A Rune or Gem (Runes &amp; Socketables)</h2>
+  <p>A <code>SocketRuneDef</code> defines the socketable's effects <b>per host slot</b> (weapon / helmet / body armor / other) and points at a companion <code>ThingDef</code> for the physical item (copy one of the addon's rune ThingDefs, they inherit <code>IOR_RuneItemBase</code>). <code>ladderIndex</code> places runes on the 30-step ascension ladder - three identical runes transmute into the next index at the Luminary Cube.</p>
+  <div class="xmlblock"><div class="xh">Defs/MyRunes.xml</div><pre>&lt;<span class="tag">IORunes.SocketRuneDef</span>&gt;
+  &lt;defName&gt;<span class="val">MyMod_SocketRune_Foo</span>&lt;/defName&gt;
+  &lt;label&gt;<span class="val">Foo</span>&lt;/label&gt;
+  &lt;ladderIndex&gt;<span class="val">31</span>&lt;/ladderIndex&gt;          <span class="cmt">&lt;!-- gems use 200+, facets 100+, with isGem / isJewel --&gt;</span>
+  &lt;itemDefName&gt;<span class="val">MyMod_Rune_Foo</span>&lt;/itemDefName&gt;
+  &lt;color&gt;<span class="val">(0.8, 0.4, 0.9)</span>&lt;/color&gt;
+  &lt;dropWeight&gt;<span class="val">0.5</span>&lt;/dropWeight&gt;
+  &lt;weapon&gt;&lt;stat&gt;<span class="val">MeleeDamageFactor</span>&lt;/stat&gt;&lt;value&gt;<span class="val">0.06</span>&lt;/value&gt;&lt;/weapon&gt;
+  &lt;helmet&gt;&lt;stat&gt;<span class="val">GlobalLearningFactor</span>&lt;/stat&gt;&lt;value&gt;<span class="val">0.06</span>&lt;/value&gt;&lt;/helmet&gt;
+  &lt;armor&gt;&lt;stat&gt;<span class="val">ArmorRating_Sharp</span>&lt;/stat&gt;&lt;value&gt;<span class="val">0.04</span>&lt;/value&gt;&lt;/armor&gt;
+  &lt;other&gt;&lt;stat&gt;<span class="val">MoveSpeed</span>&lt;/stat&gt;&lt;value&gt;<span class="val">0.03</span>&lt;/value&gt;&lt;/other&gt;
+&lt;/<span class="tag">IORunes.SocketRuneDef</span>&gt;</pre></div>
+  <p>Slot effects may also be procs instead of stats: <code>&lt;weapon&gt;&lt;kind&gt;Burn&lt;/kind&gt;&lt;value&gt;0.12&lt;/value&gt;&lt;/weapon&gt;</code> (Ruby-style) or <code>Stun</code>. Facet jewels add <code>&lt;facetElement&gt;Fire&lt;/facetElement&gt;</code>, <code>&lt;elementDamageBonus&gt;</code>, and <code>&lt;resistPierce&gt;</code> and ignore the per-slot blocks - a facet reads the same in every socket.</p>
+
+  <h2>A Runeword (Runes &amp; Socketables)</h2>
+  <div class="xmlblock"><div class="xh">Defs/MyRunewords.xml</div><pre>&lt;<span class="tag">IORunes.RuneWordDef</span>&gt;
+  &lt;defName&gt;<span class="val">MyMod_RW_Nightfall</span>&lt;/defName&gt;
+  &lt;runewordName&gt;<span class="val">Nightfall</span>&lt;/runewordName&gt;
+  &lt;slot&gt;<span class="val">Weapon</span>&lt;/slot&gt;                    <span class="cmt">&lt;!-- Weapon / BodyArmor / Helmet / Other --&gt;</span>
+  &lt;runeSequence&gt;&lt;li&gt;<span class="val">IOR_SocketRune_Myr</span>&lt;/li&gt;&lt;li&gt;<span class="val">IOR_SocketRune_Onn</span>&lt;/li&gt;&lt;/runeSequence&gt;
+  &lt;description&gt;<span class="val">Spoken only after dark.</span>&lt;/description&gt;
+  &lt;effects&gt;
+    &lt;li&gt;&lt;stat&gt;<span class="val">MeleeDodgeChance</span>&lt;/stat&gt;&lt;value&gt;<span class="val">0.15</span>&lt;/value&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;kind&gt;<span class="val">Stun</span>&lt;/kind&gt;&lt;value&gt;<span class="val">0.10</span>&lt;/value&gt;&lt;/li&gt;
+  &lt;/effects&gt;
+&lt;/<span class="tag">IORunes.RuneWordDef</span>&gt;</pre></div>
+  <p>The word completes when the base item of the right slot holds <em>exactly</em> that rune sequence, in order, in exactly that many sockets. Runeword bonuses stack on top of each rune's own effect; set items refuse runewords.</p>
+
+  <h2>Testing your content</h2>
+  <ul>
+    <li><strong>Config errors first.</strong> Broken entries print red errors at startup naming your defName - fix those before anything else.</li>
+    <li><strong>Dev mode.</strong> The Luminary Cube's dev tools include <em>Make specific unique / mythic&hellip;</em> and <em>Add specific prefix / suffix&hellip;</em> pickers - your XML content appears there immediately, no waiting for a lucky drop.</li>
+    <li><strong>Balance guide.</strong> Compare against the built-in content: a unique's total loadout should feel like a great Relic roll, a mythic like a once-a-campaign event. When in doubt, copy an existing def and nudge.</li>
+  </ul>
+  <div class="callout good"><b>Ship it.</b> The same files work as a Workshop mod - your legends drop in anyone's game that runs the suite, and they inherit level requirements, loot beams, artwork, and cube handling for free.</div>
+
+  <div class="pagenav" id="pagenav"></div>
+</article>
+</div>
+<footer id="site-footer"></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

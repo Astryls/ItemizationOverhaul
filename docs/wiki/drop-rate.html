@@ -18,7 +18,7 @@
   <div class="callout"><b>See it live.</b> The <a class="xref" href="../index.html#lab">loot roller</a> on the home page rolls 24 drops at whatever rate you set, so you can watch the enchanted-vs-plain split shift in real time.</div>
 
   <h2>The setting</h2>
-  <p>Under the <b>Drop rates &amp; tiers</b> tab of <b>Options &rarr; Mod settings &rarr; Itemization Overhaul - Core</b> sits <strong>Enchanted item chance</strong> (default 100%). It is the probability that any dropped weapon or apparel spawns enchanted - rolling a tier and affixes as normal. The rest spawn <strong>plain</strong>: a mundane item with no affixes and no sockets. Plain gear still uses the mod's inspect card (shown as plain White) - the card takes over for every affixable weapon and apparel, enchanted or not.</p>
+  <p>Under the <b>Drop rates &amp; tiers</b> tab of <b>Options &rarr; Mod settings &rarr; Itemization Overhaul - Core</b> sits <strong>Enchanted item chance</strong> (default 20%). It is the probability that any dropped weapon or apparel spawns enchanted - rolling a tier and affixes as normal. The rest spawn <strong>plain</strong>: a mundane item with no affixes and no sockets. Plain gear still uses the mod's inspect card (shown as plain White) - the card takes over for every affixable weapon and apparel, enchanted or not.</p>
   <p>That same tab holds the tier chance sliders (Legendary / Rare / Magic, with the leftover White % shown live), the <strong>Relic chance</strong>, the Greater-affix chance and the potency multiplier. The <b>Affixes</b> tab adds the <strong>Aura affix chance</strong> and the per-affix on/off config. See <a class="xref" href="tiers.html#names">Loot Tiers</a> and <a class="xref" href="crafting.html#config">Crafting &amp; Config</a>.</p>
   <div class="math"><div class="mh">Per-item roll</div><div class="eq">if random &lt; <span class="num">enchantChance</span>:
     roll tier + affixes + specials   <span class="cmt"># enchanted</span>
@@ -52,9 +52,9 @@ else:
 
   <h2>Tuning advice</h2>
   <ul>
-    <li><strong>100%</strong> (default) - every drop is enchanted; the densest ARPG experience.</li>
+    <li><strong>100%</strong> - every drop is enchanted; the densest ARPG experience.</li>
     <li><strong>40 - 60%</strong> - a healthy mix; plain items are common, special finds feel earned.</li>
-    <li><strong>15 - 25%</strong> - lean and gritty; pair with raised tier odds so the rare enchanted drop is worth grabbing.</li>
+    <li><strong>15 - 25%</strong> (the shipped default is 20%) - lean and gritty; an enchanted find is a genuine event, and the Luminary Cube economy stays hungry.</li>
   </ul>
 
   <div class="pagenav" id="pagenav"></div>

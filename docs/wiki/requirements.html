@@ -13,24 +13,27 @@
 <article class="doc">
   <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; <a href="stats-levels.html">Stats &amp; Levels</a> &rsaquo; Requirement Model</div>
   <h1>Requirement Model</h1>
-  <p class="sub">The exact, deterministic scoring that turns an item's roll into a level and stat demand.</p>
+  <p class="sub">The exact, deterministic scoring that turns an item's roll into a level and stat demand. Every number below is a slider in the addon's settings.</p>
 
   <h2>Power Score</h2>
-  <div class="math"><div class="mh">Item power</div><div class="eq">base   = { White:0, Rare:8, Legendary:20, Relic:32 }
+  <div class="math"><div class="mh">Item power (defaults)</div><div class="eq">base   = { White:0, Magic:<span class="num">2</span>, Rare:<span class="num">6</span>, Legendary:<span class="num">20</span>, Relic:<span class="num">42</span> }
 power  = base
        + <span class="num">1</span> per affix
-       + <span class="num">2</span> extra per Greater affix
-       + <span class="num">4</span> extra per Artifact affix
-       + (Corrupted ? 4 : 0) + (Cleansed ? 6 : 0)
-       + (FactionRelic ? 6 : 0)
-       + max(0, quality - Normal)
-power  = max(1, power)</div></div>
-  <p>The required <strong>level</strong> equals the Power Score. White / plain items score 0 and demand nothing.</p>
+       + <span class="num">7</span> extra per Greater affix
+       + <span class="num">12</span> extra per Artifact affix
+       + (Corrupted ? <span class="num">4</span> : 0) + (Cleansed ? <span class="num">6</span> : 0)
+       + (FactionRelic ? <span class="num">6</span> : 0)
+<span class="cmt"># jewelry: Sanctified +6, Desecrated -6</span>
+
+level  = ceil( max(power, highest socketed rune floor) <span class="op">&middot;</span> <span class="num">0.6</span> )
+<span class="cmt"># 0.6 = the global scale slider - one knob to soften or harshen everything</span></div></div>
+  <p>White and plain items score 0 and demand nothing. Magic items ask only a token level; the curve steepens hard through Legendary and Relic, and Greater / Artifact ranks are what really price an item up.</p>
 
   <h2>Stat demands</h2>
-  <p>High-power items also demand attributes. The primary stat is keyed to the item's role; a secondary stat kicks in once the item is Legendary-class (power &ge; 20).</p>
-  <div class="math"><div class="mh">Stat requirements</div><div class="eq">primary    = 5 + ceil(power <span class="op">&middot;</span> 0.75)
-secondary  = 5 + ceil(power <span class="op">&middot;</span> 0.40)   <span class="cmt"># only when power &ge; 20</span></div></div>
+  <p>Higher-power items also demand attributes. The primary stat is keyed to the item's role; a secondary stat kicks in once power reaches <strong>25</strong>. Both pass through the same global 0.6 scale.</p>
+  <div class="math"><div class="mh">Stat requirements (defaults)</div><div class="eq">primary    = ceil( (5 + ceil(power <span class="op">&middot;</span> <span class="num">0.65</span>)) <span class="op">&middot;</span> 0.6 )
+secondary  = ceil( (5 + ceil(power <span class="op">&middot;</span> <span class="num">0.35</span>)) <span class="op">&middot;</span> 0.6 )   <span class="cmt"># only when power &ge; 25</span>
+mythic wis = ceil( (5 + ceil(power <span class="op">&middot;</span> <span class="num">0.41</span>)) <span class="op">&middot;</span> 0.6 )   <span class="cmt"># Mythics only</span></div></div>
   <table class="t">
     <tr><th>Item type</th><th>Primary &rarr; Secondary</th></tr>
     <tr><td>Ranged weapon</td><td>Dexterity &rarr; Strength</td></tr>
@@ -41,22 +44,22 @@ secondary  = 5 + ceil(power <span class="op">&middot;</span> 0.40)   <span class
 
   <h2>Special cases</h2>
   <ul>
-    <li><strong>Uniques</strong> are priced at a flat 48, <strong>Mythics</strong> at 60 (modifiers still stack), and Mythics add a tertiary <strong>Wisdom</strong> demand - "Mythic Attunement," because a god-forged artifact needs a mind strong enough to hold it.</li>
-    <li><strong>Runes</strong>: a rune's level floor is <code>ceil(ladderIndex &times; 1.2)</code>; a socketed item's level is <code>max(item, highest rune)</code> - Diablo 2 rules, never additive.</li>
-    <li><strong>Jewelry</strong>: worn pieces use tier base plus rung bonuses (Lesser +1 &hellip; Divine +7), Sanctified +6, Desecrated -6; charms are level-only and gate at attunement rather than equip.</li>
+    <li><strong>Uniques</strong> use a flat base of <b>50</b>, <strong>Mythics</strong> <b>66</b> (modifiers still stack), and Mythics add the tertiary <strong>Wisdom</strong> demand - "Mythic Attunement," because a god-forged artifact needs a mind strong enough to hold it.</li>
+    <li><strong>Runes</strong>: a rune's level floor is <code>ceil(ladderIndex &times; 1.3)</code>, folded into the item's level as a floor before the global scale - Diablo 2 rules, never additive. <strong>Gems</strong> use <code>ceil(index &times; 2.5)</code> but are hard-capped at level 20, so they stay the everyman's socketable. <strong>Facet jewels</strong> ask a flat 25.</li>
+    <li><strong>Jewelry</strong>: worn pieces use tier base plus rung bonuses (Lesser through Divine), Sanctified +6, Desecrated -6; charms are level-only and gate at attunement rather than equip.</li>
   </ul>
 
-  <div class="callout gold"><b>Worked example.</b> A corrupted Legendary greatsword with 5 affixes, two of them Greater, scores <code>20 + 5 + 2&times;2 + 4(corrupt) = 33</code>. It requires Level 33, Strength <code>5 + ceil(33&times;0.75) = 30</code>, and - being power &ge; 20 - Dexterity <code>5 + ceil(33&times;0.40) = 19</code>. A genuine endgame blade.</div>
+  <div class="callout gold"><b>Worked example.</b> A corrupted Legendary greatsword with 5 affixes, two of them Greater, scores <code>20 + 5 + 2&times;7 + 4 = 43</code>. Its demands: Level <code>ceil(43&times;0.6) = 26</code>, Strength <code>ceil((5+28)&times;0.6) = 20</code>, and - power &ge; 25 - Dexterity <code>ceil((5+16)&times;0.6) = 13</code>. A genuine endgame blade priced like one.</div>
 
   <h2>Enforcement</h2>
-  <p>A colonist who doesn't meet an item's level and stat demands simply <strong>cannot equip or wear it</strong> &mdash; the attempt is blocked with a reason. The gate sits on the equip path itself, so it holds no matter how the item is equipped:</p>
+  <p>A colonist who doesn't meet an item's demands simply <strong>cannot equip or wear it</strong> - the attempt is blocked with the reason spelled out. The gate sits on the equip path itself, so it holds everywhere:</p>
   <ul>
-    <li><strong>Vanilla</strong> equip and wear orders.</li>
-    <li><strong>True RPG Inventory</strong> &mdash; the drag-to-slot and float-menu <em>Wear</em> / <em>Equip</em> actions are gated at the source, before any inventory state changes.</li>
-    <li><strong>Simple Sidearms</strong> &mdash; taking a sidearm into a weapon slot is checked the same way.</li>
+    <li><strong>Vanilla</strong> equip and wear orders, outfit policies, and AI pickup.</li>
+    <li><strong>True RPG Inventory</strong> - drag-to-slot and float-menu <em>Wear</em> / <em>Equip</em> are gated at the source.</li>
+    <li><strong>Simple Sidearms</strong> - taking a sidearm into a weapon slot is checked the same way.</li>
   </ul>
 
-  <div class="callout"><b>Nothing is stored.</b> The score is recomputed on demand, so re-rolling or cleansing an item instantly updates its requirement.</div>
+  <div class="callout"><b>Nothing is stored.</b> The score is recomputed on demand, so re-rolling, corrupting, or cleansing an item instantly updates its requirement. Calculations are fail-open: a bug can never break equipping.</div>
 
   <div class="pagenav" id="pagenav"></div>
 </article>

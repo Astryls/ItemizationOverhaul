@@ -13,37 +13,69 @@
 <article class="doc">
   <div class="breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Wiki</a> &rsaquo; The Luminary Cube</div>
   <h1>The Luminary Cube</h1>
-  <p class="sub">A crafting station that reshapes your loot - re-roll, upgrade, graft, corrupt, make indestructible, and recycle gear into reagents.</p>
+  <p class="sub">A real Horadric-style container workbench: drop gear and reagents into its grid, then reroll, upgrade, graft, corrupt, recycle, and transmute.</p>
 
-  <h2>The workbench</h2>
-  <p>Build the <strong>Luminary Cube</strong> and select it to open <em>Cube Gear</em> - a custom UI listing every affixed item on the map (and worn / carried by colonists). Pick an item and the Cube offers a row of operations, each consuming reagents recycled from unwanted gear.</p>
+  <div class="heroimg"><img src="../assets/img/core/Things/Building/LuminaryCube.png" alt="The Luminary Cube"><div class="d"><b>Research "Enchanting and recycling"</b> to build the cube. It accepts <span class="tierpill tier-rare">Rare</span>, <span class="tierpill tier-legendary">Legendary</span>, and <span class="tierpill tier-relic">Relic</span> gear plus its reagents - and opens into a genuine Diablo-style container window.</div></div>
 
-  <h2>Operations</h2>
+  <h2>The Horadric grid</h2>
+  <p>The cube holds items in a physical <strong>3&times;4 container grid</strong>. Gear and reagents live inside the building itself; deconstruct it and they spill out beside it.</p>
+  <div class="cubegrid">
+    <div class="slot hl"><img src="../assets/img/core/Things/Item/LegendaryScrap.png" title="legendary dust"></div>
+    <div class="slot"><img src="../assets/img/core/Things/Item/AncestralScrap.png" title="legendary scrap"></div>
+    <div class="slot"><img src="../assets/img/core/Things/Item/RelicDust.png" title="relic dust"></div>
+    <div class="slot"><img src="../assets/img/core/Things/Item/Temper.png" title="temper"></div>
+    <div class="slot"></div><div class="slot"></div><div class="slot"></div><div class="slot"></div>
+    <div class="slot"></div><div class="slot"></div><div class="slot"></div><div class="slot"></div>
+  </div>
+  <ul>
+    <li><strong>Drag and drop</strong> between the grid and a pawn's inventory. With <b>True RPG Inventory</b> the cube window and the gear tab share one cursor - pick an item up in one window and drop it in the other.</li>
+    <li><strong>Right-click</strong> items for context actions; anything that no longer fits is ejected beside the cube.</li>
+    <li>Reagents <strong>merge into stacks</strong> inside the grid, and an <strong>Empty cube</strong> gizmo dumps everything out.</li>
+    <li>Prefer the classic flow? A settings toggle restores the original list window.</li>
+  </ul>
+
+  <h2>Pawns walk to the cube</h2>
+  <p>Using the cube is a real job: gizmos and right-click orders <strong>send the pawn over</strong>, and the window opens when they arrive. Gear carried by that pawn moves in and out <em>instantly</em> once the window is open - only map-loose items need hauling.</p>
+
+  <h2>Delivery logistics</h2>
+  <p>With <strong>Require delivery</strong> on (the default), reagent costs are counted and consumed <strong>from the cube's contents</strong>, not from thin air: haulers stock the cube like any other workbench, and when your last queued delivery lands while the window is closed, the game <strong>pauses and opens the cube</strong> so you can get to work. Turn it off and reagents are pulled from anywhere on the map.</p>
+
+  <h2>Operations &amp; costs</h2>
+  <div class="igrid">
+    <div class="cell"><img src="../assets/img/core/UI/Cube/Reroll.png"><div class="nm">Reroll</div><div class="d">dust &times;3 - gamble one affix</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Cube/Upgrade.png"><div class="nm">Upgrade</div><div class="d">scrap &times;2 to Greater; relic dust + scrap &times;3 to Artifact</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Cube/Graft.png"><div class="nm">Graft</div><div class="d">apply a stored Temper</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Cube/Indestructible.png"><div class="nm">Indestructible</div><div class="d">scrap &times;10 + temper &times;2</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Cube/Corrupt.png"><div class="nm">Corrupt</div><div class="d">heart + scrap &times;5</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Cube/ApplySpecific.png"><div class="nm">Apply specific</div><div class="d">dev mode: choose the exact affix</div></div>
+  </div>
   <table class="t">
-    <tr><th>Operation</th><th>What it does</th></tr>
-    <tr><td>Re-roll</td><td>Gambles one affix - may downgrade, with a small chance to land Greater. Capped at 10 re-rolls per item.</td></tr>
-    <tr><td>Upgrade</td><td>Promotes an affix to Greater &#9733;.</td></tr>
-    <tr><td>Add affix / aura</td><td>Adds a fresh affix up to the tier's hard cap.</td></tr>
-    <tr><td>Graft</td><td>Moves an affix from one item onto another.</td></tr>
-    <tr><td>Make Indestructible</td><td>The item never wears out again.</td></tr>
-    <tr><td>Corrupt</td><td>Seals in a <a href="corruption.html">unique effect</a> and locks the item.</td></tr>
-    <tr><td>Apply specific</td><td>Dev / tuning: apply a chosen affix or aura.</td></tr>
+    <tr><th>Operation</th><th>Cost</th><th>Available on</th></tr>
+    <tr><td>Reroll an affix</td><td><img class="ti" src="../assets/img/core/Things/Item/LegendaryScrap.png">legendary dust &times;3</td><td>Rare and better - <b>5 rerolls on Rare, 10 above</b>, 8% Greater chance</td></tr>
+    <tr><td>Upgrade to Greater &#9733;</td><td><img class="ti" src="../assets/img/core/Things/Item/AncestralScrap.png">legendary scrap &times;2</td><td>any eligible affix</td></tr>
+    <tr><td>Upgrade to Artifact &#10022;</td><td><img class="ti" src="../assets/img/core/Things/Item/RelicDust.png">relic dust &times;1 + scrap &times;3</td><td>Relic-tier items</td></tr>
+    <tr><td>Corrupt</td><td>heart &times;1 + scrap &times;5</td><td>Legendary and Relic gear</td></tr>
+    <tr><td>Make Indestructible</td><td>scrap &times;10 + <img class="ti" src="../assets/img/core/Things/Item/Temper.png">temper &times;2</td><td>non-ethereal items</td></tr>
+    <tr><td>Graft (apply a Temper)</td><td>a stored temper</td><td>Legendary and Relic gear</td></tr>
   </table>
-  <div class="callout"><b>Gamble responsibly.</b> Re-roll is a true gamble - it can make an affix worse. The 10-use limit per item means you cannot infinitely fish for a perfect roll; choose your targets.</div>
+  <div class="callout"><b>Rare gear is welcome, with limits.</b> <span class="tierpill tier-rare">Rare</span> items can be rerolled (5 uses), upgraded to Greater, and made Indestructible. <b>Corrupt, Graft, and Artifact</b> belong to Legendary and Relic gear. And yes - Corrupt costs a literal <b>heart</b>. Harvest responsibly.</div>
 
   <h2>Recycling - where reagents come from</h2>
-  <p>The Cube is also a recycler. Queue a <strong>recycle</strong> bill and a Crafting colonist breaks down Rare or Legendary gear into:</p>
-  <ul>
-    <li><strong>Tier scrap</strong> - Rare and Legendary scrap, the bulk reagent for Cube operations.</li>
-    <li><strong>Relic Dust</strong> - rare, from the richest items; the premium reagent (and used by Jewelry's Sanctification).</li>
-    <li><strong>Tempers</strong> - single-affix reagents grafted onto gear.</li>
-  </ul>
-  <div class="callout"><b>Bills need the Cube.</b> The Cube ships its own work-giver so colonists pick up recycle bills - select the Cube, add a "recycle rare / legendary gear" bill, and a Crafting colonist completes it.</div>
+  <p>Special reagents come <strong>only</strong> from the cube's recycle bills (smelting and burning give vanilla results). Queue a bill and a crafter breaks enchanted gear down:</p>
+  <table class="t">
+    <tr><th>Recycled gear</th><th>Yield</th></tr>
+    <tr><td><span class="tierpill tier-rare">Rare</span></td><td><img class="ti" src="../assets/img/core/Things/Item/LegendaryScrap.png">2 legendary dust</td></tr>
+    <tr><td><span class="tierpill tier-legendary">Legendary</span></td><td><img class="ti" src="../assets/img/core/Things/Item/AncestralScrap.png">1 legendary scrap + 2 dust</td></tr>
+    <tr><td><span class="tierpill tier-relic">Relic</span> ingredient</td><td><img class="ti" src="../assets/img/core/Things/Item/RelicDust.png">+2 relic dust on top</td></tr>
+  </table>
+  <p><strong>Material conversion</strong> means no surplus is wasted: transmute <b>5 dust &rarr; 1 scrap</b> or <b>1 scrap &rarr; 4 dust</b> right in the cube. With delivery logistics on, conversion uses the cube's contents and the products drop straight back into the grid.</p>
 
-  <h2>Right-click &amp; gambling</h2>
-  <p>Right-click an item in Cube Gear for quick actions, and the Cube hosts a <strong>gambling reroll</strong> for players who want to chase rolls. Every numeric affix in the Cube shows its full roll range so you always know how good a roll could get.</p>
+  <h2>Runes addon tie-in</h2>
+  <p>With <a class="xref" href="runes.html">Runes &amp; Socketables</a> installed, the cube also <strong>transmutes three identical runes into the next rune on the ladder</strong> - the classic Horadric ascension recipe.</p>
 
-  <div class="callout gold"><b>Worked example.</b> You have an Legendary rifle with four good affixes and one weak <code>+1 Crafting</code>. Recycle a stack of junk Legendaries into scrap, then <b>graft</b> a <code>+Shooting Accuracy</code> Temper over the weak affix - and <b>upgrade</b> your best damage affix to Greater. Two operations later it is a keeper. When you are ready to commit, <b>corrupt</b> it for a unique capstone - just know that locks it.</div>
+  <div class="callout gold"><b>Worked example.</b> A Legendary rifle has four good affixes and one weak one. Recycle a junk Legendary into scrap and dust, <b>reroll</b> the weak affix (3 dust - it lands Greater on the 8% chance!), then <b>upgrade</b> your best damage affix (2 scrap). Two operations later it is a keeper. When you are ready to commit, <b>corrupt</b> it for a unique capstone - one heart, five scrap, locked forever.</div>
+
+  <div class="callout"><b>Try it yourself.</b> The <a class="xref" href="reroll-lab.html">Cube Reroll Lab</a> simulates the reroll gamble with the real costs, caps, and Greater odds - spend imaginary dust before you spend real dust.</div>
 
   <div class="pagenav" id="pagenav"></div>
 </article>

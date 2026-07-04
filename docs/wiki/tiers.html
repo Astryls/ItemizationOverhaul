@@ -23,7 +23,7 @@
     <tr><td><span class="tierpill tier-magic">Magic</span></td><td class="num">1</td><td class="num">1</td><td>"Cruel Longsword of Skill"</td><td>none</td></tr>
     <tr><td><span class="tierpill tier-rare">Rare</span></td><td class="num">1 - 2</td><td class="num">1 - 2</td><td>"Gore Ripper" (2-word)</td><td>rare-only affix pool</td></tr>
     <tr><td><span class="tierpill tier-legendary">Legendary</span></td><td class="num">2 - 3</td><td class="num">2 - 3</td><td>"The Ashen Aegis" (grand title)</td><td>rolls <b>Greater &#9733;</b></td></tr>
-    <tr><td><span class="tierpill tier-relic">Relic</span></td><td class="num" colspan="2">always 7 total</td><td>relic / faction name</td><td><b>Artifact &#10022;</b> capable</td></tr>
+    <tr><td><span class="tierpill tier-relic">Relic</span></td><td class="num" colspan="2">always 4 + 3</td><td>relic / faction name</td><td><b>Artifact &#10022;</b> capable</td></tr>
   </table>
   <p><strong>White</strong> carries no affixes at all - only natural &plusmn;15% base-stat variance (see <a class="xref" href="affixes.html#variance">Base-stat variance</a>). A truly plain (un-enchanted) drop keeps the bare vanilla item; an enchanted White still shows its base-stat range on the card. Higher tiers bias their stat affixes toward a curated "premium" pool of impactful stats.</p>
 
@@ -65,6 +65,18 @@ relic? = (tier == Legendary) <span class="op">and</span> random &lt; <span class
 
   <div class="callout"><b>Tier gates the whole suite.</b> Item sets only roll on Legendary or Relic; the gold Unique overlay requires Legendary; level requirements scale from the tier. Lower the tier odds and the entire suite naturally produces fewer special items.</div>
 
+  <h2>Frames &amp; reagent look</h2>
+  <p>Rare and better wear an ornate frame on the item card; the cube's reagents carry the same visual language. These are the mod's real textures:</p>
+  <div class="igrid">
+    <div class="cell"><img src="../assets/img/core/UI/Border/Ancestral.png" alt="Rare frame"><div class="nm">Rare frame</div><div class="d">yellow filigree</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Border/Legendary.png" alt="Legendary frame"><div class="nm">Legendary frame</div><div class="d">gold, grand title</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Border/Relic.png" alt="Relic frame"><div class="nm">Relic frame</div><div class="d">rose, animated sparkle</div></div>
+    <div class="cell"><img src="../assets/img/core/Things/Item/LegendaryScrap.png" alt="legendary dust"><div class="nm">Legendary dust</div><div class="d">from Rare recycling</div></div>
+    <div class="cell"><img src="../assets/img/core/Things/Item/AncestralScrap.png" alt="legendary scrap"><div class="nm">Legendary scrap</div><div class="d">from Legendary recycling</div></div>
+    <div class="cell"><img src="../assets/img/core/Things/Item/RelicDust.png" alt="relic dust"><div class="nm">Relic dust</div><div class="d">from Relic ingredients</div></div>
+  </div>
+  <h2>Market value</h2>
+  <p>Rarity is worth real silver: an enchanted item's market value is multiplied by its tier - <strong>Magic &times;1.4, Rare &times;2, Legendary &times;3.5, Relic &times;6</strong> by default, all tunable on the <b>Market value</b> settings tab. Uniques and Mythics multiply further on top.</p>
   <div class="pagenav" id="pagenav"></div>
 </article>
 </div>

@@ -30,7 +30,7 @@
     <tr><td>Holy Freeze</td><td>Chills nearby foes (slows them)</td></tr>
     <tr><td>Holy Shock</td><td>Pulses lightning at nearby foes</td></tr>
   </table>
-  <p>The Holy (damage) auras are the rarest of all auras in the roll.</p>
+  <p>The Holy (damage) auras are the rarest of all auras in the roll. Auras are content-aware: they only appear on <strong>weapons, chest armor, helmets, and shields</strong>, and a weapon only ever rolls an <strong>offensive</strong> aura (defensive auras like Defiance and Prayer stay on armor).</p>
 
   <h2>How auras apply</h2>
   <p>Aura stat bonuses are injected at the central stat finalize step, so they show up <strong>everywhere</strong> - the bio stats page, the gear tab, and in live combat alike. A Defiance helmet's armor bonus appears on the pawn's armor stat; a Vigor item's speed appears on Move Speed.</p>
@@ -53,15 +53,30 @@ Artifact &#10022;  -> &times;1.5</div></div>
   <div class="callout gold"><b>Entropy on a corrupted relic.</b> A relic-tier breastplate is corrupted and rolls the <b>Entropy</b> unique. Now every hostile that steps inside its field gains the <code>Chilled</code> hediff - at high intensity it deepens to "entropic," dropping their move speed by up to <b>2.4</b>. Pair it with <a class="xref" href="runes.html#facets">a cold facet jewel</a> in the Runes addon and the field's damage is amplified on top.</div>
 
   <h2>Tuning brightness</h2>
-  <p>Auras render in two independently-scalable layers, both controlled from <b>Mod settings &rarr; Visuals &rarr; Auras</b> and both ranging <strong>0&ndash;200%</strong> (default 100%):</p>
+  <p>Auras render in two independently-scalable layers, both controlled from <b>Mod settings &rarr; Visuals &rarr; Auras</b> and both ranging <strong>0 - 200%</strong> (shipped defaults: glow <b>30%</b>, particles <b>75%</b>):</p>
   <div class="vardef">
     <div class="row"><div class="k">Aura glow brightness</div><div class="d">The ground glow disc and the spinning rune beneath the pawn.</div></div>
     <div class="row"><div class="k">Aura particle brightness</div><div class="d">The floating orbs and elemental particles (embers, snow, sparks).</div></div>
   </div>
-  <p>Set either to 0% to hide that layer completely &mdash; it isn't drawn at all, so it costs nothing. Turn the particles down if the orbiting motes are distracting but you still want the ground rune to mark your aura-bearers.</p>
+  <p>Set either to 0% to hide that layer completely - it isn't drawn at all, so it costs nothing. Turn the particles down if the orbiting motes are distracting but you still want the ground rune to mark your aura-bearers.</p>
 
   <div class="callout"><b>Aura art is tinted in-game.</b> The mote emblems ship as white / greyscale textures and are coloured at runtime by the glow material, so each aura reads at a glance by its hue.</div>
 
+  <h2>The sigils</h2>
+  <p>Every aura renders its own sigil on the ground rune and its floating motes - these are the actual in-game textures, tinted at runtime by each aura's colour:</p>
+  <div class="igrid">
+    <div class="cell"><img src="../assets/img/core/UI/Aura/Vigor.png"><div class="nm">Vigor</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Aura/Meditation.png"><div class="nm">Meditation</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Aura/Might.png"><div class="nm">Might</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Aura/Defiance.png"><div class="nm">Defiance</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Aura/Prayer.png"><div class="nm">Prayer</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Aura/Fanaticism.png"><div class="nm">Fanaticism</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Aura/Conviction.png"><div class="nm">Conviction</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Aura/HolyFire.png"><div class="nm">Holy Fire</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Aura/HolyFreeze.png"><div class="nm">Holy Freeze</div></div>
+    <div class="cell"><img src="../assets/img/core/UI/Aura/HolyShock.png"><div class="nm">Holy Shock</div></div>
+  </div>
+  <p>The thirteen corruption-only aura uniques (Swiftness, Bulwark, Sanctuary, Dominion, Tempest, Permafrost, Inferno and friends) each carry a thorn-ringed corrupted emblem instead - see them on the <a class="xref" href="corruption.html">Corruption</a> page.</p>
   <div class="pagenav" id="pagenav"></div>
 </article>
 </div>
